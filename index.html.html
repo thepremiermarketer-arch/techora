@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>تيكورا TECHORA — عالمك من التقنية | أخبار، ذكاء اصطناعي، مراجعات وشروحات</title>
+<meta name="description" content="تيكورا TECHORA — منصة تقنية عربية حديثة: أخبار التقنية، الذكاء الاصطناعي، الهواتف والأجهزة، التطبيقات، الأمن السيبراني، الشروحات، المراجعات والمقارنات.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://techora.example.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TECHORA | تكورا">
+<meta property="og:title" content="تيكورا TECHORA — عالمك من التقنية">
+<meta property="og:description" content="أخبار التقنية والذكاء الاصطناعي والمراجعات والشروحات — بالعربية.">
+<meta property="og:image" content="https://picsum.photos/seed/techora-cover/1200/630">
+<meta property="og:locale" content="ar_AR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="تيكورا TECHORA — عالمك من التقنية">
+<meta name="twitter:description" content="أخبار التقنية والذكاء الاصطناعي والمراجعات والشروحات — بالعربية.">
+<meta name="twitter:image" content="https://picsum.photos/seed/techora-cover/1200/630">
+<meta name="theme-color" content="#0a0e13">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300b896'/%3E%3Cpath d='M16 22h32v9H37v22h-10V31H16z' fill='%23071018'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+/* منع وميض الثيم قبل الرسم */
+(function(){try{var t=localStorage.getItem('tx_theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;}catch(e){}})();
+</script>
+<style>
+/* ===================== 1) الأساسيات والمتغيرات ===================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f4f6f8; --surface:#ffffff; --surface2:#edf1f5; --ink:#0c1218; --muted:#5c6773;
+  --line:#e2e7ee; --accent:#008a72; --accent2:#00b896; --accent-soft:#e3f5f0;
+  --amber:#e8930c; --danger:#d64545; --chip:#eef2f6;
+  --shadow:0 12px 34px rgba(15,26,38,.09);
+  --r:16px; --r-s:10px;
+  --f-display:'Cairo',sans-serif; --f-body:'IBM Plex Sans Arabic',sans-serif; --f-latin:'Space Grotesk',monospace;
+}
+[data-theme="dark"]{
+  --bg:#0a0e13; --surface:#101720; --surface2:#0d131b; --ink:#e9eef3; --muted:#8fa0af;
+  --line:#1d2834; --accent:#2fe6c3; --accent2:#2fe6c3; --accent-soft:#0d2b25;
+  --amber:#f6b23f; --danger:#ff7b7b; --chip:#141e29;
+  --shadow:0 12px 34px rgba(0,0,0,.4);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:4;opacity:.028;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;background:none;border:none;color:inherit}
+input,select,textarea{font-family:inherit;font-size:1rem;color:var(--ink)}
+::selection{background:var(--accent2);color:#04221b}
+:focus-visible{outline:2px solid var(--accent2);outline-offset:3px;border-radius:4px}
+.skip{position:fixed;inset-inline-start:12px;top:-60px;z-index:200;background:var(--accent2);color:#04221b;padding:.6rem 1rem;border-radius:8px;font-weight:700;transition:top .2s}
+.skip:focus{top:12px}
+.container{width:min(1240px,100% - 40px);margin-inline:auto}
+.num{font-family:var(--f-latin);font-feature-settings:"tnum"}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.35}
+/* حركة الظهور */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .65s cubic-bezier(.2,.7,.2,1),transform .65s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+.mask{overflow:hidden}.mask>span{display:block;transform:translateY(112%);transition:transform .75s cubic-bezier(.2,.75,.15,1);transition-delay:var(--d,0s)}
+.in .mask>span,.mask.in>span{transform:none}
+/* ===================== 2) الهيدر ===================== */
+.hdr{position:sticky;top:0;z-index:90;background:color-mix(in srgb,var(--surface) 86%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-block-end:1px solid var(--line)}
+.hdr-in{display:flex;align-items:center;gap:18px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand-mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--accent2),#0aa5c0);display:grid;place-items:center;position:relative;box-shadow:0 6px 16px rgba(0,184,150,.35)}
+.brand-mark svg{width:20px;height:20px}
+.brand-mark::after{content:"";position:absolute;width:6px;height:6px;border-radius:50%;background:#04221b;inset-inline-end:6px;top:6px;animation:blink 2.4s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.wordmark{font-family:var(--f-latin);font-weight:700;font-size:1.28rem;letter-spacing:.09em}
+.brand-ar{font-size:.72rem;color:var(--muted);font-weight:600;letter-spacing:0;display:block;line-height:1;margin-top:2px}
+.mainnav{display:flex;gap:2px;margin-inline-start:8px;overflow-x:auto;scrollbar-width:none}
+.mainnav::-webkit-scrollbar{display:none}
+.mainnav a{padding:.45rem .7rem;border-radius:9px;font-weight:600;font-size:.92rem;color:var(--muted);white-space:nowrap;position:relative;transition:color .2s}
+.mainnav a:hover{color:var(--ink)}
+.mainnav a.on{color:var(--accent)}
+.mainnav a.on::after{content:"";position:absolute;inset-inline:10px;bottom:0;height:2.5px;border-radius:2px;background:var(--accent2)}
+.dd{position:relative}
+.dd-panel{position:absolute;top:calc(100% + 10px);inset-inline-start:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);min-width:190px;padding:8px;opacity:0;visibility:hidden;transform:translateY(8px);transition:.22s}
+.dd.open .dd-panel{opacity:1;visibility:visible;transform:none}
+.dd-panel a{display:block;padding:.5rem .8rem;border-radius:8px;font-weight:600;font-size:.9rem}
+.dd-panel a:hover{background:var(--chip);color:var(--accent)}
+.hdr-actions{display:flex;align-items:center;gap:6px;margin-inline-start:auto}
+.icon-btn{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;color:var(--muted);border:1px solid transparent;transition:.2s}
+.icon-btn:hover{background:var(--chip);color:var(--ink);border-color:var(--line)}
+.icon-btn svg{width:20px;height:20px}
+.lang-btn{font-family:var(--f-latin);font-weight:700;font-size:.8rem;width:auto;padding-inline:10px;letter-spacing:.04em}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent2);color:#04221b;font-weight:700;padding:.72rem 1.4rem;border-radius:12px;font-size:.95rem;transition:.22s;border:1px solid transparent}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,184,150,.35)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--accent2);color:var(--accent);box-shadow:none}
+.btn.sm{padding:.5rem 1rem;font-size:.85rem;border-radius:10px}
+.burger{display:none}
+@media(max-width:1120px){.mainnav{display:none}.burger{display:grid}}
+/* قائمة الجوال */
+.drawer{position:fixed;inset:0;z-index:120;background:var(--bg);transform:translateX(-105%);transition:transform .38s cubic-bezier(.3,.8,.2,1);overflow-y:auto;padding:24px}
+[dir="rtl"] .drawer{transform:translateX(105%)}
+body.menu-open .drawer{transform:none!important}
+body.menu-open{overflow:hidden}
+.drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+.drawer nav a{display:flex;align-items:center;justify-content:space-between;padding:15px 6px;border-block-end:1px solid var(--line);font-family:var(--f-display);font-weight:800;font-size:1.25rem;opacity:0;transform:translateY(14px);transition:.4s;transition-delay:var(--d)}
+body.menu-open .drawer nav a{opacity:1;transform:none}
+.drawer nav a:hover{color:var(--accent)}
+.drawer nav a .en{font-family:var(--f-latin);font-size:.7rem;color:var(--muted);letter-spacing:.14em}
+.drawer-foot{display:flex;gap:10px;margin-top:26px}
+/* ===================== 3) الشريط العاجل ===================== */
+.ticker{background:#070c11;color:#dfe9e6;display:flex;align-items:center;gap:0;overflow:hidden;height:42px;position:relative}
+.ticker-label{flex-shrink:0;background:var(--accent2);color:#04221b;font-weight:800;font-size:.8rem;padding:0 16px;height:100%;display:flex;align-items:center;gap:7px;z-index:2;font-family:var(--f-display)}
+.ticker-label .dot{width:7px;height:7px;border-radius:50%;background:#04221b;animation:blink 1.4s infinite}
+.ticker-view{overflow:hidden;flex:1;position:relative}
+.ticker-view::before,.ticker-view::after{content:"";position:absolute;top:0;bottom:0;width:44px;z-index:1;pointer-events:none}
+.ticker-view::before{inset-inline-start:0;background:linear-gradient(to left,#070c11,transparent)}
+[dir="ltr"] .ticker-view::before{background:linear-gradient(to right,#070c11,transparent)}
+.ticker-view::after{inset-inline-end:0;background:linear-gradient(to right,#070c11,transparent)}
+[dir="ltr"] .ticker-view::after{background:linear-gradient(to left,#070c11,transparent)}
+.ticker-track{display:flex;gap:48px;width:max-content;padding-inline:20px;animation:tick 46s linear infinite;font-size:.88rem}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-track a{white-space:nowrap;color:#aebcb9;transition:color .2s;display:flex;gap:10px;align-items:center}
+.ticker-track a:hover{color:var(--accent2)}
+.ticker-track a b{color:var(--accent2);font-weight:700}
+@keyframes tick{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+[dir="ltr"] .ticker-track{animation-direction:reverse}
+/* ===================== 4) الهيرو ===================== */
+.hero{position:relative;padding:34px 0 10px}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px;opacity:.5;mask-image:radial-gradient(80% 90% at 50% 0%,#000 30%,transparent 100%);-webkit-mask-image:radial-gradient(80% 90% at 50% 0%,#000 30%,transparent 100%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.65fr 1fr;gap:22px;position:relative}
+.hero-main{position:relative;border-radius:var(--r);overflow:hidden;min-height:460px;display:flex;isolation:isolate}
+.hero-main .img-wrap{position:absolute;inset:0;z-index:-1}
+.hero-main img{width:100%;height:100%;object-fit:cover}
+.kb img{animation:kb 16s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
+.hero-main::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,9,14,.94) 8%,rgba(4,9,14,.45) 48%,rgba(4,9,14,.08));z-index:-1}
+.hero-body{margin-top:auto;padding:30px;color:#f2f6f5;max-width:720px}
+.hero-body h1{font-size:clamp(1.5rem,3.2vw,2.5rem);font-weight:900;margin:14px 0 10px;text-wrap:balance}
+.hero-body h1 a:hover{color:var(--accent2)}
+.hero-body p{color:#c3d0cd;font-size:.98rem;max-width:56ch}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:.83rem;color:#9db0ab;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--accent2);color:#04221b;font-weight:800;font-size:.74rem;padding:.28rem .8rem;border-radius:99px;font-family:var(--f-display)}
+.chip.soft{background:var(--accent-soft);color:var(--accent)}
+.hero-side{display:flex;flex-direction:column;gap:12px}
+.side-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;flex:1;display:flex;flex-direction:column}
+.side-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.side-head h3{font-size:1rem;font-weight:800}
+.pulse{width:9px;height:9px;border-radius:50%;background:var(--accent2);box-shadow:0 0 0 0 rgba(0,184,150,.5);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(0,184,150,0)}100%{box-shadow:0 0 0 0 rgba(0,184,150,0)}}
+.side-item{display:flex;gap:14px;padding:13px 0;border-block-end:1px solid var(--line);align-items:flex-start}
+.side-item:last-child{border:0;padding-bottom:0}
+.side-num{font-family:var(--f-latin);font-weight:700;font-size:1.5rem;color:transparent;-webkit-text-stroke:1.2px var(--accent2);line-height:1;flex-shrink:0;min-width:32px}
+.side-item h4{font-size:.94rem;font-weight:700;line-height:1.55}
+.side-item a:hover h4{color:var(--accent)}
+.side-item .m{font-size:.75rem;color:var(--muted);margin-top:4px;display:flex;gap:10px}
+/* ===================== 5) الأقسام والبطاقات ===================== */
+.sec{padding:52px 0}
+.sec-alt{background:var(--surface);border-block:1px solid var(--line)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:28px}
+.kicker{display:flex;align-items:center;gap:9px;color:var(--accent);font-weight:700;font-size:.8rem;letter-spacing:.02em;margin-bottom:6px}
+.kicker::before{content:"";width:26px;height:2px;background:var(--accent2);border-radius:2px}
+.sec-head h2{font-size:clamp(1.45rem,3vw,2.05rem);font-weight:900}
+.sec-link{font-weight:700;font-size:.88rem;color:var(--accent);display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
+.sec-link:hover{gap:10px}.sec-link{transition:gap .2s}
+.grid{display:grid;gap:22px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:1000px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.g3,.g4,.g2{grid-template-columns:1fr}.hero-grid{grid-template-columns:1fr}.hero-main{min-height:400px}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,border-color .3s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent2) 45%,var(--line))}
+.card .thumb{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--surface2)}
+.card .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1);opacity:0}
+.card .thumb img.ld{opacity:1;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .5s}
+.card:hover .thumb img{transform:scale(1.06)}
+.thumb .chip{position:absolute;top:12px;inset-inline-start:12px}
+.c-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:9px;flex:1}
+.c-body h3{font-size:1.06rem;font-weight:800;line-height:1.6}
+.c-body h3 a:hover{color:var(--accent)}
+.c-body p{font-size:.88rem;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.c-meta{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.76rem;color:var(--muted);padding-top:10px;border-top:1px dashed var(--line)}
+.c-meta .dot-sep::before{content:"•";margin-inline-end:14px;color:var(--accent2)}
+.rate-badge{position:absolute;bottom:12px;inset-inline-end:12px;background:#071018;color:var(--accent2);font-family:var(--f-latin);font-weight:700;font-size:.86rem;padding:.3rem .7rem;border-radius:9px;display:flex;gap:4px;align-items:center;border:1px solid rgba(47,230,195,.3)}
+.rate-badge svg{width:13px;height:13px}
+/* الأكثر قراءة */
+.mostread{display:grid;grid-template-columns:1.6fr 1fr;gap:26px;align-items:start}
+@media(max-width:900px){.mostread{grid-template-columns:1fr}}
+.mr-item{display:flex;gap:20px;align-items:center;padding:20px 4px;border-block-end:1px solid var(--line);transition:background .2s}
+.mr-item:hover{background:color-mix(in srgb,var(--accent-soft) 40%,transparent)}
+.mr-num{font-family:var(--f-latin);font-weight:700;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--accent2);flex-shrink:0;width:70px;text-align:center;transition:.3s}
+.mr-item:hover .mr-num{color:var(--accent2);-webkit-text-stroke:0px transparent}
+.mr-item h4{font-size:1.02rem;font-weight:800;line-height:1.6}
+.mr-item:hover h4{color:var(--accent)}
+.mr-item .m{font-size:.78rem;color:var(--muted);margin-top:6px;display:flex;gap:14px}
+.mr-item img{width:110px;height:76px;object-fit:cover;border-radius:10px;flex-shrink:0}
+@media(max-width:520px){.mr-item img{display:none}}
+/* بطاقات المقارنات */
+.vs-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:.3s;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:14px}
+.vs-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent2) 45%,var(--line))}
+.vs-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.vs-name{font-family:var(--f-display);font-weight:800;font-size:.98rem;text-align:center;flex:1}
+.vs-x{flex-shrink:0;width:42px;height:42px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-family:var(--f-latin);font-weight:700;font-size:.8rem;transform:rotate(45deg)}
+.vs-x span{transform:rotate(-45deg)}
+.vs-card h4{font-size:1rem;font-weight:800;line-height:1.6}
+.vs-card:hover h4{color:var(--accent)}
+.vs-card .m{font-size:.78rem;color:var(--muted);margin-top:auto;display:flex;gap:14px}
+/* الأدوات */
+.tool-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:12px;transition:.3s}
+.tool-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent2) 45%,var(--line))}
+.tool-top{display:flex;align-items:center;gap:14px}
+.tool-ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-family:var(--f-latin);font-weight:700;font-size:1.2rem;color:#04221b;flex-shrink:0}
+.tool-card h4{font-weight:800;font-size:1.02rem}
+.tool-card .tag{font-size:.7rem;font-weight:700;padding:.15rem .6rem;border-radius:99px;background:var(--chip);color:var(--muted)}
+.tool-card p{font-size:.85rem;color:var(--muted)}
+.stars{color:var(--amber);font-size:.85rem;letter-spacing:2px}
+/* تبويبات الأجهزة */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.tab{padding:.55rem 1.15rem;border-radius:99px;border:1px solid var(--line);font-weight:700;font-size:.86rem;color:var(--muted);transition:.2s;background:var(--surface)}
+.tab:hover{border-color:var(--accent2);color:var(--accent)}
+.tab.on{background:var(--accent2);color:#04221b;border-color:var(--accent2)}
+/* ===================== 6) الإعلانات ===================== */
+.ad-slot{border:1.5px dashed var(--line);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--muted);background:color-mix(in srgb,var(--surface2) 55%,transparent);padding:20px;text-align:center;min-height:110px;position:relative}
+.ad-slot::before{content:"إعلان";position:absolute;top:8px;inset-inline-start:10px;font-size:.62rem;letter-spacing:.08em;color:var(--muted);opacity:.7}
+.ad-slot b{font-size:.85rem;font-weight:700}
+.ad-slot small{font-size:.7rem;font-family:var(--f-latin);opacity:.7}
+/* ===================== 7) النشرة ===================== */
+.newsletter{background:linear-gradient(135deg,#071310,#0a1f1a 55%,#062b33);border:1px solid rgba(47,230,195,.25);border-radius:22px;padding:clamp(28px,5vw,54px);color:#e8f4f0;position:relative;overflow:hidden}
+.newsletter::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(47,230,195,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(47,230,195,.08) 1px,transparent 1px);background-size:30px 30px;mask-image:radial-gradient(70% 100% at 20% 0,#000,transparent);-webkit-mask-image:radial-gradient(70% 100% at 20% 0,#000,transparent)}
+.newsletter h3{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;position:relative}
+.newsletter p{color:#9fc4ba;max-width:52ch;margin-top:8px;position:relative}
+.nl-form{display:flex;gap:10px;margin-top:22px;position:relative;flex-wrap:wrap}
+.nl-form input{flex:1;min-width:220px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:.8rem 1.1rem;color:#fff}
+.nl-form input::placeholder{color:#7fa39a}
+.nl-form .btn{background:var(--accent2)}
+.nl-note{font-size:.75rem;color:#7fa39a;margin-top:12px;position:relative}
+/* ===================== 8) الفوتر ===================== */
+footer{background:#070c11;color:#aebcb9;margin-top:60px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:34px;padding:56px 0 40px}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.foot-grid{grid-template-columns:1fr}}
+.foot-grid h5{color:#fff;font-family:var(--f-display);font-weight:800;font-size:.98rem;margin-bottom:16px}
+.foot-grid a{display:block;padding:5px 0;font-size:.88rem;transition:.2s}
+.foot-grid a:hover{color:var(--accent2);padding-inline-start:6px}
+.foot-about p{font-size:.88rem;line-height:1.9;margin-top:14px;color:#8ba19c}
+.socials{display:flex;gap:10px;margin-top:18px}
+.socials a{width:38px;height:38px;border-radius:10px;border:1px solid #1c2a2a;display:grid;place-items:center;transition:.25s;padding:0}
+.socials a:hover{background:var(--accent2);border-color:var(--accent2);transform:translateY(-3px)}
+.socials a:hover svg{fill:#04221b}
+.socials svg{width:17px;height:17px;fill:#aebcb9;transition:.25s}
+.foot-bottom{border-top:1px solid #14201f;padding:20px 0;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;font-size:.8rem;color:#71877f}
+.foot-bottom nav{display:flex;gap:18px;flex-wrap:wrap}
+.foot-bottom a:hover{color:var(--accent2)}
+/* ===================== 9) صفحة المقال ===================== */
+.progress{position:fixed;top:0;inset-inline:0;height:3px;z-index:95;background:transparent;pointer-events:none}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent2),#0aa5c0)}
+.art-layout{display:grid;grid-template-columns:1fr 330px;gap:40px;align-items:start}
+@media(max-width:1000px){.art-layout{grid-template-columns:1fr}}
+.crumbs{font-size:.8rem;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:26px 0 18px}
+.crumbs a:hover{color:var(--accent)}
+.crumbs b{color:var(--ink);font-weight:600}
+.art-head h1{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:900;line-height:1.5;text-wrap:balance}
+.art-lead{font-size:1.08rem;color:var(--muted);margin-top:14px;line-height:1.9}
+.art-meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;margin:22px 0;padding:16px 0;border-block:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:800;font-family:var(--f-display);flex-shrink:0}
+.art-hero{border-radius:var(--r);overflow:hidden;margin-bottom:14px;aspect-ratio:16/8.5;background:var(--surface2)}
+.art-hero img{width:100%;height:100%;object-fit:cover}
+.art-cap{font-size:.76rem;color:var(--muted);text-align:center;margin-bottom:24px}
+.prose{font-size:1.05rem;line-height:2.05}
+.prose p{margin-bottom:1.25rem}
+.prose h2{font-size:1.4rem;font-weight:900;margin:2.2rem 0 1rem;padding-inline-start:16px;border-inline-start:4px solid var(--accent2);scroll-margin-top:90px}
+.prose ul{margin:0 0 1.4rem;padding-inline-start:1.4rem}
+.prose li{margin-bottom:.55rem;position:relative}
+.prose li::marker{color:var(--accent2);font-weight:700}
+.prose blockquote{margin:2rem 0;padding:24px 28px;background:var(--accent-soft);border-inline-start:4px solid var(--accent2);border-radius:0 14px 14px 0;font-family:var(--f-display);font-weight:700;font-size:1.12rem;line-height:1.9;position:relative}
+[dir="ltr"] .prose blockquote{border-radius:14px 0 0 14px}
+.prose blockquote cite{display:block;font-size:.8rem;color:var(--muted);margin-top:10px;font-style:normal;font-weight:600}
+.prose figure{margin:2rem 0;border-radius:var(--r);overflow:hidden}
+.prose figure img{width:100%}
+.prose figcaption{font-size:.76rem;color:var(--muted);padding:10px 4px 0;text-align:center}
+.tbl-wrap{overflow-x:auto;margin:1.8rem 0;border:1px solid var(--line);border-radius:14px}
+.prose table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:480px}
+.prose th{background:var(--surface2);font-family:var(--f-display);font-weight:800;text-align:start;padding:13px 16px;border-block-end:2px solid var(--accent2)}
+.prose td{padding:12px 16px;border-block-end:1px solid var(--line)}
+.prose tr:last-child td{border-block-end:0}
+.share-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:34px 0;padding:20px 0;border-block:1px solid var(--line)}
+.share-bar .lbl{font-weight:800;font-size:.9rem;margin-inline-end:6px}
+.sh-btn{width:42px;height:42px;border-radius:11px;border:1px solid var(--line);display:grid;place-items:center;transition:.2s;color:var(--muted)}
+.sh-btn:hover{background:var(--accent2);color:#04221b;border-color:var(--accent2);transform:translateY(-3px)}
+.sh-btn svg{width:18px;height:18px}
+.sh-btn.txt{width:auto;padding-inline:14px;font-weight:700;font-size:.82rem;gap:8px;display:inline-flex;align-items:center}
+.sidebar{position:sticky;top:90px;display:flex;flex-direction:column;gap:24px}
+@media(max-width:1000px){.sidebar{position:static}}
+.widget{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.widget h4{font-weight:800;font-size:1rem;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.widget h4::before{content:"";width:8px;height:8px;background:var(--accent2);border-radius:2px;transform:rotate(45deg)}
+.toc a{display:block;padding:7px 0;font-size:.88rem;color:var(--muted);border-inline-start:2px solid var(--line);padding-inline-start:14px;transition:.2s}
+.toc a:hover{color:var(--accent);border-color:var(--accent2)}
+.mini-post{display:flex;gap:12px;padding:11px 0;border-block-end:1px solid var(--line);align-items:center}
+.mini-post:last-child{border:0}
+.mini-post img{width:72px;height:52px;object-fit:cover;border-radius:8px;flex-shrink:0}
+.mini-post h5{font-size:.85rem;font-weight:700;line-height:1.6}
+.mini-post:hover h5{color:var(--accent)}
+/* ===================== 10) صفحات القوائم والبحث ===================== */
+.page-head{padding:48px 0 30px;position:relative;overflow:hidden}
+.page-head::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px;opacity:.45;mask-image:linear-gradient(#000,transparent);-webkit-mask-image:linear-gradient(#000,transparent)}
+.page-head .en-sub{font-family:var(--f-latin);letter-spacing:.22em;font-size:.72rem;color:var(--accent);font-weight:600;text-transform:uppercase}
+.page-head h1{font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:900;margin:6px 0 10px}
+.page-head p{color:var(--muted);max-width:64ch;position:relative}
+.count-badge{display:inline-flex;align-items:center;gap:8px;background:var(--chip);border:1px solid var(--line);padding:.35rem .9rem;border-radius:99px;font-size:.8rem;font-weight:700;color:var(--muted);margin-top:14px}
+.search-box{display:flex;gap:10px;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:8px;margin:26px 0 8px;max-width:640px;transition:border-color .2s;position:relative}
+.search-box:focus-within{border-color:var(--accent2)}
+.search-box input{flex:1;border:0;background:none;padding:.6rem .9rem;font-size:1.05rem}
+.search-box input:focus{outline:none}
+.search-box button{background:var(--accent2);color:#04221b;border-radius:11px;padding:.65rem 1.5rem;font-weight:800}
+.empty{padding:70px 20px;text-align:center;border:1.5px dashed var(--line);border-radius:var(--r);margin-top:20px}
+.empty svg{width:88px;height:88px;margin:0 auto 18px;opacity:.85}
+.empty h3{font-weight:800;font-size:1.25rem;margin-bottom:8px}
+.empty p{color:var(--muted);font-size:.92rem;max-width:40ch;margin-inline:auto}
+/* سكيلتون */
+.skel{position:relative;overflow:hidden;background:var(--surface2);border-radius:10px}
+.skel::after{content:"";position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--surface) 70%,transparent),transparent);animation:sh 1.3s infinite}
+@keyframes sh{to{transform:translateX(100%)}}
+/* ===================== 11) النماذج والتواصل ===================== */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:760px}
+.form-grid .full{grid-column:1/-1}
+@media(max-width:620px){.form-grid{grid-template-columns:1fr}}
+.field label{display:block;font-weight:700;font-size:.88rem;margin-bottom:8px}
+.field input,.field textarea,.field select{width:100%;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:.8rem 1rem;transition:border-color .2s}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent2)}
+.field.err input,.field.err textarea{border-color:var(--danger)}
+.field .err-msg{color:var(--danger);font-size:.76rem;margin-top:6px;font-weight:600;display:none}
+.field.err .err-msg{display:block}
+.info-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:30px 0}
+@media(max-width:760px){.info-cards{grid-template-columns:1fr}}
+.info-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:.3s}
+.info-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.info-card .ic{width:46px;height:46px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin-bottom:14px}
+.info-card h4{font-weight:800;margin-bottom:6px}
+.info-card p{font-size:.86rem;color:var(--muted)}
+/* ===================== 12) لوحة التحكم ===================== */
+.admin{display:grid;grid-template-columns:240px 1fr;gap:0;min-height:70vh;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:30px 0;background:var(--surface)}
+@media(max-width:860px){.admin{grid-template-columns:1fr}}
+.adm-nav{background:var(--surface2);border-inline-end:1px solid var(--line);padding:20px 14px;display:flex;flex-direction:column;gap:4px}
+@media(max-width:860px){.adm-nav{flex-direction:row;overflow-x:auto;border-inline-end:0;border-block-end:1px solid var(--line)}}
+.adm-nav a{display:flex;gap:10px;align-items:center;padding:.7rem .95rem;border-radius:10px;font-weight:700;font-size:.9rem;color:var(--muted);white-space:nowrap}
+.adm-nav a:hover{color:var(--ink)}
+.adm-nav a.on{background:var(--accent2);color:#04221b}
+.adm-body{padding:26px;overflow-x:auto}
+.adm-body h2{font-weight:900;font-size:1.4rem;margin-bottom:20px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:20px}
+.stat b{font-family:var(--f-latin);font-size:1.9rem;font-weight:700;display:block;color:var(--accent)}
+.stat span{font-size:.82rem;color:var(--muted);font-weight:600}
+.tbl{width:100%;border-collapse:collapse;font-size:.88rem;min-width:620px}
+.tbl th{text-align:start;padding:11px 12px;background:var(--bg);font-weight:800;border-block-end:2px solid var(--line);font-size:.8rem;color:var(--muted)}
+.tbl td{padding:11px 12px;border-block-end:1px solid var(--line);vertical-align:middle}
+.pill{font-size:.7rem;font-weight:800;padding:.2rem .7rem;border-radius:99px}
+.pill.pub{background:var(--accent-soft);color:var(--accent)}
+.pill.dr{background:var(--chip);color:var(--muted)}
+.pill.sch{background:#fdf3e2;color:#b06e08}
+[data-theme="dark"] .pill.sch{background:#33270f;color:#f6b23f}
+.act-btn{width:32px;height:32px;border-radius:8px;display:inline-grid;place-items:center;border:1px solid var(--line);margin-inline-end:4px;transition:.2s;color:var(--muted)}
+.act-btn:hover{border-color:var(--accent2);color:var(--accent)}
+.act-btn.del:hover{border-color:var(--danger);color:var(--danger)}
+.bar-row{display:grid;grid-template-columns:110px 1fr 60px;gap:12px;align-items:center;margin-bottom:10px;font-size:.82rem}
+.bar{height:9px;border-radius:99px;background:var(--bg);overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent2),#0aa5c0);border-radius:99px}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px}
+.media-grid figure{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg)}
+.media-grid img{aspect-ratio:16/10;object-fit:cover;width:100%}
+.media-grid figcaption{font-size:.68rem;padding:7px 9px;color:var(--muted);font-family:var(--f-latin);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* مودال المحرر */
+.modal{position:fixed;inset:0;z-index:150;display:grid;place-items:center;padding:20px;background:rgba(5,10,14,.6);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:.25s}
+.modal.open{opacity:1;visibility:visible}
+.modal-box{background:var(--surface);border:1px solid var(--line);border-radius:18px;width:min(680px,100%);max-height:88vh;overflow-y:auto;padding:28px;transform:translateY(18px);transition:.3s}
+.modal.open .modal-box{transform:none}
+.modal-box h3{font-weight:900;font-size:1.25rem;margin-bottom:20px}
+/* ===================== 13) صفحة 404 ===================== */
+.nf{min-height:60vh;display:grid;place-items:center;text-align:center;padding:60px 20px}
+.nf .code{font-family:var(--f-latin);font-size:clamp(5rem,16vw,9.5rem);font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:2px var(--accent2);position:relative}
+.nf .code::after{content:"404";position:absolute;inset:0;color:var(--accent2);clip-path:inset(20% 0 40% 0);animation:glitch 2.6s steps(2) infinite;opacity:.75}
+@keyframes glitch{0%,100%{clip-path:inset(20% 0 62% 0);transform:none}25%{clip-path:inset(64% 0 8% 0);transform:translateX(6px)}50%{clip-path:inset(38% 0 38% 0);transform:translateX(-6px)}75%{clip-path:inset(8% 0 78% 0);transform:translateX(3px)}}
+.nf h1{font-size:1.5rem;font-weight:900;margin:22px 0 8px}
+.nf p{color:var(--muted);margin-bottom:26px}
+.nf .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+/* ===================== 14) التوست ===================== */
+.toasts{position:fixed;bottom:22px;inset-inline-start:22px;z-index:300;display:flex;flex-direction:column;gap:10px}
+.toast{background:#0c1512;color:#e8f4f0;border:1px solid rgba(47,230,195,.35);border-inline-start:4px solid var(--accent2);padding:14px 20px;border-radius:12px;font-size:.9rem;font-weight:600;box-shadow:0 14px 34px rgba(0,0,0,.35);display:flex;gap:10px;align-items:center;animation:t-in .35s cubic-bezier(.2,.8,.2,1);max-width:min(360px,90vw)}
+.toast.err{border-color:rgba(214,69,69,.4);border-inline-start-color:var(--danger)}
+@keyframes t-in{from{opacity:0;transform:translateY(16px)}}
+.toast.out{opacity:0;transform:translateY(10px);transition:.3s}
+/* ===================== 15) طباعة + تقليل الحركة ===================== */
+@media print{
+  header,.ticker,footer,.sidebar,.share-bar,.progress,.toasts,#nl-sec,.related{display:none!important}
+  body{background:#fff;color:#000}
+  body::after{display:none}
+  .art-layout{grid-template-columns:1fr}
+  .card,.prose blockquote{border-color:#ccc}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+  .mask>span{transform:none}
+  .ticker-track{animation:none;flex-wrap:wrap}
+  .kb img{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#app">تخطَّ إلى المحتوى</a>
+<div class="progress" aria-hidden="true"><i id="pbar"></i></div>
+
+<!-- ======= الهيدر ======= -->
+<header class="hdr" id="hdr">
+  <div class="container hdr-in">
+    <button class="icon-btn burger" data-act="menu" aria-label="فتح القائمة" aria-expanded="false" id="burgerBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h16"/></svg>
+    </button>
+    <a class="brand" href="#/" aria-label="تيكورا — الرئيسية">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#04221b"><path d="M4 5h16v4.4h-5.6V19h-4.8V9.4H4z"/></svg></span>
+      <span><span class="wordmark" id="wordmark">TECHORA</span><span class="brand-ar">تكورا — Your World of Technology</span></span>
+    </a>
+    <nav class="mainnav" id="mainnav" aria-label="التنقل الرئيسي"></nav>
+    <div class="hdr-actions">
+      <a class="icon-btn" href="#/search" aria-label="بحث" title="بحث">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+      </a>
+      <button class="icon-btn lang-btn" data-act="lang" id="langBtn" aria-label="تبديل اللغة">EN</button>
+      <button class="icon-btn" data-act="theme" id="themeBtn" aria-label="تبديل الوضع الليلي" title="الوضع الليلي"></button>
+      <a class="btn sm" href="#/" data-act="goto-nl" id="hdrSub" style="margin-inline-start:4px">اشترك</a>
+    </div>
+  </div>
+</header>
+
+<!-- ======= قائمة الجوال ======= -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-top">
+    <a class="brand" href="#/"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="#04221b"><path d="M4 5h16v4.4h-5.6V19h-4.8V9.4H4z"/></svg></span><span class="wordmark">TECHORA</span></a>
+    <button class="icon-btn" data-act="menu" aria-label="إغلاق القائمة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <nav id="drawerNav" aria-label="قائمة الجوال"></nav>
+  <div class="drawer-foot">
+    <button class="btn ghost" data-act="theme" id="drawerTheme">تبديل الوضع</button>
+    <button class="btn ghost" data-act="lang" id="drawerLang">English</button>
+  </div>
+</div>
+
+<main id="app"></main>
+
+<!-- ======= الفوتر ======= -->
+<footer id="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a class="brand" href="#/"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="#04221b"><path d="M4 5h16v4.4h-5.6V19h-4.8V9.4H4z"/></svg></span><span><span class="wordmark">TECHORA</span><span class="brand-ar" style="color:#71877f">تكورا</span></span></a>
+        <p id="footAbout">تيكورا منصة تقنية عربية حديثة تقدّم أخبار التقنية والذكاء الاصطناعي، ومراجعات الأجهزة، والشروحات والمقارنات — بمحتوى دقيق وأصيل يواكب عالمك الرقمي.</p>
+        <div class="socials" id="socials" aria-label="وسائل التواصل"></div>
+      </div>
+      <div><h5 data-i="sections">أقسام الموقع</h5><div id="footCats"></div></div>
+      <div><h5 data-i="quickLinks">روابط مهمة</h5>
+        <a href="#/about" data-i="about">من نحن</a>
+        <a href="#/contact" data-i="contact">اتصل بنا</a>
+        <a href="#/tools" data-i="tools">أدوات تقنية</a>
+        <a href="#/comparisons" data-i="comparisons">مقارنات</a>
+        <a href="#/admin">لوحة التحكم</a>
+      </div>
+      <div><h5 data-i="legal">قانوني</h5>
+        <a href="#/privacy" data-i="privacy">سياسة الخصوصية</a>
+        <a href="#/terms" data-i="terms">شروط الاستخدام</a>
+        <a href="#/search" data-i="search">البحث</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span class="num" id="year">2026</span> TECHORA — تكورا. جميع الحقوق محفوظة.</span>
+      <nav><a href="#/privacy" data-i="privacy">سياسة الخصوصية</a><a href="#/terms" data-i="terms">شروط الاستخدام</a></nav>
+    </div>
+  </div>
+</footer>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+
+<script>
+"use strict";
+/* =========================================================
+   TECHORA — منصة تقنية عربية | نسخة إنتاجية كاملة
+   ========================================================= */
+
+/* ---------- أدوات عامة ---------- */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pic=(seed,w=960,h=540)=>`https://picsum.photos/seed/${seed}/${w}/${h}`;
+const srcset=seed=>`${pic(seed,640,360)} 640w, ${pic(seed,960,540)} 960w, ${pic(seed,1280,720)} 1280w`;
+const Store={
+  get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},
+  del(k){try{localStorage.removeItem(k)}catch(e){}}
+};
+const slugify=s=>String(s).trim().replace(/\s+/g,'-').replace(/[^\u0600-\u06FFa-zA-Z0-9-]/g,'').toLowerCase();
+const fmtDate=(d,short)=>new Intl.DateTimeFormat(lang==='ar'?'ar':'en',{year:'numeric',month:short?'short':'long',day:'numeric'}).format(new Date(d));
+const fmtViews=v=>v>=1000?(Math.round(v/100)/10)+'K':v;
+const clamp=(s,n)=>s.length>n?s.slice(0,n).trimEnd()+'…':s;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- الأيقونات ---------- */
+const I={
+  eye:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>',
+  clock:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  star:'<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17l-6.1 3.6 1.4-6.8L2.2 9.1l6.9-.8Z"/></svg>',
+  arrow:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" class="flip"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  link:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.7 0l3-3A4 4 0 0 0 13 5.3l-1.5 1.5M14 10a4 4 0 0 0-5.7 0l-3 3A4 4 0 0 0 11 18.7l1.5-1.5"/></svg>',
+  print:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>',
+  plus:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+  edit:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+  trash:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 15h10l1-15M10 11v6M14 11v6"/></svg>',
+  x:'<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23.3 22h-6.3l-4.9-6.4L6.4 22H3.2l7.3-8.3L1 2h6.4l4.4 5.9L18.9 2Zm-1.1 18h1.7L7.3 3.9H5.5L17.8 20Z"/></svg>',
+  sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M2 12h2.5M19.5 12H22M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>',
+  moon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11Z"/></svg>'
+};
+const socialIcon={
+  x:I.x,
+  youtube:'<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.6A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.6 8.9.6 8.9.6s7 0 8.9-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12 31 31 0 0 0 23 7.2ZM9.8 15.5v-7l6 3.5-6 3.5Z"/></svg>',
+  linkedin:'<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.5c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V21h-4V9Z"/></svg>',
+  instagram:'<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8C2.4 4 4 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1Zm0 3.6a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4Zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-10.4a1.4 1.4 0 1 0 0-2.9 1.4 1.4 0 0 0 0 2.9Z"/></svg>',
+  telegram:'<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M21.9 4.6 18.9 19c-.2 1-.8 1.2-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-.9.5l.3-4.6L18.2 6c.4-.3-.1-.5-.6-.2L7.4 12.3l-4.4-1.4c-1-.3-1-1 .2-1.4l17.2-6.6c.8-.3 1.5.2 1.5 1.7Z"/></svg>'
+};
+
+/* ---------- i18n ---------- */
+let lang=Store.get('tx_lang','ar');
+const I18N={
+ar:{home:'الرئيسية',news:'أخبار',ai:'ذكاء اصطناعي',devices:'أجهزة',apps:'تطبيقات',cyber:'أمن سيبراني',tutorials:'شروحات',reviews:'مراجعات',more:'المزيد',comparisons:'مقارنات',tools:'أدوات',about:'من نحن',contact:'اتصل بنا',search:'البحث',readMore:'اقرأ المزيد',viewAll:'عرض الكل',latestNews:'أحدث الأخبار',aiSec:'الذكاء الاصطناعي',devicesSec:'أحدث الأجهزة',mostRead:'الأكثر قراءة',reviewsSec:'مراجعاتنا',comparisonsSec:'مقارنات تقنية',toolsSec:'أفضل الأدوات التقنية',nlTitle:'اشترك في نشرة Techora',nlDesc:'احصل على أهم أخبار التقنية والذكاء الاصطناعي مباشرة إلى بريدك.',subscribe:'اشترك الآن',emailPh:'بريدك الإلكتروني',breaking:'عاجل',live:'الأحدث الآن',subscribeBtn:'اشترك',sections:'أقسام الموقع',quickLinks:'روابط مهمة',legal:'قانوني',privacy:'سياسة الخصوصية',terms:'شروط الاستخدام',rights:'جميع الحقوق محفوظة',results:'نتيجة',noResults:'لا توجد نتائج',searchPh:'ابحث عن مقال، مراجعة، شرح…',all:'الكل',by:'بواسطة',minRead:'دقائق قراءة',views:'مشاهدة',related:'مقالات ذات صلة',toc:'محتويات المقال',share:'مشاركة',copyLink:'نسخ الرابط',print:'طباعة',backHome:'العودة للرئيسية',browseNews:'تصفح الأخبار',nfTitle:'يبدو أنك وصلت إلى صفحة غير موجودة.',sendMsg:'إرسال الرسالة',name:'الاسم',email:'البريد الإلكتروني',subject:'الموضوع',message:'الرسالة',adSpace:'مساحة إعلانية',verdict:'الخلاصة',devicesTabs:{all:'الكل',phone:'هواتف',laptop:'لابتوبات',watch:'ساعات ذكية',smart:'أجهزة ذكية'}},
+en:{home:'Home',news:'News',ai:'AI',devices:'Devices',apps:'Apps',cyber:'Cybersecurity',tutorials:'Tutorials',reviews:'Reviews',more:'More',comparisons:'Comparisons',tools:'Tools',about:'About',contact:'Contact',search:'Search',readMore:'Read more',viewAll:'View all',latestNews:'Latest News',aiSec:'Artificial Intelligence',devicesSec:'Latest Devices',mostRead:'Most Read',reviewsSec:'Our Reviews',comparisonsSec:'Tech Comparisons',toolsSec:'Best Tech Tools',nlTitle:'Subscribe to Techora Newsletter',nlDesc:'Get the most important tech & AI news straight to your inbox.',subscribe:'Subscribe',emailPh:'Your email address',breaking:'BREAKING',live:'Live now',subscribeBtn:'Subscribe',sections:'Sections',quickLinks:'Quick Links',legal:'Legal',privacy:'Privacy Policy',terms:'Terms of Use',rights:'All rights reserved',results:'results',noResults:'No results found',searchPh:'Search articles, reviews, tutorials…',all:'All',by:'By',minRead:'min read',views:'views',related:'Related Articles',toc:'Contents',share:'Share',copyLink:'Copy link',print:'Print',backHome:'Back to Home',browseNews:'Browse News',nfTitle:'Looks like this page does not exist.',sendMsg:'Send Message',name:'Name',email:'Email',subject:'Subject',message:'Message',adSpace:'Ad Space',verdict:'Verdict',devicesTabs:{all:'All',phone:'Phones',laptop:'Laptops',watch:'Smartwatches',smart:'Smart Devices'}}
+};
+const t=k=>I18N[lang][k]??I18N.ar[k]??k;
+
+/* ---------- البيانات ---------- */
+const BASE_CATS=[
+ {slug:'news',ar:'أخبار التقنية',en:'Tech News'},
+ {slug:'ai',ar:'ذكاء اصطناعي',en:'Artificial Intelligence'},
+ {slug:'devices',ar:'أجهزة',en:'Devices'},
+ {slug:'apps',ar:'تطبيقات',en:'Apps'},
+ {slug:'cybersecurity',ar:'أمن سيبراني',en:'Cybersecurity'},
+ {slug:'tutorials',ar:'شروحات',en:'Tutorials'},
+ {slug:'reviews',ar:'مراجعات',en:'Reviews'},
+ {slug:'comparisons',ar:'مقارنات',en:'Comparisons'},
+ {slug:'tools',ar:'أدوات تقنية',en:'Tech Tools'}
+];
+const AUTHORS=[
+ {name:'أحمد الراشد',role:'محرر الذكاء الاصطناعي'},
+ {name:'سارة المنصور',role:'محررة الأجهزة والمراجعات'},
+ {name:'خالد العتيبي',role:'خبير الأمن السيبراني'},
+ {name:'ليلى حسن',role:'محررة التطبيقات والشروحات'},
+ {name:'يوسف زين',role:'محرر الأدوات والمقارنات'}
+];
+/* محتوى المقالات: كتل منظمة p/h2/ul/quote/img/table */
+const ARTICLES=[
+{id:'p1',cat:'ai',slug:'best-ai-tools',title:'أفضل أدوات الذكاء الاصطناعي التي تستحق التجربة في 2026',excerpt:'جولة شاملة على أبرز أدوات الذكاء الاصطناعي في الكتابة والتصميم والبرمجة والبحث، مع خطة مجانية لكل أداة تقريبًا.',image:'ai-tools-2026',author:'أحمد الراشد',publishedAt:'2026-08-12',readingTime:8,views:48200,featured:true,tags:['AI','أدوات','إنتاجية'],content:[
+{t:'p',v:'يشهد عالم الذكاء الاصطناعي تسارعًا غير مسبوق، وأصبحت الأدوات الذكية جزءًا من routine اليومي للمحترفين والطلاب والمبدعين. في هذا الدليل نرشّح لك الأدوات التي أثبتت قيمتها فعليًا في 2026، بعيدًا عن الضجيج التسويقي.'},
+{t:'h2',v:'أدوات الكتابة وتحرير المحتوى'},
+{t:'p',v:'تتصدّر المساعدات اللغوية مشهد الأدوات الذكية، فهي تساعد في الصياغة والتلخيص والترجمة وتحسين الأسلوب خلال ثوانٍ.'},
+{t:'ul',v:['المساعدات الحوارية العامة: مثالية للعصف الذهني وصياغة المسودات الأولى.','أدوات التلخيص المدمجة في بيئات العمل: تختصر الاجتماعات والمستندات الطويلة.','مدققات الأسلوب والترجمة الفورية: ضرورية للمحتوى ثنائي اللغة.']},
+{t:'h2',v:'أدوات التصميم وتوليد الصور'},
+{t:'ul',v:['مولدات الصور بالنصوص لإنتاج أفكار بصرية سريعة قبل التنفيذ النهائي.','أدوات إزالة الخلفيات وترقية دقة الصور بضغطة واحدة.','مساعدات تصميم العروض التي تقترح تخطيطات جاهزة للمحتوى.']},
+{t:'table',head:['الأداة','الاستخدام الأفضل','الخطة المجانية'],rows:[['مساعد حواري','الكتابة والبحث','متاحة بحدود'],['مولد صور','التصاميم السريعة','نقاط يومية'],['مساعد برمجة','كتابة الأكواد','طبقة مجانية'],['محرك بحث ذكي','إجابات بمصادر','استخدام أساسي']]},
+{t:'quote',v:'الأداة الأفضل ليست الأقوى تقنيًا، بل الأكثر انسجامًا مع سير عملك اليومي.',by:'فريق تحرير تيكورا'},
+{t:'p',v:'نصيحتنا: ابدأ بأداة واحدة وأتقنها قبل الانتقال إلى غيرها، وقيّم دائمًا أثرها الفعلي على إنتاجيتك خلال أسبوعين من الاستخدام.'}
+]},
+{id:'p2',cat:'ai',slug:'how-to-use-ai-at-work',title:'كيف تستخدم الذكاء الاصطناعي في عملك اليومي؟ دليل عملي',excerpt:'من صياغة البريد إلى تحليل البيانات: خطوات عملية لإدخال الذكاء الاصطناعي في روتينك المهني دون مخاطرة.',image:'ai-at-work',author:'أحمد الراشد',publishedAt:'2026-08-09',readingTime:7,views:21500,tags:['AI','إنتاجية','عمل'],content:[
+{t:'p',v:'الفرق بين من يستفيد من الذكاء الاصطناعي ومن يتجاهله يتّسع كل شهر. الخبر الجيد أن البدء لا يتطلب مهارات تقنية متقدمة، بل منهجية واضحة.'},
+{t:'h2',v:'ابدأ بالمهام المتكررة'},
+{t:'ul',v:['تلخيص الاجتماعات وتحويلها إلى نقاط عمل قابلة للتنفيذ.','صياغة مسودات البريد الإلكتروني والردود الرسمية.','إعادة تنسيق التقارير وتوحيدها بقالب واحد.','توليد أفكار أولى للعروض والحملات التسويقية.']},
+{t:'h2',v:'قواعد ذهبية قبل الاعتماد على النماذج'},
+{t:'ul',v:['لا تُدخل بيانات سرية أو معلومات عملاء في أدوات عامة.','راجع المخرجات دائمًا: النماذج قد تخطئ بثقة تامة.','استخدم النماذج كمساعد لا كبديل عن قرارك المهني.','وثّق أي محتوى مولّد تتبناه في عملك الرسمي.']},
+{t:'quote',v:'الذكاء الاصطناعي يضاعف إنتاجية المنظمين، ويضاعف فوضى غير المنظمين.'},
+{t:'p',v:'خصص ثلاثين دقيقة أسبوعيًا لتجربة استخدام جديد واحد، وخلال شهر ستكتشف أن نصف مهامك الروتينية أصبحت أسرع بكثير.'}
+]},
+{id:'p3',cat:'ai',slug:'what-is-generative-ai',title:'ما هو الذكاء الاصطناعي التوليدي؟ دليل مبسّط للمبتدئين',excerpt:'شرح مبسّط لمفهوم الذكاء الاصطناعي التوليدي: كيف يعمل، وماذا يولّد، وما حدوده التي يجب أن تعرفها.',image:'generative-ai-guide',author:'أحمد الراشد',publishedAt:'2026-07-28',readingTime:6,views:33400,tags:['AI','مفاهيم'],content:[
+{t:'p',v:'الذكاء الاصطناعي التوليدي هو فرع من الذكاء الاصطناعي قادر على إنتاج محتوى جديد — نصوص وصور وأصوات وفيديو وأكواد — بناءً على أنماط تعلّمها من كميات هائلة من البيانات.'},
+{t:'h2',v:'كيف يعمل باختصار؟'},
+{t:'p',v:'تُدرَّب النماذج التوليدية على التنبؤ بالعنصر التالي في التسلسل: الكلمة التالية في الجملة، أو البكسل التالي في الصورة. مع مليارات الأمثلة، تتعلم هذه النماذج أنماطًا تسمح لها بإنتاج محتوى متماسك يبدو وكأنه من صنع بشر.'},
+{t:'ul',v:['النصوص: مقالات، ترجمات، أكواد برمجية.','الصور: لوحات رقمية من وصف نصي.','الصوت: تعليق صوتي واستنساخ نبرات.','الفيديو: مقاطع قصيرة من نصوص أو صور.']},
+{t:'h2',v:'حدوده التي يجب أن تعرفها'},
+{t:'ul',v:['قد يقدّم معلومات خاطئة بصياغة واثقة (الهلوسة).','معرفته محدودة بتاريخ آخر تحديث لتدريبه.','لا يفهم العالم كما نفهمه، بل يحاكي الأنماط الإحصائية.']},
+{t:'p',v:'فهم هذه الحدود هو ما يحوّل الذكاء الاصطناعي التوليدي من لعبة مسلية إلى أداة عمل حقيقية تستحق مكانها في حياتك المهنية.'}
+]},
+{id:'p4',cat:'ai',slug:'future-of-ai',title:'مستقبل الذكاء الاصطناعي: ما الذي ينتظرنا حتى 2030؟',excerpt:'قراءة استشرافية في اتجاهات الذكاء الاصطناعي خلال السنوات القادمة: الوكلاء الأذكياء، النماذج المتخصصة، والتنظيم.',image:'future-ai-2030',author:'أحمد الراشد',publishedAt:'2026-08-02',readingTime:9,views:18900,tags:['AI','مستقبل'],content:[
+{t:'p',v:'بينما ينشغل الجميع بالأدوات الحالية، ترسم مختبرات الأبحاث ملامح الجيل القادم. هذه أهم الاتجاهات التي نرجّح أنها ستشكل المشهد حتى 2030.'},
+{t:'h2',v:'اتجاهات رئيسية'},
+{t:'ul',v:['الوكلاء الأذكياء: أنظمة تنفذ مهامًا متعددة الخطوات نيابة عنك — حجز، بحث، تنظيم — بإشراف بشري.','نماذج متخصصة أصغر وأسرع تعمل على الأجهزة نفسها دون سحابة.','دمج الحواس: نماذج تفهم النص والصورة والصوت والفيديو معًا بشكل أصيل.','الذكاء الاصطناعي العلمي: تسريع اكتشاف الأدوية والمواد الجديدة.']},
+{t:'h2',v:'التنظيم والأخلاقيات'},
+{t:'p',v:'مع تنامي القدرات، تتسارع التشريعات حول العالم لتنظيم استخدام النماذج: إفصاح عن المحتوى المولّد، ضوابط للبيانات التدريبية، ومساءلة عن القرارات الآلية. الشركات التي تستثمر في الامتثال مبكرًا ستكون الأكثر ثقة.'},
+{t:'quote',v:'السؤال لم يعد هل سيغيّر الذكاء الاصطناعي وظائفنا، بل كيف سنعيد تصميمها حوله.'},
+{t:'p',v:'الخلاصة: المستقبل القريب لنماذج أخصّ وأقرب وأشد تنظيمًا — والرابح من يبني مهاراته اليوم على الاستخدام المسؤول والفعّال.'}
+]},
+{id:'p5',cat:'devices',slug:'best-smartphones',title:'أفضل الهواتف الذكية لهذا العام: دليل الشراء الشامل',excerpt:'ترشيحاتنا لأفضل هواتف 2026 في كل فئة: الرائدة والمتوسطة والاقتصادية، مع نقاط القوة لكل جهاز.',image:'best-smartphones',author:'سارة المنصور',publishedAt:'2026-08-10',readingTime:9,views:51200,tags:['هواتف','شراء'],deviceType:'phone',content:[
+{t:'p',v:'اختيار هاتف جديد أصبح قرارًا محيرًا مع تشابه المواصفات على الورق. لذلك اختبرنا أبرز إصدارات العام وقسناها على الاستخدام الفعلي لا على الأرقام.'},
+{t:'h2',v:'الفئة الرائدة'},
+{t:'ul',v:['الخيار المتوازن: أفضل شاشة وبطارية تدوم يومين من الاستخدام الكثيف.','الخيار للتصوير: مستشعر رئيسي كبير وتقريب بصري متدرج يعطي نتائج شبه احترافية.','خيار الأداء الخام: أسرع معالج في فئة الأندرويد مع تبريد محسّن.']},
+{t:'h2',v:'الفئة المتوسطة والاقتصادية'},
+{t:'ul',v:['أفضل قيمة: مواصفات رائدة بسعر متوسط وتحديثات لأربع سنوات.','الاقتصادي الأنسب: شاشة جيدة وبطارية ضخمة لمن يريد الأساسيات فقط.']},
+{t:'table',head:['الهاتف','نقاط القوة','الفئة السعرية'],rows:[['الرائد المتوازن','شاشة + بطارية','عالية'],['بطل التصوير','كاميرا وتقريب','عالية'],['خيار القيمة','سعر مقابل مواصفات','متوسطة'],['الاقتصادي','بطارية ضخمة','منخفضة']]},
+{t:'p',v:'قبل الشراء حدد أولويتك: كاميرا أم بطارية أم دعم طويل؟ ثم اختر من ترشيحاتنا ضمن ميزانيتك — فكل الفئات أصبحت تقدم قيمة ممتازة هذا العام.'}
+]},
+{id:'p6',cat:'devices',slug:'best-laptops-students',title:'أفضل لابتوبات للطلاب في 2026: خفيفة، سريعة، وتعيش يومك',excerpt:'معايير اختيار لابتوب الطالب وأفضل الترشيحات للميزانيات المختلفة، من المحاضرات إلى المشاريع.',image:'laptops-students',author:'سارة المنصور',publishedAt:'2026-08-05',readingTime:7,views:27800,tags:['لابتوب','طلاب'],deviceType:'laptop',content:[
+{t:'p',v:'لابتوب الطالب الجيد يجب أن يجمع ثلاثة أشياء: وزنًا خفيفًا، بطارية تعمر يومًا دراسيًا كاملًا، ولوحة مفاتيح مريحة للكتابة الطويلة.'},
+{t:'h2',v:'معايير الاختيار الأساسية'},
+{t:'ul',v:['وزن أقل من 1.5 كجم إن كنت تتنقل بين المحاضرات يوميًا.','بطارية 12 ساعة فعلية على الأقل — لا تصدق الأرقام التسويقية.','ذاكرة 16GB أصبحت الحد الأدنى المريح لتعدد المهام.','شاشة مريحة للعين بدقة جيدة وسطوع كافٍ للقاعات المضيئة.']},
+{t:'h2',v:'ترشيحاتنا'},
+{t:'ul',v:['الخيار الأفضل عمومًا: جهاز بمعمارية ARM يمنحك بطارية استثنائية وهدوءًا تامًا بلا مراوح.','الخيار الاقتصادي: أجهزة ويندوز متوسطة تقدم أداءً كافيًا للدراسة بسعر أقل من النصف.','لتخصصات التصميم والبرمجة: ابحث عن شاشة دقيقة الألوان ومعالج رسومي منفصل.']},
+{t:'quote',v:'أفضل لابتوب للطالب ليس الأقوى، بل الذي لا يفكر فيه: يفتح فورًا ويعيش اليوم كله.'},
+{t:'p',v:'لا تنسَ خصومات الطلاب التي تقدمها معظم الشركات — فقد توفر عليك ما يصل إلى 20% من السعر.'}
+]},
+{id:'p7',cat:'devices',slug:'best-smart-home',title:'أفضل أجهزة المنزل الذكي: ابدأ بمنزل ذكي دون تعقيد',excerpt:'من المساعد الصوتي إلى الإضاءة والكاميرات: خريطة عملية لتجهيز منزلك الذكي خطوة بخطوة.',image:'smart-home-devices',author:'سارة المنصور',publishedAt:'2026-07-22',readingTime:6,views:14300,tags:['منزل ذكي','IoT'],deviceType:'smart',content:[
+{t:'p',v:'المنزل الذكي لم يعد رفاهية معقدة؛ فمعيار Matter الجديد جعل الأجهزة من شركات مختلفة تعمل معًا بسلاسة لم تكن ممكنة قبل عامين.'},
+{t:'h2',v:'أساسيات تبدأ بها'},
+{t:'ul',v:['مكبر صوتي ذكي: نقطة التحكم المركزية في كل أجهزتك.','مصابيح ذكية: جرب الأتمتة فورًا — إضاءة صباحية تدريجية وإطفاء تلقائي.','مقابس ذكية: حوّل أي جهاز تقليدي إلى جهاز قابل للجدلة والمراقبة.']},
+{t:'h2',v:'المرحلة الثانية'},
+{t:'ul',v:['كاميرات وأجراس ذكية مع تخزين محلي يحفظ خصوصيتك.','أقفال ذكية تمنح ضيوفك دخولًا مؤقتًا.','مكانس روبوتية ترسم خريطة المنزل وتنظف أثناء غيابك.']},
+{t:'p',v:'نصيحة مهمة: تحقق دائمًا من دعم الجهاز لمعيار Matter قبل الشراء، لضمان ألا يتحول منزلك الذكي إلى جزر معزولة.'}
+]},
+{id:'p8',cat:'reviews',slug:'galaxy-s26-ultra-review',title:'مراجعة Galaxy S26 Ultra: هل يستحق العرش؟',excerpt:'أسبوعان من الاستخدام المكثف لهاتف سامسونج الرائد: الكاميرا، البطارية، والذكاء الاصطناعي المدمج.',image:'galaxy-s26-ultra',author:'سارة المنصور',publishedAt:'2026-08-14',readingTime:8,views:38600,tags:['سامسونج','مراجعة','هواتف'],deviceType:'phone',rating:9.3,verdict:'أفضل كاميرا في عالم الأندرويد هذا العام',content:[
+{t:'p',v:'أمضينا أسبوعين مع Galaxy S26 Ultra كجهاز أساسي، وهذه خلاصة تجربتنا الكاملة مع هاتف سامسونج الأكثر طموحًا حتى اليوم.'},
+{t:'h2',v:'التصميم والشاشة'},
+{t:'p',v:'أنحف وأخف جيل من فئة Ultra على الإطلاق، مع حواف شبه معدومة وشاشة تبلغ ذروة سطوع تجعل القراءة تحت الشمس المباشرة مريحة تمامًا. القلم المدمج ما زال ورقة رابحة لا يملكها أي منافس.'},
+{t:'h2',v:'الكاميرا: نقطة الحسم'},
+{t:'p',v:'المستشعر الرئيسي الجديد يلتقط تفاصيل مذهلة في الإضاءة المنخفضة، والتقريب المتدرج يمنحك مرونة لا تضاهى من اللقطات العريضة حتى التفاصيل البعيدة. معالجة الألوان أصبحت أقرب للواقع بعد سنوات من الإشباع المبالغ فيه.'},
+{t:'h2',v:'الأداء والبطارية'},
+{t:'ul',v:['المعالج الجديد يتفوق في المهام الثقيلة مع حرارة محسوسة أقل.','البطارية تصمد ليوم ونصف من الاستخدام المتوسط.','مساعد الذكاء الاصطناعي المدمج يترجم المكالمات ويلخص التسجيلات محليًا.']},
+{t:'quote',v:'إنه الهاتف الذي تختاره حين تريد كل شيء دفعة واحدة — ولا تتنازل عن أي شيء.'},
+{t:'ul',v:['✓ الكاميرا الأفضل في فئتها، ✓ شاشة استثنائية، ✓ دعم برمجي لسبع سنوات','✗ سعر مرتفع، ✗ سرعة الشحن ما زالت خلف بعض المنافسين']}
+]},
+{id:'p9',cat:'reviews',slug:'macbook-air-m4-review',title:'مراجعة MacBook Air بمعالج M4: الصمت المطلق يلتقي بالقوة',excerpt:'تصميم بلا مراوح، بطارية تعمر يومين، وأداء يتحدى أجهزة أكبر حجمًا — مراجعة كاملة.',image:'macbook-air-m4',author:'سارة المنصور',publishedAt:'2026-08-06',readingTime:7,views:22100,tags:['آبل','لابتوب','مراجعة'],deviceType:'laptop',rating:9.0,verdict:'الخيار الافتراضي الأفضل لمعظم الناس',content:[
+{t:'p',v:'الجيل الجديد من MacBook Air يصلح ما تبقى من نواقص الجيل السابق، ويؤكد أن هذه السلسلة هي التوصية الأسهل لأي شخص يبحث عن لابتوب بلا تفكير طويل.'},
+{t:'h2',v:'ما الجديد؟'},
+{t:'ul',v:['معادلة M4: أداء أسرع بنسبة ملموسة مع كفاءة طاقة أعلى.','كاميرا أمامية محسّنة مع تتبع ذكي للإطار في مكالمات الفيديو.','دعم شاشتين خارجيتين معًا لأول مرة في هذه الفئة.']},
+{t:'h2',v:'تجربة الاستخدام اليومية'},
+{t:'p',v:'الصمت التام ما زال السحر الأكبر: مهما بلغت قسوة المهمة، لا صوت ولا حرارة مزعجة. البطارية تجاوزت في اختبارنا 17 ساعة تشغيل فيديو، وعمليًا يمكنك نسيان الشاحن في المنزل ليوم كامل من العمل.'},
+{t:'h2',v:'لمن هذا الجهاز؟'},
+{t:'p',v:'للطالب والكاتب والموظف وصانع المحتوى الخفيف — الجميع تقريبًا. أما محررو الفيديو الثقيل فالمسار الصحيح لهم هو سلسلة Pro.'},
+{t:'quote',v:'إنه الجهاز الذي تختفي فيه التقنية ليبقى عملك أنت.'}
+]},
+{id:'p10',cat:'reviews',slug:'apple-watch-ultra-3-review',title:'مراجعة Apple Watch Ultra 3: ساعة المغامرات تصبح أذكى',excerpt:'شاشة أكبر، بطارية أطول، ومستشعرات صحية جديدة — هل تستحق سعرها المرتفع؟',image:'watch-ultra-3',author:'سارة المنصور',publishedAt:'2026-07-30',readingTime:6,views:12900,tags:['آبل','ساعات ذكية','مراجعة'],deviceType:'watch',rating:8.7,verdict:'الأفضل للمغامرين والرياضيين الجادين',content:[
+{t:'p',v:'الجيل الثالث من ساعة آبل للمغامرات يواصل وصفة النجاح نفسها مع تحسينات تركز على ما يهم فعلًا: الشاشة والبطارية والصحة.'},
+{t:'h2',v:'أبرز التحسينات'},
+{t:'ul',v:['شاشة أكبر مساحةً مع حواف أنحف وإضاءة أعلى للشمس المباشرة.','بطارية تصل إلى أربعة أيام في الاستخدام العادي.','مؤشرات صحية جديدة للجهد البدني وجودة النوم العميق.','اتصال طوارئ يعمل عبر الأقمار الصناعية في مزيد من المناطق.']},
+{t:'h2',v:'هل تحتاجها فعلًا؟'},
+{t:'p',v:'إن كنت غواصًا أو عداء مسافات طويلة أو مغامرًا، فهي مصممة لك حرفيًا. أما للاستخدام اليومي العادي فالنسخة القياسية تقدم 90% من التجربة بنصف السعر تقريبًا.'},
+{t:'quote',v:'ساعة لا تساوم: متانة عسكرية، ودقة رياضية، وأناقة لا تتوقعها من جهاز بهذا الحجم.'}
+]},
+{id:'p11',cat:'comparisons',slug:'chatgpt-vs-gemini',title:'ChatGPT أم Gemini؟ مقارنة شاملة تحسم اختيارك',excerpt:'أي مساعد ذكاء اصطناعي يناسبك؟ قارنّا النموذجين في الكتابة والبحث والتكامل والدقة عبر 30 اختبارًا عمليًا.',image:'chatgpt-vs-gemini',author:'يوسف زين',publishedAt:'2026-08-11',readingTime:8,views:45700,tags:['AI','مقارنة'],vs:['ChatGPT','Gemini'],content:[
+{t:'p',v:'سألنا المساعدين الأشهر ثلاثين سؤالًا ومهمة متطابقة في الكتابة والتحليل والبرمجة والبحث، وكانت النتائج أقرب مما تتوقع — لكن الفروق الصغيرة هي ما يجب أن يحسم قرارك.'},
+{t:'h2',v:'جودة الإجابات والكتابة'},
+{t:'p',v:'في المهام الإبداعية والصياغة الطويلة، مال الأسلوب الأول إلى عمق أكبر وبنية أوضح، بينما تفوق الثاني في سرعة الوصول إلى المعلومة وربطها بالويب مباشرة.'},
+{t:'h2',v:'السياق والتكامل'},
+{t:'ul',v:['الأول: نظام إضافات ناضج وذاكرة محادثات أفضل للجلسات الطويلة.','الثاني: تكامل أعمق مع البريد والمستندات والبحث، وميزة سياق ضخمة للمستندات الكبيرة.','كلاهما يدعم توليد الصور وتحليلها بجودة متقاربة.']},
+{t:'table',head:['المعيار','ChatGPT','Gemini'],rows:[['الكتابة الإبداعية','ممتاز','جيد جدًا'],['البحث المباشر بالويب','جيد','ممتاز'],['تحليل المستندات الكبيرة','جيد جدًا','ممتاز'],['البرمجة','ممتاز','ممتاز'],['التكامل مع بيئة العمل','متوسط','عميق']]},
+{t:'quote',v:'لا يوجد فائز مطلق — يوجد فائز مناسب لطريقة عملك أنت.'},
+{t:'p',v:'خلاصتنا: إن كان عملك داخل منظومة المستندات والبريد فالخيار الثاني أنسب، وإن أردت مساعدًا عامًا قويًا للكتابة والتحليل فالأول يتقدم بفارق بسيط.'}
+]},
+{id:'p12',cat:'comparisons',slug:'iphone-17-pro-vs-galaxy-s26-ultra',title:'iPhone 17 Pro أم Galaxy S26 Ultra؟ معركة العام الكبرى',excerpt:'أقوى هاتفين في 2026 وجهًا لوجه: الكاميرا، الأداء، البطارية، والنظام — من يستحق أموالك؟',image:'iphone-vs-galaxy',author:'يوسف زين',publishedAt:'2026-08-13',readingTime:9,views:36800,tags:['مقارنة','هواتف'],vs:['iPhone 17 Pro','Galaxy S26 Ultra'],deviceType:'phone',content:[
+{t:'p',v:'كل عام تتكرر المعركة نفسها، وهذا العام الفجوة أضيق من أي وقت مضى. وضعنا الهاتفين في اختبارات متطابقة لأسبوع كامل.'},
+{t:'h2',v:'الكاميرا'},
+{t:'p',v:'آيفون يحافظ على تفوقه في الفيديو وثبات الألوان عبر العدسات، بينما يمنحك هاتف سامسونج مرونة تقريب لا مثيل لها وتفوقًا واضحًا في لقطات الإضاءة المنخفضة جدًا.'},
+{t:'h2',v:'النظام والبيئة المتكاملة'},
+{t:'ul',v:['إن كنت تملك أجهزة آبل أخرى، فالتكامل وحده قد يحسم القرار.','إن كنت تفضل التخصيص وقلمًا مدمجًا وملفات مفتوحة، فكفة سامسونج أرجح.','كلا الهاتفين يقدم دعم تحديثات لسبع سنوات — التزام غير مسبوق.']},
+{t:'table',head:['المعيار','iPhone 17 Pro','Galaxy S26 Ultra'],rows:[['الفيديو','الأفضل','ممتاز جدًا'],['التقريب','جيد','الأفضل بلا منازع'],['البطارية','ممتازة','ممتازة'],['التخصيص','محدود','واسع'],['تكامل البيئة','ممتاز (آبل)','جيد جدًا']]},
+{t:'p',v:'الخلاصة: اختر النظام الذي تعيش فيه أجهزتك الحالية — فالهاتفان رائعان لدرجة أن القرار الحقيقي هو قرار منظومة لا قرار عتاد.'}
+]},
+{id:'p13',cat:'comparisons',slug:'windows-vs-macos',title:'Windows أم macOS؟ أي نظام تشغيل يناسبك فعلًا؟',excerpt:'بعيدًا عن التعصب: مقارنة عملية بين النظامين في الإنتاجية والألعاب والتطوير والسعر لتحسم اختيارك.',image:'windows-vs-macos',author:'يوسف زين',publishedAt:'2026-07-25',readingTime:7,views:19400,tags:['مقارنة','أنظمة تشغيل'],vs:['Windows','macOS'],content:[
+{t:'p',v:'اختيار نظام التشغيل قرار يمتد لسنوات، ويؤثر في كل برنامج تشتريه وكل عادة تبنيها. هذه مقارنة عملية بعيدًا عن الحروب الكلامية.'},
+{t:'h2',v:'نقاط قوة كل نظام'},
+{t:'ul',v:['ويندوز: حرية عتادية مطلقة، تفوق كاسح في الألعاب، وتوافق لا يضاهى مع البرامج المؤسسية.','ماك: تكامل مثالي مع أجهزة آبل، استقرار وتحديثات طويلة، وبيئة مفضلة لدى شريحة واسعة من المطورين والمصممين.']},
+{t:'h2',v:'بحسب استخدامك'},
+{t:'table',head:['الاستخدام','الأرجح','السبب'],rows:[['الألعاب','Windows','مكتبة ودعم عتادي لا منافس له'],['تطوير الويب','كلاهما','أدوات ممتازة على الجانبين'],['المونتاج والتصميم','macOS','استقرار وألوان وأدوات حصرية'],['العمل المكتبي','Windows','توافق مؤسسي أوسع']]},
+{t:'p',v:'خلاصتنا: إن كانت الألعاب أو برامج مؤسسية محددة ضمن أولوياتك فويندوز هو الخيار، وإن كنت في منظومة آبل أو تعمل إبداعيًا فالنظام الآخر سيوفر عليك الكثير.'}
+]},
+{id:'p14',cat:'comparisons',slug:'ssd-vs-hdd',title:'الفرق بين SSD وHDD: أيهما تختار ولماذا؟',excerpt:'شرح مبسط للفروقات الجوهرية بين أقراص الحالة الصلبة والأقراص الميكانيكية، ومتى يكون كل نوع هو الخيار الصحيح.',image:'ssd-vs-hdd',author:'يوسف زين',publishedAt:'2026-07-18',readingTime:5,views:16700,tags:['عتاد','مقارنة'],vs:['SSD','HDD'],content:[
+{t:'p',v:'إن كان هناك ترقية واحدة تحدث فارقًا محسوسًا فورًا في أي حاسوب قديم، فهي استبدال القرص الميكانيكي بقرص الحالة الصلبة. إليك الصورة الكاملة.'},
+{t:'h2',v:'الفروقات الجوهرية'},
+{t:'table',head:['المعيار','SSD','HDD'],rows:[['السرعة','حتى 10 أضعاف أو أكثر','أساسية وبطيئة'],['المتانة','بلا أجزاء متحركة — يقاوم الصدمات','حساس للصدمات والدوران'],['الضجيج','صامت تمامًا','أزيز دوران مسموع'],['السعر لكل جيجا','أعلى','أرخص بكثير']]},
+{t:'h2',v:'متى تختار كل نوع؟'},
+{t:'ul',v:['SSD: إلزامي لقرص النظام والبرامج — لا تقبل بديلًا في 2026.','HDD: ما زال منطقيًا للتخزين الأرشفة الضخم: أفلام، نسخ احتياطية، مكتبات وسائط.']},
+{t:'quote',v:'التركيبة المثالية: SSD سريع للنظام، وHDD سعة كبيرة للتخزين — أفضل ما في العالمين.'},
+{t:'p',v:'خلاصة: للحاسوب اليومي اشترِ SSD ولو بسعة أقل، ولا تجعل قرصًا ميكانيكيًا يعرقل نظامك أبدًا.'}
+]},
+{id:'p15',cat:'cybersecurity',slug:'protect-your-accounts',title:'كيف تحمي حساباتك من الاختراق؟ 7 خطوات حاسمة',excerpt:'دليل عملي لتأمين حساباتك الرقمية: المصادقة الثنائية، كلمات المرور، وكشف محاولات التصيد قبل فوات الأوان.',image:'protect-accounts',author:'خالد العتيبي',publishedAt:'2026-08-08',readingTime:7,views:29800,tags:['أمان','حسابات'],content:[
+{t:'p',v:'معظم الاختراقات لا تحدث بسبب ثغرات معقدة، بل بسبب خطأ بشري بسيط: كلمة مرور ضعيفة أو رابط خبيث تم الضغط عليه بلا تفكير. هذه الخطوات السبع ترفع حماية حساباتك إلى مستوى يصعب تجاوزه.'},
+{t:'h2',v:'1. فعّل المصادقة الثنائية فورًا'},
+{t:'p',v:'المصادقة الثنائية تعني أن كلمة المرور وحدها لا تكفي للدخول — هناك طبقة ثانية (رمز من تطبيق مصادقة أو مفتاح أمان). وحدها تقلل خطر الاختراق بنسبة ساحقة، فابدأ بالبريد الإلكتروني لأنه مفتاح كل حساباتك الأخرى.'},
+{t:'h2',v:'2. كلمات مرور: القاعدة الذهبية'},
+{t:'ul',v:['كلمة مرور مختلفة لكل حساب — التكرار أكبر أبواب الكوارث.','استخدم مدير كلمات مرور موثوقًا بدلًا من محاولة الحفظ.','جمل المرور الطويلة أقوى وأسهل حفظًا من الرموز المعقدة القصيرة.']},
+{t:'h2',v:'3. احذر التصيد الاحتيالي'},
+{t:'ul',v:['البنوك والجهات الرسمية لا تطلب بياناتك عبر روابط في الرسائل.','تحقق من عنوان الرابط حرفًا بحرف قبل إدخال أي بيانات.','الاستعجال المصطنع (حسابك سيغلق خلال ساعة!) علامة تحذير كلاسيكية.']},
+{t:'quote',v:'أنت لست هدفًا صغيرًا: المهاجمون يعتمدون الأدوات الآلية التي تصطاد الجميع بلا تمييز.'},
+{t:'p',v:'خصص نصف ساعة اليوم لتطبيق هذه الخطوات على حساباتك الأساسية — إنها أفضل استثمار أمني ستقوم به هذا العام.'}
+]},
+{id:'p16',cat:'cybersecurity',slug:'what-is-vpn',title:'ما هو VPN وكيف يعمل؟ ومتى تحتاجه فعلًا؟',excerpt:'شرح واضح لشبكات VPN: كيف تشفّر اتصالك، ومتى يكون استخدامها ضروريًا، وكيف تختار مزودًا موثوقًا.',image:'vpn-explained',author:'خالد العتيبي',publishedAt:'2026-07-20',readingTime:6,views:24600,tags:['VPN','خصوصية'],content:[
+{t:'p',v:'VPN أو الشبكة الافتراضية الخاصة هي نفق مشفّر بين جهازك والإنترنت، يخفي نشاطك عن المتطفلين ويظهر اتصالك وكأنه من موقع آخر.'},
+{t:'h2',v:'كيف يعمل ببساطة؟'},
+{t:'p',v:'بدلًا من اتصالك المباشر بالمواقع، تمر بياناتك أولًا عبر خادم تابع لمزود الخدمة حيث تُشفَّر، ثم تنطلق إلى وجهتها. النتيجة: مزود الإنترنت لا يرى تفاصيل نشاطك، والمواقع ترى عنوان الخادم لا عنوانك.'},
+{t:'ul',v:['الحماية على شبكات الواي فاي العامة: المقاهي والمطارات أكثر أماكن الاختراق شيوعًا.','الخصوصية من التتبع الإعلاني المبني على موقعك.','الوصول إلى خدماتك المعتادة أثناء السفر.']},
+{t:'h2',v:'كيف تختار مزودًا موثوقًا؟'},
+{t:'ul',v:['سياسة واضحة لعدم تسجيل النشاط (No-Logs) مدققة خارجيًا.','بروتوكولات حديثة وتطبيقات لجميع أجهزتك.','سرعات موثقة وسيرفرات قريبة من منطقتك.','احذر الخدمات المجانية تمامًا — غالبًا أنت المنتج فيها.']},
+{t:'p',v:'VPN أداة خصوصية مهمة، لكنه ليس درعًا سحريًا: لا يغني عن المصادقة الثنائية والحذر من الروابط الخبيثة.'}
+]},
+{id:'p17',cat:'cybersecurity',slug:'protect-phone-malware',title:'كيف تحمي هاتفك من التطبيقات الخبيثة؟',excerpt:'التطبيقات الخبيثة تتسلل بطرق أذكى مما تظن: إشارات تحذيرية يجب معرفتها وخطوات حماية عملية لهواتف أندرويد وآيفون.',image:'phone-malware',author:'خالد العتيبي',publishedAt:'2026-08-01',readingTime:6,views:17500,tags:['أمان','هواتف'],content:[
+{t:'p',v:'الهاتف يحمل كل شيء: صورك، حساباتك، وأموالك. ومع أن أنظمة التشغيل الحديثة أكثر أمانًا من أي وقت، يبقى سلوك المستخدم خط الدفاع الأول.'},
+{t:'h2',v:'كيف تتسلل التطبيقات الخبيثة؟'},
+{t:'ul',v:['متاجر غير رسمية وروابط تحميل مباشرة في الرسائل.','تطبيقات شرعية تُباع لمطورين سيئين بعد اكتساب الثقة.','إعلانات تدّعي تنظيف الهاتف أو تسريعه — أفخاخ كلاسيكية.']},
+{t:'h2',v:'قواعد الحماية العملية'},
+{t:'ul',v:['حمّل من المتاجر الرسمية فقط، وتجنب ملفات APK مجهولة المصدر.','راجع الأذونات: لماذا يحتاج تطبيق مصباح إلى جهات اتصالك؟','حدّث نظام التشغيل والتطبيقات فورًا — التحديثات ترقيع للثغرات.','فعّل الحماية المدمجة للتحقق من التطبيقات، وراجع تطبيقاتك دوريًا.']},
+{t:'quote',v:'كل إذن تمنحه لتطبيق هو باب تفتحه في جدار خصوصيتك — فافتح الأبواب الضرورية فقط.'},
+{t:'p',v:'إن لاحظت استنزافًا مفاجئًا للبطارية أو إعلانات تظهر دون فتح أي تطبيق، فافحص قائمة التطبيقات المثبتة وأزل كل ما لا تعرفه.'}
+]},
+{id:'p18',cat:'apps',slug:'best-productivity-apps',title:'أفضل تطبيقات الإنتاجية في 2026: رتّب فوضاك الرقمية',excerpt:'اختبرنا عشرات التطبيقات واخترنا الأفضل في الملاحظات والمهام والتركيز — لترتيب عملك وحياتك.',image:'productivity-apps',author:'ليلى حسن',publishedAt:'2026-08-07',readingTime:7,views:26300,tags:['تطبيقات','إنتاجية'],content:[
+{t:'p',v:'الإنتاجية ليست تطبيقًا واحدًا سحريًا، بل منظومة صغيرة من الأدوات التي تتكامل مع طريقة تفكيرك. هذه اختياراتنا بعد اختبار طويل.'},
+{t:'h2',v:'للملاحظات والمعرفة'},
+{t:'ul',v:['تطبيقات الملاحظات المتصلة: مثالية لبناء قاعدة معرفتك بروابط بين الأفكار.','التطبيقات المكتبية الشاملة: مستندات ومشاريع وقواعد بيانات في مكان واحد.','التطبيقات المحلية السريعة: تفتح فورًا وتعمل دون إنترنت.']},
+{t:'h2',v:'للمهام والتركيز'},
+{t:'ul',v:['مدير مهام واضح بقوائم اليوم والأسبوع والمشاريع.','مؤقتات بومودورو مع إحصاءات لجلسات تركيز عميق.','مجمعات الروابط للقراءة المؤجلة بدل عشرات التبويبات المفتوحة.']},
+{t:'quote',v:'أفضل تطبيق إنتاجية هو الذي تتوقف عن التفكير فيه — لأنه يعمل كما تفكر.'},
+{t:'p',v:'ابدأ بأداة ملاحظات واحدة ومدير مهام واحد، ولا تنقل بياناتك كل شهر بحثًا عن الكمال: الاستمرار يتفوق على المثالية.'}
+]},
+{id:'p19',cat:'apps',slug:'best-file-managers',title:'أفضل تطبيقات إدارة الملفات لكل المنصات',excerpt:'من هاتفك إلى حاسوبك: أفضل مديري الملفات للتنظيم والبحث والمزامنة، وخيارات مجانية ممتازة.',image:'file-managers',author:'ليلى حسن',publishedAt:'2026-07-24',readingTime:5,views:9800,tags:['تطبيقات','ملفات'],content:[
+{t:'p',v:'إدارة الملفات الجيدة توفر ساعات ضائعة في البحث. هذه أفضل الخيارات على كل منصة، من البسيط إلى المتقدم.'},
+{t:'h2',v:'الاختيارات حسب المنصة'},
+{t:'ul',v:['ويندوز: مدير الملفات المدمج أصبح ممتازًا مع التبويبات، والمتقدمون يفضلون بدائل ثنائية اللوحة للسرعة.','ماك: الفايندر يغطي الأساسيات، ومحترفو لوحة المفاتيح يتجهون لأدوات متقدمة بأوامر سريعة.','أندرويد وآيفون: التطبيقات الرسمية كافية، مع خيارات سحابية لتوحيد الملفات بين الأجهزة.']},
+{t:'h2',v:'عادات تنظيم تستحق التبني'},
+{t:'ul',v:['هيكل مجلدات ثابت لا يتغير: مشاريع، أرشيف، وارد.','قاعدة الدقيقتين: أي ملف يصل لمكانه خلال يومين كحد أقصى.','بحث سريع أفضل من مجلدات متاهة: اعتمد على تسمية واضحة للفرز.']},
+{t:'p',v:'أفضل نظام ملفات هو الأبسط الذي تلتزم به — لا الأكثر تعقيدًا الذي تهجره بعد أسبوع.'}
+]},
+{id:'p20',cat:'apps',slug:'best-browsers',title:'أفضل متصفحات الإنترنت في 2026: السرعة لم تعد كل شيء',excerpt:'مقارنة عملية بين أبرز المتصفحات: الخصوصية، الأداء، إدارة التبويبات، ومساعدو الذكاء الاصطناعي المدمجون.',image:'best-browsers',author:'ليلى حسن',publishedAt:'2026-08-03',readingTime:6,views:21900,tags:['متصفحات','تطبيقات'],content:[
+{t:'p',v:'المتصفح هو التطبيق الذي تعيش فيه يومك، واختياره الصحيح ينعكس على سرعتك وخصوصيتك وراحة عينيك. هذه خلاصة اختباراتنا.'},
+{t:'ul',v:['متصفح الخصوصية الأول: يمنع التتبع افتراضيًا دون إضافات — خيارنا لمن يهتم بخصوصيته دون إعدادات.','العملاق المتوازن: أكبر مكتبة إضافات وتزامن مثالي بين الأجهزة.','الخيار المدمج بالذكاء الاصطناعي: تلخيص صفحات وإجابات فورية من الشريط الجانبي.','مدير التبويبات المبتكر: يحوّل فوضى التبويبات إلى مساحات عمل منظمة.']},
+{t:'table',head:['المتصفح','الخصوصية الافتراضية','الأداء','الابتكار'],rows:[['متصفح الخصوصية','ممتازة','سريع جدًا','جيدة'],['العملاق','متوسطة (قابلة للتحسين)','سريع','ممتازة'],['متصفح الذكاء الاصطناعي','جيدة','سريع','ممتازة'],['مدير التبويبات','جيدة','متوسط','مبتكر']]},
+{t:'p',v:'نصيحة أخيرة: مهما كان متصفحك، فعّل منع التتبع وراجع الإضافات المثبتة دوريًا — فكل إضافة باب إضافي محتمل.'}
+]},
+{id:'p21',cat:'tutorials',slug:'speed-up-phone',title:'كيف تجعل هاتفك أسرع؟ 10 خطوات عملية مجربة',excerpt:'قبل أن تفكر في هاتف جديد: عشر خطوات حقيقية تعيد الحياة لهاتفك البطيء، مجربة على أندرويد وآيفون.',image:'speed-up-phone',author:'ليلى حسن',publishedAt:'2026-08-04',readingTime:6,views:31200,tags:['شروحات','هواتف'],content:[
+{t:'p',v:'معظم الهواتف لا تصبح أبطأ بسبب العتاد، بل بسبب تراكم البرامج والملفات. هذه الخطوات العشر أعادت الحيوية لأجهزة عمرها أربع سنوات.'},
+{t:'h2',v:'افعل هذه الخطوات العشر'},
+{t:'ul',v:['أعد تشغيل الهاتف أسبوعيًا — خطوة يستهين بها الجميع وهي تنظف الذاكرة المؤقتة.','احذف التطبيقات التي لم تفتحها منذ ثلاثة أشهر.','امسح ذاكرة التخزين المؤقت للتطبيقات الثقيلة.','أوقف التحديث التلقائي في الخلفية للتطبيقات غير المهمة.','قلل الرسوم المتحركة من خيارات المطورين (أندرويد) أو خفف الشفافية (آيفون).','انقل الصور والفيديوهات إلى السحابة وأبقِ 15% من التخزين فارغًا على الأقل.','حدّث النظام: التحديثات تحمل تحسينات أداء حقيقية.','أوقف تحديد الموقع للتطبيقات التي لا تحتاجه.','امسح سجل التنزيلات والملفات المكررة.','إن استمرت المشكلة: نسخة نظيفة من النظام تعيد الهاتف كيوم出厂ه.']},
+{t:'quote',v:'التخزين الممتلئ هو العدو الأول لسرعة أي هاتف — أبقِ دائمًا مساحة تتنفس فيها.'},
+{t:'p',v:'خصص ساعة واحدة لهذه القائمة، وستندهش من الفرق. وإن لم يتحسن الأداء بعدها، فربما حان وقت الترقية فعلًا.'}
+]},
+{id:'p22',cat:'tutorials',slug:'how-to-choose-laptop',title:'كيف تختار لابتوب مناسبًا؟ دليل القرار خطوة بخطوة',excerpt:'قبل أن تدفع: منهجية عملية لاختيار اللابتوب الصحيح حسب استخدامك وميزانيتك، مع الأخطاء الشائعة التي يجب تجنبها.',image:'choose-laptop',author:'ليلى حسن',publishedAt:'2026-07-26',readingTime:7,views:15600,tags:['شروحات','لابتوب'],content:[
+{t:'p',v:'أكبر خطأ في شراء لابتوب هو دفع ثمن مواصفات لن تستخدمها. هذه منهجية من خمس خطوات توصلك للجهاز الصحيح دون ندم.'},
+{t:'h2',v:'الخطوة الأولى: حدد استخدامك الحقيقي'},
+{t:'ul',v:['تصفح ومكتبي: معالج متوسط و16GB ذاكرة تكفي تمامًا.','برمجة: ذاكرة أكبر وشاشة جيدة ولوحة مفاتيح مريحة.','تصميم ومونتاج: شاشة دقيقة الألوان ومعالج رسومي منفصل.','تنقل دائم: أولوية الوزن والبطارية على أي شيء آخر.']},
+{t:'h2',v:'أخطاء شائعة تجنبها'},
+{t:'ul',v:['شراء 8GB ذاكرة في 2026 لتوفير مبلغ صغير — ستدفع ثمنه إحباطًا.','الانبهار بدقة شاشة 4K على حساب البطارية.','تجاهل المنافذ: تأكد من وجود ما تحتاجه قبل الشراء.','إهمال الضمان وخدمة ما بعد البيع في منطقتك.']},
+{t:'quote',v:'اللابتوب الصحيح هو الذي ينسى وجوده — فلا تبطئه ولا يعرقلك.'},
+{t:'p',v:'اكتب استخدامك الفعلي في ثلاثة أسطر، ثم طابقه مع ترشيحاتنا في مقالات المراجعات — وستصل لقرار واثق خلال ساعة.'}
+]},
+{id:'p23',cat:'tools',slug:'best-developer-tools',title:'أفضل أدوات المطورين في 2026: عدة العمل الكاملة',excerpt:'من المحرر إلى السحابة: الأدوات التي يعتمد عليها المطورون المحترفون يوميًا، وطبقات مجانية في أغلبها.',image:'developer-tools',author:'يوسف زين',publishedAt:'2026-07-29',readingTime:7,views:13400,tags:['مطورين','أدوات'],content:[
+{t:'p',v:'الأدوات الصحيحة تختصر على المطور ساعات كل أسبوع. هذه الأدوات التي أجمع عليها مجتمع التطوير هذا العام، ومعظمها متاح بطبقة مجانية.'},
+{t:'h2',v:'بيئة التطوير'},
+{t:'ul',v:['محرر الأكواد المهيمن: نظام إضافات لا نهائي وأداء ممتاز لمعظم اللغات.','مساعد البرمجة الذكي: اقتراحات أكود كاملة من وصف نصي — أصبح أساسيًا لا ترفيهيًا.','المحاكيات السحابية: بيئات تطوير كاملة في المتصفح دون إعداد محلي.']},
+{t:'h2',v:'النشر والبنية'},
+{t:'ul',v:['منصات النشر السريع لمواقع وتطبيقات الواجهة.','الحاويات وأدواتها لتوحيد بيئة العمل من الجهاز إلى الإنتاج.','أدوات مراقبة الأخطاء التي تلتقط الأعطال قبل أن يبلغك المستخدمون.']},
+{t:'quote',v:'استثمر في أدواتك كما يستثمر النجار في عدته — الفرق يظهر في كل ساعة عمل.'},
+{t:'p',v:'لا تحاول تبني كل شيء دفعة واحدة: أضف أداة واحدة لكل دورة عمل وأتقنها قبل التالية.'}
+]},
+{id:'p24',cat:'tools',slug:'ai-design-tools',title:'أفضل أدوات التصميم بالذكاء الاصطناعي للمبدعين',excerpt:'من الفكرة إلى التصميم النهائي: أدوات الذكاء الاصطناعي التي تغيّر عمل المصممين في الصور والواجهات والفيديو.',image:'ai-design-tools',author:'يوسف زين',publishedAt:'2026-08-06',readingTime:6,views:20700,tags:['تصميم','AI','أدوات'],content:[
+{t:'p',v:'لم يعد الذكاء الاصطناعي بديلًا عن المصمم، بل مساعده الأسرع: يولد الخيارات، ويسلمه التفاصيل المملة، ويترك له القرار الإبداعي.'},
+{t:'h2',v:'توليد الصور والأصول'},
+{t:'ul',v:['مولدات الصور الاحترافية للوحات الرقمية والمفاهيم البصرية.','أدوات توسيع الصور وإزالة العناصر وتغيير الخلفيات بالذكاء الاصطناعي.','مولدات الشعارات الأولية لبدء المشاريع الصغيرة بسرعة.']},
+{t:'h2',v:'الواجهات والفيديو'},
+{t:'ul',v:['أدوات تحول وصفًا نصيًا إلى نماذج واجهات أولية قابلة للتحرير.','مولدات الفيديو القصير من نصوص وصور — مثالية لمحتوى المنصات.','أدوات تفريغ النصوص من الفيديو وتوليد ترجمة تلقائية دقيقة.']},
+{t:'quote',v:'المصمم الذي يتقن هذه الأدوات ينجز في يوم ما كان يستغرق أسبوعًا — لكن الذوق ما زال بشريًا بالكامل.'},
+{t:'p',v:'ابدأ بأداة واحدة لتوليد الصور وأخرى للواجهات، واجعل المخرجات نقطة انطلاق للتعديل لا نتيجة نهائية.'}
+]},
+{id:'p25',cat:'news',slug:'tech-news-week',title:'أهم أخبار التقنية لهذا الأسبوع: موجز تيكورا',excerpt:'أبرز ما حدث في عالم التقنية خلال أيام: إعلانات كبرى، تحديثات مهمة، وأرقام تستحق التوقف عندها.',image:'tech-news-week',author:'أحمد الراشد',publishedAt:'2026-08-15',readingTime:5,views:41300,tags:['أخبار','موجز'],content:[
+{t:'p',v:'نلخص لك في موجز تيكورا الأسبوعي أهم ما جرى في عالم التقنية، حتى تبقى في الصورة دون أن تغرق في التفاصيل.'},
+{t:'h2',v:'أبرز عناوين الأسبوع'},
+{t:'ul',v:['شركات الهواتف الكبرى تكشف عن جيل جديد من المعالجات المصنّعة بدقة 2 نانومتر مع وعود بقفزة في كفاءة الطاقة.','تقرير حديث: المساعدات الذكية أصبحت جزءًا من الروتين اليومي لنصف مستخدمي الإنترنت في المنطقة.','تحديث كبير لأحد أشهر أنظمة التشغيل يصل بمزايا ذكاء اصطناعي تعمل محليًا على الجهاز.','منافسة البث تتصاعد: دمج مرتقب لخدمات وترقيات في الباقات.','تحذير أمني واسع من حملة تصيد تستهدف مستخدمي الخدمات المالية عبر رسائل SMS.']},
+{t:'h2',v:'ما الذي يعنيه ذلك؟'},
+{t:'p',v:'الاتجاه العام واضح: الذكاء الاصطناعي ينتقل من السحابة إلى أجهزتنا نفسها، والخصوصية تتحول من ميزة تسويقية إلى سباق تقني حقيقي بين الشركات.'},
+{t:'p',v:'تابع قسم الأخبار في تيكورا يوميًا — نحدث الموجز أولًا بأول ولن تفوتك قصة مهمة.'}
+]},
+{id:'p26',cat:'news',slug:'next-gen-mobile-chips',title:'تسريبات: الجيل القادم من معالجات الهواتف يعد بقفزة كبيرة',excerpt:'معلومات أولية عن معالجات الهواتف القادمة: دقة تصنيع أحدث، وحدات عصبية أقوى، وكفاءة طاقة غير مسبوقة.',image:'next-gen-chips',author:'أحمد الراشد',publishedAt:'2026-08-09',readingTime:5,views:11800,tags:['أخبار','معالجات'],content:[
+{t:'p',v:'تتزايد المؤشرات حول الجيل القادم من معالجات الهواتف الرائدة، والمعلومات الأولية تشير إلى قفزة هي الأكبر منذ سنوات.'},
+{t:'h2',v:'ما الذي نعرفه حتى الآن؟'},
+{t:'ul',v:['انتقال متوقع إلى دقة تصنيع 2 نانومتر، ما يعني أداءً أعلى واستهلاكًا أقل للطاقة.','وحدات معالجة عصبية أقوى بعدة أضعاف لتشغيل نماذج الذكاء الاصطناعي محليًا.','تحسينات كبيرة في معالجة التصوير الحاسوبي ومعالجات الإشارة.']},
+{t:'h2',v:'ماذا يعني ذلك للمستخدم؟'},
+{t:'p',v:'عمليًا: بطارية أطول، مساعدون أذكياء يعملون دون اتصال بالإنترنت، وكاميرات أفضل — خاصة في الإضاءة الصعبة. لكنه يعني أيضًا أن هواتف هذا الجيل الحالي ستقدم قيمة ممتازة بأسعار أقل.'},
+{t:'quote',v:'كل قفزة في المعالجات تفتح أبوابًا جديدة — لكن التطبيقات هي التي تقرر كيف نستفيد منها.'},
+{t:'p',v:'سنوافيكم بالتفاصيل فور تأكيد الشركات رسميًا — تابعوا قسم الأخبار في تيكورا.'}
+]},
+{id:'p27',cat:'devices',slug:'best-smartwatches',title:'أفضل الساعات الذكية لعام 2026 لكل ميزانية',excerpt:'من الساعات الرائدة إلى الخيارات الاقتصادية: دليل اختيار الساعة الذكية الأنسب لمعصمك ونمط حياتك.',image:'best-smartwatches',author:'سارة المنصور',publishedAt:'2026-08-02',readingTime:6,views:17200,tags:['ساعات ذكية'],deviceType:'watch',content:[
+{t:'p',v:'الساعة الذكية لم تعد ملحقات ثانوية، بل مساعد صحي ورياضي يومي. اخترنا لك الأفضل في كل فئة بعد اختبارات مطولة.'},
+{t:'ul',v:['الرائدة الشاملة: أفضل شاشة وتطبيقات وتتبع صحي متكامل — إن كنت في بيئتها.','خيار الرياضيين الجادين: دقة GPS استثنائية وبطارية تدوم أسابيع في وضع الرياضة.','الخيار المتوازن: معظم المزايا الرائدة بسعر متوسط مع تصميم أنيق.','الخيار الاقتصادي: تتبع نشاط ونوم موثوق بسعر في متناول الجميع.']},
+{t:'h2',v:'معايير الاختيار'},
+{t:'ul',v:['التوافق مع هاتفك أولًا — فبعض الساعات تعمل بكفاءة فقط ضمن منظومتها.','البطارية: يوميًا أم أسبوعيًا؟ حدد أولويتك قبل الشكل.','المستشعرات الصحية التي تهمك فعلًا: نبض، أكسجين، تخطيط قلب.']},
+{t:'p',v:'لا تشترِ ساعة بمزايا لن تستخدمها: العداء يحتاج دقة GPS، والموظف يحتاج إشعارات وأنيقًا — وكل فئة لها بطلها.'}
+]},
+{id:'p28',cat:'devices',slug:'foldable-phones-worth-it',title:'الهواتف القابلة للطي في 2026: هل حان وقت الشراء؟',excerpt:'نضجت التقنية وانخفضت الأسعار نسبيًا — لكن هل الهاتف القابل للطي مناسب لك فعلًا؟ تحليل صادق للمزايا والعيوب.',image:'foldable-phones',author:'سارة المنصور',publishedAt:'2026-07-27',readingTime:6,views:10400,tags:['هواتف','قابلة للطي'],deviceType:'phone',content:[
+{t:'p',v:'بعد سنوات من الأجيال الأولى المتعثرة، وصلت الهواتف القابلة للطي إلى مرحلة النضج. لكن السؤال الحقيقي ليس هل أصبحت جيدة، بل هل تناسبك أنت.'},
+{t:'h2',v:'المزايا الحقيقية'},
+{t:'ul',v:['شاشة بحجم جهاز لوحي في جيبك — مثالية للقراءة والخرائط وتعدد المهام.','وضعيات استخدام جديدة: مكالمات فيديو دون حامل، وتصوير بزاوية نصف مفتوحة.','النضج الحالي: مفصلات أقوى وخط الطية شبه غير ملحوظ في الاستخدام الفعلي.']},
+{t:'h2',v:'العيوب التي يجب أن تعرفها'},
+{t:'ul',v:['السعر ما زال أعلى بوضوح من الهواتف التقليدية بالمواصفات نفسها.','سماكة ووزن أعلى من المنافسين التقليديين.','الكاميرات تتنازل قليلًا مقابل التصميم النحيف.']},
+{t:'quote',v:'الهاتف القابل للطي يشترى لأسلوب استخدام، لا لمواصفات على ورقة.'},
+{t:'p',v:'خلاصتنا: إن كنت تقرأ وتعمل كثيرًا على هاتفك فستجد قيمة حقيقية في الشاشة الكبيرة، أما إن كان استخدامك اعتياديًا فالهاتف التقليدي الأرق والأنسب سعرًا هو الخيار الأذكى.'}
+]},
+{id:'p29',cat:'tutorials',slug:'transfer-phone-data',title:'كيف تنقل بياناتك إلى هاتف جديد بأمان وبلا فقدان؟',excerpt:'خطوة بخطوة: نقل الصور والجهات والتطبيقات والمحادثات من هاتفك القديم إلى الجديد دون أن تفقد شيئًا.',image:'transfer-data',author:'ليلى حسن',publishedAt:'2026-07-21',readingTime:6,views:13900,tags:['شروحات','هواتف'],content:[
+{t:'p',v:'أكثر لحظات تغيير الهاتف توترًا هي نقل البيانات. بهذا الترتيب الصحيح ستنتقل كل ذكرياتك وملفاتك دون قلق.'},
+{t:'h2',v:'قبل يوم النقل: التجهيز'},
+{t:'ul',v:['خذ نسخة احتياطية كاملة على السحابة، وأخرى محلية على حاسوبك إن أمكن.','تأكد أن كل صورك اكتمل رفعها — راجع حالة المزامنة في تطبيق الصور.','حدّث تطبيق المحادثات على الهاتفين وخذ نسخة احتياطية للمحادثات داخل التطبيق نفسه.','دوّن التطبيقات التي لا يمكن نقلها تلقائيًا (خاصة التطبيقات البنكية).']},
+{t:'h2',v:'يوم النقل'},
+{t:'ul',v:['ابدأ بأداة النقل الرسمية بين الهاتفين — أصبحت ممتازة وتغطي معظم المحتوى.','لا تمسح الهاتف القديم قبل مرور أسبوع والتأكد من عمل كل شيء.','أعد تسجيل التطبيقات البنكية والمصادقة الثنائية مبكرًا حتى لا تقفل حساباتك.']},
+{t:'quote',v:'القاعدة الذهبية: الهاتف القديم لا يُمسح إلا بعد أسبوع كامل من الحياة الطبيعية على الجديد.'},
+{t:'p',v:'باتباع هذا الترتيب، سيتحول يوم نقل البيانات من أزمة إلى ساعة واحدة مريحة.'}
+]},
+{id:'p30',cat:'comparisons',slug:'best-camera-phone',title:'أفضل هاتف للتصوير في 2026: مواجهة عمالقة الكاميرات',excerpt:'اختبرنا كاميرات أبرز الهواتف الرائدة في ظروف حقيقية: ليل، بورتريه، وفيديو — من يتوج بلقب الأفضل؟',image:'camera-phone-battle',author:'يوسف زين',publishedAt:'2026-07-31',readingTime:8,views:25100,tags:['مقارنة','كاميرات','هواتف'],vs:['iPhone 17 Pro','Pixel 10 Pro'],content:[
+{t:'p',v:'حملنا أبرز ثلاثة هواتف رائدة وصورنا بها المشاهد نفسها: شوارع ليلية، وجوه، تفاصيل بعيدة، وفيديو عائلي — وهذه النتائج.'},
+{t:'h2',v:'التصوير الليلي والبورتريه'},
+{t:'ul',v:['الهاتف الأول: ألوان دقيقة وفيديو لا يضاهى ثباتًا وتفاصيلًا.','الهاتف الثاني: معالجة ذكية تخرج من الليل تفاصيل مذهلة وبورتريه طبيعي الجلد.','الهاتف الثالث: تفوق واضح في التقريب البعيد مع الحفاظ على التفاصيل.']},
+{t:'h2',v:'الفيديو'},
+{t:'p',v:'ما زال أحد الهواتف يتربع على عرش الفيديو بثبات استثنائي وانتقال سلس بين العدسات، بينما تقترب المنافسة كثيرًا في تصوير الصور الثابتة.'},
+{t:'table',head:['المعيار','الأول','الثاني','الثالث'],rows:[['ليلي','ممتاز','الأفضل','جيد جدًا'],['بورتريه','ممتاز','الأفضل','ممتاز'],['فيديو','الأفضل','جيد جدًا','ممتاز'],['تقريب','جيد','جيد جدًا','الأفضل']]},
+{t:'quote',v:'أفضل كاميرا هي التي في جيبك — لكن الفروق بين هذه الهواتف تهم من يلتقط مئات الصور أسبوعيًا.'},
+{t:'p',v:'الخلاصة: للفيديو اختر الأول، وللصور الجاهزة للنشر فورًا اختر الثاني، وللمرونة القصوى في التقريب اختر الثالث.'}
+]}
+];
+const TOOLS=[
+{name:'Copilot Studio',tagline:'مساعد البرمجة الذكي',cat:'تطوير',pricing:'فريميوم',rating:4.8,color:'#7c5cff',seed:'tool-copilot'},
+{name:'Perplexity',tagline:'محرك إجابات بمصادر',cat:'بحث',pricing:'فريميوم',rating:4.7,color:'#0aa5c0',seed:'tool-perplexity'},
+{name:'Figma',tagline:'التصميم التعاوني',cat:'تصميم',pricing:'فريميوم',rating:4.9,color:'#ff7262',seed:'tool-figma'},
+{name:'Notion',tagline:'مساحة العمل الشاملة',cat:'إنتاجية',pricing:'فريميوم',rating:4.7,color:'#37352f',seed:'tool-notion'},
+{name:'Midjourney',tagline:'توليد الصور الفنية',cat:'إبداع',pricing:'مدفوع',rating:4.8,color:'#2b6f6a',seed:'tool-midjourney'},
+{name:'Runway',tagline:'الفيديو بالذكاء الاصطناعي',cat:'إبداع',pricing:'فريميوم',rating:4.5,color:'#c2410c',seed:'tool-runway'},
+{name:'1Password',tagline:'إدارة كلمات المرور',cat:'أمان',pricing:'مدفوع',rating:4.8,color:'#0572ec',seed:'tool-1password'},
+{name:'Raycast',tagline:'أوامر سريعة لكل شيء',cat:'أدوات نظام',pricing:'فريميوم',rating:4.6,color:'#ff4785',seed:'tool-raycast'},
+{name:'Obsidian',tagline:'قاعدة معرفتك الشخصية',cat:'إنتاجية',pricing:'مجاني',rating:4.7,color:'#8b5cf6',seed:'tool-obsidian'},
+{name:'Canva',tagline:'تصميم للجميع',cat:'تصميم',pricing:'فريميوم',rating:4.6,color:'#00c4cc',seed:'tool-canva'}
+];
+
+/* ---------- مشتقات البيانات ---------- */
+const getCats=()=>[...BASE_CATS,...Store.get('tx_cats',[])];
+const catOf=slug=>getCats().find(c=>c.slug===slug)||{slug,ar:slug,en:slug};
+const catName=c=>lang==='ar'?c.ar:c.en;
+function getPosts(){
+  const del=Store.get('tx_deleted',[]),ed=Store.get('tx_edited',{}),add=Store.get('tx_added',[]);
+  return [...add,...ARTICLES].filter(p=>!del.includes(p.id)).map(p=>ed[p.id]?{...p,...ed[p.id]}:p);
+}
+const published=p=>p.status!=='draft';
+const livePosts=()=>getPosts().filter(published).sort((a,b)=>new Date(b.publishedAt)-new Date(a.publishedAt));
+const postBySlug=s=>livePosts().find(p=>p.slug===s);
+const viewCount=p=>p.views+(Store.get('tx_views',{})[p.id]||0);
+const bumpViews=id=>{const v=Store.get('tx_views',{});v[id]=(v[id]||0)+1;Store.set('tx_views',v)};
+
+/* ---------- SEO ---------- */
+function setSEO(o){
+  document.title=o.title||'تيكورا TECHORA — عالمك من التقنية';
+  let m=$('meta[name="description"]'); if(!m){m=document.createElement('meta');m.name='description';document.head.appendChild(m)} m.content=o.desc||'';
+  const set=(sel,attr,val)=>{let e=$(sel);if(!e){const [t,a]=sel.split('[');e=document.createElement(t);e.setAttribute('property',a?a.replace(/[\[\]"]/g,''):'');document.head.appendChild(e)}e.setAttribute(attr==='prop'?'property':attr,val)};
+  set('meta[property="og:title"]','prop',o.title||'TECHORA');
+  set('meta[property="og:description"]','prop',o.desc||'');
+  if(o.image)set('meta[property="og:image"]','prop',o.image);
+  let c=$('link[rel="canonical"]');if(!c){c=document.createElement('link');c.rel='canonical';document.head.appendChild(c)}
+  c.href='https://techora.example.com'+(o.path==='/'?'/':o.path);
+  let j=$('#jsonld');if(j)j.remove();
+  if(o.ld){j=document.createElement('script');j.type='application/ld+json';j.id='jsonld';j.textContent=JSON.stringify(o.ld);document.head.appendChild(j)}
+}
+const orgLD={"@context":"https://schema.org","@type":"Organization",name:"TECHORA",alternateName:"تكورا",url:"https://techora.example.com",logo:"https://picsum.photos/seed/techora-cover/1200/630",sameAs:["https://x.com/techora","https://youtube.com/@techora"],slogan:"Your World of Technology"};
+
+/* ---------- مكوّنات مشتركة ---------- */
+const img=(p,w,h,cls='',eager)=>`<img ${eager?'fetchpriority="high"':'loading="lazy"'} class="${cls}" src="${pic(p.image,w,h)}" srcset="${srcset(p.image)}" sizes="(max-width:640px) 100vw, (max-width:1000px) 50vw, 33vw" alt="${esc(p.title)}" onload="this.classList.add('ld')">`;
+const meta=(p,dots)=>`<span>${p.author}</span><span class="${dots?'dot-sep':''} num">${fmtDate(p.publishedAt,true)}</span><span class="dot-sep">${I.clock} ${p.readingTime} ${t('minRead')}</span>`;
+const adSlot=(size='728×90',h='')=>`<div class="ad-slot" style="${h?`min-height:${h}`:''}" role="complementary" aria-label="مساحة إعلانية"><b>${t('adSpace')}</b><small>Ad Slot · ${size}</small></div>`;
+const secHead=(kicker,title,link)=>`
+ <div class="sec-head rv">
+   <div><div class="kicker">${esc(kicker)}</div><h2 class="mask"><span>${esc(title)}</span></h2></div>
+   ${link?`<a class="sec-link" href="${link}">${t('viewAll')} ${I.arrow}</a>`:''}
+ </div>`;
+const cardNews=p=>`
+ <article class="card rv">
+   <a class="thumb" href="#/${p.cat}/${p.slug}" tabindex="-1" aria-hidden="true">${img(p,640,400)}<span class="chip soft">${esc(catName(catOf(p.cat)))}</span></a>
+   <div class="c-body">
+     <h3><a href="#/${p.cat}/${p.slug}">${esc(p.title)}</a></h3>
+     <p>${esc(p.excerpt)}</p>
+     <div class="c-meta">${meta(p,true)}</div>
+   </div>
+ </article>`;
+const cardReview=p=>`
+ <article class="card rv">
+   <a class="thumb" href="#/${p.cat}/${p.slug}" tabindex="-1" aria-hidden="true">${img(p,640,400)}
+     ${p.rating?`<span class="rate-badge">${I.star} <span class="num">${p.rating}</span>/10</span>`:''}
+     <span class="chip soft">${esc(catName(catOf(p.cat)))}</span></a>
+   <div class="c-body">
+     <h3><a href="#/${p.cat}/${p.slug}">${esc(p.title)}</a></h3>
+     ${p.verdict?`<p><b style="color:var(--accent)">${t('verdict')}:</b> ${esc(p.verdict)}</p>`:`<p>${esc(p.excerpt)}</p>`}
+     <div class="c-meta">${meta(p,true)}<span class="dot-sep">${I.eye} <span class="num">${fmtViews(viewCount(p))}</span></span></div>
+   </div>
+ </article>`;
+const cardVS=p=>`
+ <article class="vs-card rv">
+   ${p.vs?`<div class="vs-row"><span class="vs-name">${esc(p.vs[0])}</span><span class="vs-x"><span>VS</span></span><span class="vs-name">${esc(p.vs[1])}</span></div>`:''}
+   <a href="#/${p.cat}/${p.slug}"><h4>${esc(p.title)}</h4></a>
+   <p style="font-size:.85rem;color:var(--muted)">${esc(clamp(p.excerpt,110))}</p>
+   <div class="m">${meta(p,false)}<span>${I.eye} <span class="num">${fmtViews(viewCount(p))}</span></span></div>
+ </article>`;
+const cardTool=tl=>`
+ <article class="tool-card rv">
+   <div class="tool-top">
+     <span class="tool-ic" style="background:${tl.color}">${esc(tl.name[0])}</span>
+     <div><h4>${esc(tl.name)}</h4><span class="tag">${esc(tl.cat)} · ${esc(tl.pricing)}</span></div>
+   </div>
+   <p>${esc(tl.tagline)}</p>
+   <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto">
+     <span class="stars" aria-label="التقييم ${tl.rating} من 5">${'★'.repeat(Math.round(tl.rating))}${'☆'.repeat(5-Math.round(tl.rating))}</span>
+     <span class="num" style="font-size:.8rem;color:var(--muted)">${tl.rating}/5</span>
+   </div>
+ </article>`;
+const miniPost=p=>`<a class="mini-post" href="#/${p.cat}/${p.slug}"><img loading="lazy" src="${pic(p.image,160,100)}" alt="${esc(p.title)}"><h5>${esc(clamp(p.title,60))}</h5></a>`;
+const newsletter=(id='nl')=>`
+ <section class="newsletter rv" id="${id}-sec" aria-label="النشرة البريدية">
+   <h3>${t('nlTitle')}</h3><p>${t('nlDesc')}</p>
+   <form class="nl-form" data-form="newsletter">
+     <label class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">${t('emailPh')}</label>
+     <input type="email" name="email" placeholder="${t('emailPh')}" required autocomplete="email">
+     <button class="btn" type="submit">${t('subscribe')}</button>
+   </form>
+   <div class="nl-note">نرسل رسالة واحدة أسبوعيًا. بلا إزعاج، وإلغاء الاشتراك بضغطة.</div>
+ </section>`;
+const breadcrumbs=(items)=>`<nav class="crumbs" aria-label="مسار التنقل">${items.map((it,i)=>i<items.length-1?`<a href="${it[1]}">${esc(it[0])}</a><span aria-hidden="true">‹</span>`:`<b>${esc(it[0])}</b>`).join('')}</nav>`;
+
+/* ---------- عرض محتوى المقال ---------- */
+const blockHTML=b=>{switch(b.t){
+  case 'p':return `<p>${b.v}</p>`;
+  case 'h2':return `<h2 id="${slugify(b.v)}">${b.v}</h2>`;
+  case 'ul':return `<ul>${b.v.map(li=>`<li>${li}</li>`).join('')}</ul>`;
+  case 'quote':return `<blockquote><p>${b.v}</p>${b.by?`<cite>— ${esc(b.by)}</cite>`:''}</blockquote>`;
+  case 'img':return `<figure><img loading="lazy" src="${pic(b.seed,1100,620)}" alt="${esc(b.cap||'صورة توضيحية')}"><figcaption>${esc(b.cap||'')}</figcaption></figure>`;
+  case 'table':return `<div class="tbl-wrap"><table><thead><tr>${b.head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${b.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  default:return ''}};
+function renderBlocks(blocks,inArticle){
+  let out='',adPlaced=!inArticle;
+  blocks.forEach((b,i)=>{out+=blockHTML(b);
+    if(inArticle&&!adPlaced&&b.t==='h2'&&i>1){out+=`<div style="margin:1.8rem 0">${adSlot('468×60')}</div>`;adPlaced=true}});
+  return out;
+}
+/* تحويل نص بسيط إلى كتل (لمحرر الإدارة) */
+function parseContent(txt){
+  return String(txt||'').split(/\n{2,}/).map(bl=>{
+    bl=bl.trim();if(!bl)return null;
+    if(bl.startsWith('## '))return {t:'h2',v:bl.slice(3)};
+    if(bl.split('\n').every(l=>l.trim().startsWith('- ')))return {t:'ul',v:bl.split('\n').map(l=>l.trim().slice(2))};
+    return {t:'p',v:bl.replace(/\n/g,' ')};
+  }).filter(Boolean);
+}
+const serializeContent=blocks=>blocks.map(b=>b.t==='h2'?'## '+b.v:b.t==='ul'?b.v.map(v=>'- '+v).join('\n'):b.v).join('\n\n');
+
+/* ---------- التوست ---------- */
+function toast(msg,type='ok'){
+  const el=document.createElement('div');el.className='toast'+(type==='err'?' err':'');
+  el.innerHTML=`${type==='err'?'⚠️':'✅'} <span>${esc(msg)}</span>`;
+  $('#toasts').appendChild(el);
+  setTimeout(()=>{el.classList.add('out');setTimeout(()=>el.remove(),320)},3200);
+}
+
+/* ---------- الصفحات ---------- */
+function pageHome(){
+  const posts=livePosts();
+  const hero=posts.find(p=>p.featured)||posts[0];
+  const side=posts.filter(p=>p.id!==hero.id).slice(0,4);
+  const latest=posts.filter(p=>p.id!==hero.id).slice(0,6);
+  const ai=posts.filter(p=>p.cat==='ai').slice(0,3);
+  const devices=posts.filter(p=>p.deviceType).slice(0,8);
+  const most=[...posts].sort((a,b)=>viewCount(b)-viewCount(a)).slice(0,5);
+  const revs=posts.filter(p=>p.cat==='reviews').slice(0,3);
+  const comps=posts.filter(p=>p.cat==='comparisons').slice(0,4);
+  setSEO({title:'تيكورا TECHORA — عالمك من التقنية | أخبار وذكاء اصطناعي ومراجعات',desc:'منصة تقنية عربية حديثة: أخبار التقنية، الذكاء الاصطناعي، مراجعات الأجهزة، الشروحات والمقارنات وأفضل الأدوات.',path:'/',image:pic('techora-cover',1200,630),ld:[orgLD,{"@context":"https://schema.org","@type":"WebSite",name:"TECHORA",url:"https://techora.example.com",potentialAction:{"@type":"SearchAction",target:"https://techora.example.com/#/search?q={search_term_string}","query-input":"required name=search_term_string"}}]});
+  return `
+  <div class="ticker" aria-label="شريط الأخبار العاجلة">
+    <div class="ticker-label"><span class="dot"></span>${t('breaking')}</div>
+    <div class="ticker-view"><div class="ticker-track">
+      ${[...posts.slice(0,8),...posts.slice(0,8)].map(p=>`<a href="#/${p.cat}/${p.slug}"><b>${esc(catName(catOf(p.cat)))}</b> ${esc(p.title)}</a>`).join('')}
+    </div></div>
+  </div>
+  <section class="hero">
+    <div class="container hero-grid">
+      <article class="hero-main kb rv">
+        <div class="img-wrap"><img src="${pic(hero.image,1280,760)}" srcset="${srcset(hero.image)}" sizes="(max-width:900px) 100vw, 62vw" alt="${esc(hero.title)}" fetchpriority="high" class="ld"></div>
+        <div class="hero-body">
+          <span class="chip">${esc(catName(catOf(hero.cat)))}</span>
+          <h1><a href="#/${hero.cat}/${hero.slug}">${esc(hero.title)}</a></h1>
+          <p>${esc(hero.excerpt)}</p>
+          <div class="hero-meta"><span>${t('by')} ${hero.author}</span><span class="num">${fmtDate(hero.publishedAt)}</span><span>${I.clock} ${hero.readingTime} ${t('minRead')}</span><span>${I.eye} <span class="num">${fmtViews(viewCount(hero))}</span></span></div>
+          <div style="margin-top:20px"><a class="btn" href="#/${hero.cat}/${hero.slug}">${t('readMore')} ${I.arrow}</a></div>
+        </div>
+      </article>
+      <aside class="hero-side" aria-label="الأحدث الآن">
+        <div class="side-card rv" style="--d:.1s">
+          <div class="side-head"><h3>${t('live')}</h3><span class="pulse" aria-hidden="true"></span></div>
+          ${side.map((p,i)=>`<a class="side-item" href="#/${p.cat}/${p.slug}"><span class="side-num num">0${i+1}</span><span><h4>${esc(p.title)}</h4><span class="m"><span>${esc(catName(catOf(p.cat)))}</span><span class="num">${fmtDate(p.publishedAt,true)}</span></span></span></a>`).join('')}
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="container">
+      ${secHead('/NEWS',t('latestNews'),'#/news')}
+      <div class="grid g3">${latest.slice(0,3).map(cardNews).join('')}</div>
+      <div style="margin:26px 0" class="rv">${adSlot('970×250')}</div>
+      <div class="grid g3">${latest.slice(3,6).map(cardNews).join('')}</div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="container">
+      ${secHead('/AI',t('aiSec'),'#/ai')}
+      <div class="grid g3">${ai.map(cardNews).join('')}</div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="container">
+      ${secHead('/DEVICES',t('devicesSec'),'#/devices')}
+      <div class="tabs rv" role="tablist" aria-label="تصفية الأجهزة" id="devTabs">
+        ${['all','phone','laptop','watch','smart'].map((k,i)=>`<button class="tab ${i===0?'on':''}" role="tab" data-act="devtab" data-f="${k}" aria-selected="${i===0}">${t('devicesTabs')[k]}</button>`).join('')}
+      </div>
+      <div class="grid g4" id="devGrid">${devices.map(cardNews).join('')}</div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="container mostread">
+      <div>
+        ${secHead('/TRENDING',t('mostRead'))}
+        <div class="rv">${most.map((p,i)=>`
+          <a class="mr-item" href="#/${p.cat}/${p.slug}">
+            <span class="mr-num num">0${i+1}</span>
+            <span style="flex:1"><h4>${esc(p.title)}</h4><span class="m"><span>${esc(catName(catOf(p.cat)))}</span><span>${I.eye} <span class="num">${fmtViews(viewCount(p))}</span> ${t('views')}</span><span class="num">${fmtDate(p.publishedAt,true)}</span></span></span>
+            <img loading="lazy" src="${pic(p.image,220,150)}" alt="${esc(p.title)}">
+          </a>`).join('')}</div>
+      </div>
+      <aside style="display:flex;flex-direction:column;gap:22px">
+        <div class="rv">${adSlot('300×250','280px')}</div>
+        <div class="widget rv" style="--d:.1s"><h4>${t('comparisonsSec')}</h4>${comps.slice(0,3).map(miniPost).join('')}</div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="container">
+      ${secHead('/REVIEWS',t('reviewsSec'),'#/reviews')}
+      <div class="grid g3">${revs.map(cardReview).join('')}</div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="container">
+      ${secHead('/VS',t('comparisonsSec'),'#/comparisons')}
+      <div class="grid g2">${comps.map(cardVS).join('')}</div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="container">
+      ${secHead('/TOOLKIT',t('toolsSec'),'#/tools')}
+      <div class="grid g4" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr))">${TOOLS.slice(0,8).map(cardTool).join('')}</div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:10px"><div class="container">${newsletter('nl')}</div></section>`;
+}
+
+function pageCategory(slug){
+  const c=catOf(slug);
+  if(!getCats().find(x=>x.slug===slug))return page404();
+  const posts=livePosts().filter(p=>p.cat===slug);
+  setSEO({title:`${catName(c)} | تيكورا TECHORA`,desc:`أحدث مقالات ومقالات ${catName(c)} على تيكورا: تحليلات ومراجعات وشروحات محدثة.`,path:'/'+slug,image:pic(slug+'-cover',1200,630)});
+  const isComp=slug==='comparisons';
+  return `
+  <div class="page-head"><div class="container">
+    <span class="en-sub">TECHORA / ${esc(c.en)}</span>
+    <h1>${esc(catName(c))}</h1>
+    <p>${esc(c.en)==='Comparisons'?'مواجهات تقنية محسومة بالأرقام والاختبارات العملية — نساعدك على قرار الشراء الصحيح.':esc(c.en)==='Reviews'?'مراجعات مستقلة بعد استخدام حقيقي لكل جهاز — لا نسخ عن البيانات الصحفية.':esc(c.en)==='Tech Tools'?'أدوات وخدمات مختارة بعناية تجعل عملك الرقمي أسرع وأذكى.':`كل ما يخص ${catName(c)}: تغطية معمّقة وتحليلات يحررها فريق متخصص.`}</p>
+    <span class="count-badge">${I.eye} <span class="num">${posts.length}</span> ${lang==='ar'?'مقالًا منشورًا':'published articles'}</span>
+  </div></div>
+  <section class="sec" style="padding-top:14px"><div class="container">
+    ${posts.length?`<div class="grid ${isComp?'g2':'g3'}">${posts.map(isComp?cardVS:(slug==='reviews'?cardReview:cardNews)).join('')}</div>`:`<div class="empty"><h3>${lang==='ar'?'لا مقالات بعد في هذا القسم':'No articles yet'}</h3><p>${lang==='ar'?'نعمل على محتوى جديد — تفقدنا قريبًا.':'We are working on new content.'}</p></div>`}
+    <div style="margin-top:34px" class="rv">${adSlot('970×250')}</div>
+    <div style="margin-top:34px">${newsletter('nl')}</div>
+  </div></section>`;
+}
+
+function pageTools(){
+  const posts=livePosts().filter(p=>p.cat==='tools');
+  setSEO({title:`${t('tools')} | تيكورا TECHORA`,desc:'أفضل الأدوات والخدمات التقنية المختارة بعناية: تطوير، تصميم، إنتاجية وأمان.',path:'/tools'});
+  return `
+  <div class="page-head"><div class="container">
+    <span class="en-sub">TECHORA / TOOLKIT</span><h1>${t('toolsSec')}</h1>
+    <p>أدوات نستخدمها ونرشحها فعليًا — مصنفة حسب المجال مع التقييم ونوع الترخيص.</p>
+  </div></div>
+  <section class="sec" style="padding-top:14px"><div class="container">
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr))">${TOOLS.map(cardTool).join('')}</div>
+    <div style="margin:30px 0" class="rv">${adSlot('970×250')}</div>
+    ${secHead('/GUIDES',lang==='ar'?'أدلة الأدوات':'Tool Guides','#/tools')}
+    <div class="grid g2">${posts.map(cardNews).join('')}</div>
+    <div style="margin-top:34px">${newsletter('nl')}</div>
+  </div></section>`;
+}
+
+function pageArticle(p){
+  bumpViews(p.id);
+  const c=catOf(p.cat);
+  const related=livePosts().filter(x=>x.id!==p.id&&(x.cat===p.cat||x.tags.some(tg=>p.tags.includes(tg)))).slice(0,3);
+  const most=[...livePosts()].sort((a,b)=>viewCount(b)-viewCount(a)).filter(x=>x.id!==p.id).slice(0,4);
+  const h2s=p.content.filter(b=>b.t==='h2');
+  const u=typeof location!=='undefined'?location.href:'';
+  setSEO({title:`${p.title} | تيكورا TECHORA`,desc:p.excerpt,path:`/${p.cat}/${p.slug}`,image:pic(p.image,1200,630),ld:[orgLD,
+    {"@context":"https://schema.org","@type":"Article",headline:p.title,image:pic(p.image,1200,630),datePublished:p.publishedAt,dateModified:p.updatedAt||p.publishedAt,author:{"@type":"Person",name:p.author},publisher:{"@type":"Organization",name:"TECHORA",logo:{"@type":"ImageObject",url:pic('techora-logo',200,200)}},mainEntityOfPage:`https://techora.example.com/${p.cat}/${p.slug}`},
+    {"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:lang==='ar'?'الرئيسية':'Home',item:'https://techora.example.com/'},{"@type":"ListItem",position:2,name:catName(c),item:`https://techora.example.com/${p.cat}`},{"@type":"ListItem",position:3,name:p.title}]}]});
+  return `
+  <section class="container">
+    ${breadcrumbs([[lang==='ar'?'الرئيسية':'Home','#/'],[catName(c),'#/'+p.cat],[p.title,null]])}
+    <div class="art-layout">
+      <article class="art-main">
+        <header class="art-head rv">
+          <a class="chip" href="#/${p.cat}" style="margin-bottom:14px">${esc(catName(c))}</a>
+          <h1>${esc(p.title)}</h1>
+          <p class="art-lead">${esc(p.excerpt)}</p>
+          <div class="art-meta">
+            <span style="display:flex;align-items:center;gap:12px"><span class="avatar" aria-hidden="true">${esc(p.author[0])}</span>
+              <span><b style="color:var(--ink)">${esc(p.author)}</b><br><small>${esc(AUTHORS.find(a=>a.name===p.author)?.role||'')}</small></span></span>
+            <span class="num">${fmtDate(p.publishedAt)}</span>
+            <span>${I.clock} ${p.readingTime} ${t('minRead')}</span>
+            <span>${I.eye} <span class="num" id="vcount">${fmtViews(viewCount(p))}</span> ${t('views')}</span>
+            ${p.rating?`<span class="rate-badge" style="position:static">${I.star} <span class="num">${p.rating}</span>/10</span>`:''}
+          </div>
+        </header>
+        <figure class="art-hero kb rv"><img src="${pic(p.image,1280,680)}" srcset="${srcset(p.image)}" alt="${esc(p.title)}" class="ld"></figure>
+        <div class="art-cap">صورة توضيحية — ${esc(p.title)}</div>
+        <div class="prose rv">${renderBlocks(p.content,true)}</div>
+        <div class="share-bar rv">
+          <span class="lbl">${t('share')}:</span>
+          <a class="sh-btn" target="_blank" rel="noopener" aria-label="مشاركة على X" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(p.title)}&url=${encodeURIComponent(u)}">${I.x}</a>
+          <a class="sh-btn" target="_blank" rel="noopener" aria-label="مشاركة على فيسبوك" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(u)}"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M14 8h3V4h-3a5 5 0 0 0-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9a1 1 0 0 1 1-1Z"/></svg></a>
+          <a class="sh-btn" target="_blank" rel="noopener" aria-label="مشاركة على لينكدإن" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(u)}"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.5c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V21h-4V9Z"/></svg></a>
+          <a class="sh-btn" target="_blank" rel="noopener" aria-label="مشاركة عبر واتساب" href="https://wa.me/?text=${encodeURIComponent(p.title+' '+u)}"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.4 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.2.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3 0 .2 0 .7-.2 1.3Z"/></svg></a>
+          <button class="sh-btn txt" data-act="copy" data-url="${esc(u)}">${I.link} ${t('copyLink')}</button>
+          <button class="sh-btn txt" data-act="print">${I.print} ${t('print')}</button>
+        </div>
+        ${related.length?`<section class="related rv"><div class="sec-head"><div><div class="kicker">/RELATED</div><h2 class="mask"><span>${t('related')}</span></h2></div></div><div class="grid g3">${related.map(cardNews).join('')}</div></section>`:''}
+        <div style="margin-top:34px">${newsletter('nl')}</div>
+      </article>
+      <aside class="sidebar">
+        ${h2s.length?`<div class="widget toc rv"><h4>${t('toc')}</h4>${h2s.map(h=>`<a href="#/${p.cat}/${p.slug}#${slugify(h.v)}" data-act="anchor" data-to="${slugify(h.v)}">${esc(h.v)}</a>`).join('')}</div>`:''}
+        <div class="rv" style="--d:.08s">${adSlot('300×600','420px')}</div>
+        <div class="widget rv" style="--d:.14s"><h4>${t('mostRead')}</h4>${most.map(miniPost).join('')}</div>
+      </aside>
+    </div>
+  </section>`;
+}
+
+function pageSearch(q){
+  setSEO({title:`${t('search')} ${q?'— '+q:''} | تيكورا`,desc:'ابحث في جميع مقالات وأخبار ومراجعات وشروحات تيكورا.',path:'/search'});
+  return `
+  <div class="page-head"><div class="container">
+    <span class="en-sub">TECHORA / SEARCH</span><h1>${t('search')}</h1>
+    <form class="search-box" data-form="search" role="search">
+      <input id="searchInput" type="search" name="q" value="${esc(q||'')}" placeholder="${t('searchPh')}" aria-label="${t('search')}" autocomplete="off">
+      <button type="submit">${t('search')}</button>
+    </form>
+    <div class="tabs" id="searchTabs">
+      ${[['all',t('all')],['news',lang==='ar'?'أخبار':'News'],['reviews',lang==='ar'?'مراجعات':'Reviews'],['tutorials',lang==='ar'?'شروحات':'Tutorials'],['articles',lang==='ar'?'مقالات':'Articles']].map(([k,l],i)=>`<button class="tab ${i===0?'on':''}" data-act="sttab" data-f="${k}">${l}</button>`).join('')}
+    </div>
+  </div></div>
+  <section class="sec" style="padding-top:8px"><div class="container" id="searchResults">${renderResults(q,'all')}</div></section>`;
+}
+function searchType(p,type){
+  if(type==='all')return true;
+  if(type==='news')return p.cat==='news';
+  if(type==='reviews')return p.cat==='reviews'||p.cat==='comparisons';
+  if(type==='tutorials')return p.cat==='tutorials';
+  return ['ai','apps','cybersecurity','devices','tools'].includes(p.cat);
+}
+function renderResults(q,type){
+  const ql=(q||'').trim();
+  if(!ql)return `<div class="empty rv"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2" stroke-linecap="round"/><path d="M8 11h6" stroke-linecap="round"/></svg><h3>${lang==='ar'?'ابدأ البحث في تيكورا':'Start searching'}</h3><p>${lang==='ar'?'اكتب كلمة مفتاحية مثل «ذكاء اصطناعي» أو «هاتف» أو «حماية».':'Type a keyword like AI, phone or security.'}</p></div>`;
+  const res=livePosts().filter(p=>searchType(p,type)&&(p.title.includes(ql)||p.excerpt.includes(ql)||p.tags.join(' ').includes(ql)||p.content.some(b=>(b.v||'').toString().includes(ql))));
+  if(!res.length)return `<div class="empty rv"><svg viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2M8 8l6 6M14 8l-6 6" stroke-linecap="round"/></svg><h3>${t('noResults')} «${esc(ql)}»</h3><p>${lang==='ar'?'جرّب كلمات أبسط أو تحقق من الإملاء — أو تصفح الأقسام من القائمة العلوية.':'Try simpler keywords or check the spelling.'}</p><div style="margin-top:18px"><a class="btn ghost sm" href="#/">${t('backHome')}</a></div></div>`;
+  return `<p class="count-badge rv" style="margin-bottom:20px"><span class="num">${res.length}</span> ${t('results')} ${lang==='ar'?'عن':'for'} «${esc(ql)}»</p>
+    <div class="grid g3">${res.map(cardNews).join('')}</div>`;
+}
+
+function pageAbout(){
+  setSEO({title:`${t('about')} | تيكورا TECHORA`,desc:'تعرف على تيكورا: رسالتنا، منهجيتنا في المحتوى، والتزامنا بالدقة والأصالة.',path:'/about'});
+  return `
+  <div class="page-head"><div class="container">
+    <span class="en-sub">TECHORA / ABOUT</span><h1>${lang==='ar'?'ما هو Techora؟':'What is Techora?'}</h1>
+    <p>${lang==='ar'?'منصة تقنية عربية مستقلة تأسست لتضع القارئ العربي في قلب العالم الرقمي — بمحتوى يليق به.':''}</p>
+  </div></div>
+  <section class="sec" style="padding-top:10px"><div class="container">
+    <div class="grid g2" style="align-items:start">
+      <div class="prose rv">
+        <h2>${lang==='ar'?'هدفنا':'Our Mission'}</h2>
+        <p>${lang==='ar'?'نؤمن أن القارئ العربي يستحق محتوى تقنيًا بنفس جودة أكبر المنصات العالمية. لذلك نكتب بالعربية أولًا — لا نترجم ترجمة آلية — ونغطي أخبار التقنية والذكاء الاصطناعي والأجهزة والأمن السيبراني بعمق وتحليل.':''}</p>
+        <h2>${lang==='ar'?'نوع المحتوى الذي نقدمه':'What We Publish'}</h2>
+        <ul><li>${lang==='ar'?'أخبار موثوقة وسريعة مع تحليل للسياق، لا نسخ عن البيانات الصحفية.':'News'}</li>
+        <li>${lang==='ar'?'مراجعات مستقلة بعد استخدام حقيقي للأجهزة — نذكر العيوب قبل المزايا.':'Reviews'}</li>
+        <li>${lang==='ar'?'شروحات عملية خطوة بخطوة يحلّ بها القارئ مشكلاته فعلًا.':'Tutorials'}</li>
+        <li>${lang==='ar'?'مقارنات بالأرقام والتجربة تساعدك على قرارات شراء واثقة.':'Comparisons'}</li></ul>
+        <h2>${lang==='ar'?'التزامنا بالدقة':'Our Commitment'}</h2>
+        <p>${lang==='ar'?'كل محتوى في تيكورا أصلي ومحرر يدويًا، ونراجع المعلومات قبل النشر، ونصحح الخطأ بوضوح متى اكتشفناه. لا نقبل محتوى مدفوعًا متخفيًا، ونفصح عن أي علاقة تجارية إن وجدت.':'Commitment'}</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:22px">
+        ${[['🎯',lang==='ar'?'الوضوح قبل الإبهار':'Clarity first',lang==='ar'?'نشرح التقنية بلغة يفهمها الجميع دون التضحية بالدقة.':''],
+           ['🔍',lang==='ar'?'الاستقلالية':'Independence',lang==='ar'?'آراؤنا نابعة من اختباراتنا، لا من إعلانات أو رعايات.':''],
+           ['⚡',lang==='ar'?'السرعة المسؤولة':'Responsible speed',lang==='ar'?'نسبق بالخبر، لكن ليس على حساب التحقق.':'']].map(([ic,ti,de],i)=>`
+        <div class="info-card rv" style="--d:${i*.08}s"><div class="ic" style="font-size:1.3rem">${ic}</div><h4>${ti}</h4><p>${de}</p></div>`).join('')}
+        <div class="rv" style="--d:.25s">${adSlot('300×250','240px')}</div>
+      </div>
+    </div>
+    <div style="margin-top:40px">${newsletter('nl')}</div>
+  </div></section>`;
+}
+
+function pageContact(){
+  setSEO({title:`${t('contact')} | تيكورا TECHORA`,desc:'تواصل مع فريق تيكورا: استفسارات، اقتراحات، تعاون إعلاني أو تصحيح معلومات.',path:'/contact'});
+  return `
+  <div class="page-head"><div class="container">
+    <span class="en-sub">TECHORA / CONTACT</span><h1>${t('contact')}</h1>
+    <p>${lang==='ar'?'فريقنا يقرأ كل رسالة. للاستفسارات الصحفية والتعاون التجاري راسلنا وسنرد خلال يومي عمل.':'We read every message.'}</p>
+  </div></div>
+  <section class="sec" style="padding-top:10px"><div class="container">
+    <div class="info-cards rv">
+      <div class="info-card"><div class="ic">✉️</div><h4>${lang==='ar'?'البريد العام':'General'}</h4><p class="num">hello@techora.example</p></div>
+      <div class="info-card"><div class="ic">📰</div><h4>${lang==='ar'?'الأخبار والتصحيحات':'News'}</h4><p class="num">news@techora.example</p></div>
+      <div class="info-card"><div class="ic">🤝</div><h4>${lang==='ar'?'التعاون والإعلان':'Partnerships'}</h4><p class="num">ads@techora.example</p></div>
+    </div>
+    <form class="form-grid rv" data-form="contact" novalidate>
+      <div class="field"><label for="cf-name">${t('name')} *</label><input id="cf-name" name="name" required><span class="err-msg">${lang==='ar'?'فضلًا أدخل اسمك.':'Please enter your name.'}</span></div>
+      <div class="field"><label for="cf-email">${t('email')} *</label><input id="cf-email" name="email" type="email" required><span class="err-msg">${lang==='ar'?'أدخل بريدًا إلكترونيًا صحيحًا.':'Enter a valid email.'}</span></div>
+      <div class="field full"><label for="cf-subject">${t('subject')} *</label><input id="cf-subject" name="subject" required><span class="err-msg">${lang==='ar'?'ما موضوع رسالتك؟':'What is the subject?'}</span></div>
+      <div class="field full"><label for="cf-msg">${t('message')} *</label><textarea id="cf-msg" name="message" rows="6" required minlength="10"></textarea><span class="err-msg">${lang==='ar'?'اكتب رسالة من 10 أحرف على الأقل.':'Message must be at least 10 characters.'}</span></div>
+      <div class="full"><button class="btn" type="submit">${t('sendMsg')} ${I.arrow}</button></div>
+    </form>
+  </div></section>`;
+}
+
+function pageLegal(which){
+  const isP=which==='privacy';
+  setSEO({title:`${isP?t('privacy'):t('terms')} | تيكورا TECHORA`,desc:isP?'سياسة خصوصية تيكورا: كيف نجمع بياناتك ونستخدمها ونحميها.':'شروط استخدام منصة تيكورا وحقوق النشر والمسؤولية.',path:'/'+which});
+  return `
+  <div class="page-head"><div class="container">
+    <span class="en-sub">TECHORA / LEGAL</span><h1>${isP?t('privacy'):t('terms')}</h1>
+    <p class="num" style="font-size:.8rem">${lang==='ar'?'آخر تحديث: 16 أغسطس 2026':'Last updated: Aug 16, 2026'}</p>
+  </div></div>
+  <section class="sec" style="padding-top:10px"><div class="container" style="max-width:820px"><div class="prose rv">
+  ${isP?`
+    <h2>${lang==='ar'?'مقدمة':'Intro'}</h2><p>${lang==='ar'?'نحترم خصوصيتك في تيكورا. تشرح هذه السياسة البيانات التي نجمعها عند استخدامك للموقع، وكيف نستخدمها، وخياراتك المتاحة.':'Privacy intro'}</p>
+    <h2>${lang==='ar'?'البيانات التي نجمعها':'Data we collect'}</h2><ul>
+    <li>${lang==='ar'?'بيانات الاشتراك في النشرة البريدية (البريد الإلكتروني) بموافقتك الصريحة.':'Email'}</li>
+    <li>${lang==='ar'?'بيانات استخدام مجهولة الهوية (صفحات الزيارة، نوع الجهاز) لتحسين المحتوى.':'Analytics'}</li>
+    <li>${lang==='ar'?'رسائل نموذج التواصل التي ترسلها طوعًا.':'Contact'}</li></ul>
+    <h2>${lang==='ar'?'ملفات تعريف الارتباط والإعلانات':'Cookies & Ads'}</h2><p>${lang==='ar'?'قد يستخدم الموقع ملفات تعريف ارتباط أساسية لتشغيل المزايا (مثل حفظ الوضع الليلي). في حال تفعيل خدمات إعلانية مستقبلًا مثل Google AdSense، قد تستخدم أطراف ثالثة ملفات تعريف ارتباط لعرض إعلانات ملائمة، ويمكنك التحكم بها من إعدادات متصفحك.':'Cookies'}</p>
+    <h2>${lang==='ar'?'حقوقك':'Your rights'}</h2><ul><li>${lang==='ar'?'طلب نسخة من بياناتك أو حذفها في أي وقت.':'Access'}</li><li>${lang==='ar'?'إلغاء الاشتراك في النشرة بضغطة واحدة من أي رسالة.':'Unsubscribe'}</li><li>${lang==='ar'?'مراسلتنا لأي استفسار عبر صفحة التواصل.':'Contact'}</li></ul>
+    <h2>${lang==='ar'?'التحديثات':'Updates'}</h2><p>${lang==='ar'?'قد نحدّث هذه السياسة عند إضافة خدمات جديدة، وسنعلن عن أي تغيير جوهري في الموقع.':'Updates'}</p>`:`
+    <h2>${lang==='ar'?'قبول الشروط':'Acceptance'}</h2><p>${lang==='ar'?'باستخدامك منصة تيكورا فأنت توافق على هذه الشروط. إن لم توافق، يرجى التوقف عن استخدام الموقع.':'Accept'}</p>
+    <h2>${lang==='ar'?'المحتوى والملكية الفكرية':'Content & IP'}</h2><ul><li>${lang==='ar'?'جميع المقالات والتصاميم في تيكورا محتوى أصلي محمي بحقوق النشر.':'Original'}</li><li>${lang==='ar'?'يُسمح بالاقتباس المحدود مع رابط المصدر، ويُمنع إعادة النشر الكامل دون إذن كتابي.':'Quoting'}</li></ul>
+    <h2>${lang==='ar'?'حدود المسؤولية':'Liability'}</h2><p>${lang==='ar'?'نبذل جهدنا لضمان دقة المعلومات، لكن المحتوى يقدم كما هو لأغراض إعلامية، ولا نتحمل مسؤولية قرارات تُبنى عليه دون تحقق إضافي.':'Liability'}</p>
+    <h2>${lang==='ar'?'التعديلات':'Changes'}</h2><p>${lang==='ar'?'نحتفظ بتعديل هذه الشروط مع إعلان التحديثات على هذه الصفحة.':'Changes'}</p>`}
+    <p style="margin-top:30px"><a class="btn ghost sm" href="#/">${t('backHome')}</a></p>
+  </div></div></section>`;
+}
+
+function page404(){
+  setSEO({title:'404 — الصفحة غير موجودة | تيكورا',desc:'الصفحة التي تبحث عنها غير موجودة في تيكورا.',path:'/404'});
+  return `<section class="nf"><div class="rv">
+    <div class="code num">404</div>
+    <h1>${t('nfTitle')}</h1>
+    <p>${lang==='ar'?'ربما تغير الرابط أو حُذفت الصفحة — لنعد بك إلى عالم التقنية.':'The link may have changed.'}</p>
+    <div class="btns"><a class="btn" href="#/">${t('backHome')}</a><a class="btn ghost" href="#/news">${t('browseNews')} ${I.arrow}</a></div>
+  </div></section>`;
+}
+
+/* ---------- لوحة التحكم ---------- */
+let admTab='overview';
+function pageAdmin(tab){
+  admTab=tab||'overview';
+  setSEO({title:'لوحة التحكم | تيكورا',desc:'لوحة تحكم تيكورا لإدارة المحتوى.',path:'/admin'});
+  const tabs=[['overview',lang==='ar'?'نظرة عامة':'Overview'],['posts',lang==='ar'?'المقالات':'Posts'],['cats',lang==='ar'?'التصنيفات':'Categories'],['media',lang==='ar'?'الوسائط':'Media'],['users',lang==='ar'?'المستخدمون':'Users'],['settings',lang==='ar'?'الإعدادات':'Settings']];
+  return `
+  <section class="container" style="padding-top:10px">
+    ${breadcrumbs([[lang==='ar'?'الرئيسية':'Home','#/'],['لوحة التحكم',null]])}
+    <div class="admin rv in">
+      <nav class="adm-nav" aria-label="قائمة لوحة التحكم">
+        ${tabs.map(([k,l])=>`<a href="#/admin/${k}" class="${admTab===k?'on':''}">${l}</a>`).join('')}
+        <a href="#/" style="margin-top:auto;color:var(--accent)">← ${lang==='ar'?'عرض الموقع':'View site'}</a>
+      </nav>
+      <div class="adm-body">${adminBody()}</div>
+    </div>
+  </section>`;
+}
+function adminBody(){
+  const posts=getPosts().sort((a,b)=>new Date(b.publishedAt)-new Date(a.publishedAt));
+  const subs=Store.get('tx_subs',[]);
+  if(admTab==='overview'){
+    const totalViews=posts.reduce((s,p)=>s+viewCount(p),0);
+    const byCat=BASE_CATS.map(c=>({c,n:posts.filter(p=>p.cat===c.slug).length,v:posts.filter(p=>p.cat===c.slug).reduce((s,p)=>s+viewCount(p),0)})).filter(x=>x.n).sort((a,b)=>b.v-a.v);
+    const maxV=byCat[0]?.v||1;
+    return `<h2>${lang==='ar'?'نظرة عامة':'Overview'}</h2>
+    <div class="stats">
+      <div class="stat"><b class="num">${posts.length}</b><span>${lang==='ar'?'إجمالي المقالات':'Total posts'}</span></div>
+      <div class="stat"><b class="num">${fmtViews(totalViews)}</b><span>${lang==='ar'?'إجمالي المشاهدات':'Total views'}</span></div>
+      <div class="stat"><b class="num">${getCats().length}</b><span>${lang==='ar'?'التصنيفات':'Categories'}</span></div>
+      <div class="stat"><b class="num">${subs.length}</b><span>${lang==='ar'?'مشتركو النشرة':'Subscribers'}</span></div>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div><h4 style="margin-bottom:14px;font-weight:800">${lang==='ar'?'المشاهدات حسب القسم':'Views by category'}</h4>
+        ${byCat.map(x=>`<div class="bar-row"><span>${esc(catName(x.c))}</span><span class="bar"><i style="width:${Math.max(6,x.v/maxV*100)}%"></i></span><span class="num">${fmtViews(x.v)}</span></div>`).join('')}
+      </div>
+      <div><h4 style="margin-bottom:14px;font-weight:800">${lang==='ar'?'أحدث المقالات':'Latest posts'}</h4>
+        <table class="tbl"><thead><tr><th>${lang==='ar'?'العنوان':'Title'}</th><th>${lang==='ar'?'الحالة':'Status'}</th></tr></thead>
+        <tbody>${posts.slice(0,5).map(p=>`<tr><td><a href="#/${p.cat}/${p.slug}" style="font-weight:600">${esc(clamp(p.title,44))}</a></td><td><span class="pill ${p.status==='draft'?'dr':p.status==='scheduled'?'sch':'pub'}">${p.status==='draft'?(lang==='ar'?'مسودة':'Draft'):p.status==='scheduled'?(lang==='ar'?'مجدول':'Scheduled'):(lang==='ar'?'منشور':'Published')}</span></td></tr>`).join('')}</tbody></table>
+      </div>
+    </div>`;
+  }
+  if(admTab==='posts'){
+    return `<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:18px">
+      <h2 style="margin:0">${lang==='ar'?'إدارة المقالات':'Manage posts'} <span class="count-badge"><span class="num">${posts.length}</span></span></h2>
+      <button class="btn sm" data-act="newpost">${I.plus} ${lang==='ar'?'إضافة مقال':'New post'}</button></div>
+    <input type="search" class="field" id="admSearch" placeholder="${lang==='ar'?'تصفية بالعنوان…':'Filter by title…'}" style="max-width:300px;margin-bottom:14px;border:1.5px solid var(--line);border-radius:10px;padding:.55rem .9rem;background:var(--bg);width:100%">
+    <div style="overflow-x:auto"><table class="tbl" id="admTable"><thead><tr><th>${lang==='ar'?'العنوان':'Title'}</th><th>${lang==='ar'?'القسم':'Cat'}</th><th>${lang==='ar'?'التاريخ':'Date'}</th><th>${lang==='ar'?'مشاهدات':'Views'}</th><th>${lang==='ar'?'الحالة':'Status'}</th><th></th></tr></thead>
+    <tbody>${posts.map(p=>admRow(p)).join('')}</tbody></table></div>`;
+  }
+  if(admTab==='cats'){
+    const cats=getCats(),counts={};posts.forEach(p=>counts[p.cat]=(counts[p.cat]||0)+1);
+    return `<h2>${lang==='ar'?'إدارة التصنيفات':'Categories'}</h2>
+    <form class="field" data-form="addcat" style="display:flex;gap:10px;max-width:460px;margin-bottom:20px;flex-wrap:wrap">
+      <input name="slug" placeholder="slug (مثل: gadgets)" required pattern="[a-z0-9-]+" style="flex:1;border:1.5px solid var(--line);border-radius:10px;padding:.6rem .9rem;background:var(--bg)">
+      <input name="ar" placeholder="الاسم العربي" required style="flex:1;border:1.5px solid var(--line);border-radius:10px;padding:.6rem .9rem;background:var(--bg)">
+      <button class="btn sm" type="submit">${I.plus} إضافة</button>
+    </form>
+    <table class="tbl"><thead><tr><th>Slug</th><th>${lang==='ar'?'الاسم':'Name'}</th><th>${lang==='ar'?'المقالات':'Posts'}</th><th></th></tr></thead>
+    <tbody>${cats.map(c=>{const custom=!BASE_CATS.find(b=>b.slug===c.slug);return `<tr><td class="num">/${esc(c.slug)}</td><td><b>${esc(c.ar)}</b></td><td><span class="count-badge num">${counts[c.slug]||0}</span></td><td>${custom?`<button class="act-btn del" data-act="delcat" data-slug="${esc(c.slug)}" aria-label="حذف">${I.trash}</button>`:'<small style="color:var(--muted)">أساسي</small>'}</td></tr>`}).join('')}</tbody></table>`;
+  }
+  if(admTab==='media'){
+    const extra=Store.get('tx_media',[]);
+    return `<h2>${lang==='ar'?'إدارة الوسائط':'Media library'}</h2>
+    <p style="color:var(--muted);font-size:.88rem;margin-bottom:16px">${lang==='ar'?'هذه نسخة تجريبية: في النسخة الكاملة تُرفع الصور إلى Cloudflare R2 وتُحسَّن تلقائيًا.':'Demo note'}</p>
+    <label class="btn sm" style="margin-bottom:20px;cursor:pointer">${I.plus} ${lang==='ar'?'رفع صورة':'Upload'} <input type="file" accept="image/*" id="mediaUp" hidden multiple></label>
+    <div class="media-grid" id="mediaGrid">
+      ${extra.map(m=>`<figure><img src="${m}" alt="صورة مرفوعة"><figcaption>upload · local</figcaption></figure>`).join('')}
+      ${posts.map(p=>`<figure><img loading="lazy" src="${pic(p.image,400,250)}" alt="${esc(p.title)}"><figcaption>${esc(p.image)}</figcaption></figure>`).join('')}
+    </div>`;
+  }
+  if(admTab==='users'){
+    const users=Store.get('tx_users',AUTHORS.map((a,i)=>({id:'u'+(i+1),name:a.name,email:slugify(a.name.split(' ')[0])+'@techora.example',role:i===0?'رئيس التحرير':'محرر'})));
+    return `<h2>${lang==='ar'?'إدارة المستخدمين':'Users'}</h2>
+    <form class="field" data-form="adduser" style="display:flex;gap:10px;flex-wrap:wrap;max-width:640px;margin-bottom:20px">
+      <input name="name" placeholder="الاسم" required style="flex:1;min-width:140px;border:1.5px solid var(--line);border-radius:10px;padding:.6rem .9rem;background:var(--bg)">
+      <input name="email" type="email" placeholder="البريد" required style="flex:1;min-width:180px;border:1.5px solid var(--line);border-radius:10px;padding:.6rem .9rem;background:var(--bg)">
+      <select name="role" style="border:1.5px solid var(--line);border-radius:10px;padding:.6rem .9rem;background:var(--bg)"><option>محرر</option><option>رئيس التحرير</option><option>مساهم</option></select>
+      <button class="btn sm" type="submit">${I.plus} إضافة</button>
+    </form>
+    <table class="tbl"><thead><tr><th>${lang==='ar'?'الاسم':'Name'}</th><th>${lang==='ar'?'البريد':'Email'}</th><th>${lang==='ar'?'الدور':'Role'}</th><th></th></tr></thead>
+    <tbody>${users.map(u=>`<tr><td style="display:flex;align-items:center;gap:10px"><span class="avatar" style="width:34px;height:34px;font-size:.8rem">${esc(u.name[0])}</span><b>${esc(u.name)}</b></td><td class="num">${esc(u.email)}</td><td><span class="pill pub">${esc(u.role)}</span></td><td><button class="act-btn del" data-act="deluser" data-id="${u.id}" aria-label="حذف مستخدم">${I.trash}</button></td></tr>`).join('')}</tbody></table>`;
+  }
+  if(admTab==='settings'){
+    const s=Store.get('tx_settings',{});
+    return `<h2>${lang==='ar'?'إعدادات الموقع':'Site settings'}</h2>
+    <form class="form-grid" data-form="settings" style="max-width:640px">
+      <div class="field"><label>اسم الموقع</label><input name="siteName" value="${esc(s.siteName||'TECHORA — تكورا')}"></div>
+      <div class="field"><label>وصف الموقع (SEO)</label><input name="desc" value="${esc(s.desc||'منصة تقنية عربية حديثة')}"></div>
+      <div class="field"><label>رابط X / تويتر</label><input name="x" value="${esc(s.x||'https://x.com/techora')}"></div>
+      <div class="field"><label>رابط يوتيوب</label><input name="yt" value="${esc(s.yt||'https://youtube.com/@techora')}"></div>
+      <div class="field full"><label>الكلمات المفتاحية (SEO)</label><input name="kw" value="${esc(s.kw||'تقنية, ذكاء اصطناعي, مراجعات, أخبار التقنية')}"></div>
+      <div class="full" style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" type="submit">حفظ الإعدادات</button><button class="btn ghost" type="button" data-act="resetdemo">إعادة تعيين البيانات التجريبية</button></div>
+    </form>`;
+  }
+}
+function admRow(p){
+  return `<tr data-row="${p.id}"><td><b>${esc(clamp(p.title,42))}</b>${p.featured?' <span class="pill pub">⭐ مميز</span>':''}</td>
+  <td><span class="pill dr">${esc(catOf(p.cat).ar)}</span></td>
+  <td class="num" style="white-space:nowrap">${fmtDate(p.publishedAt,true)}</td>
+  <td class="num">${fmtViews(viewCount(p))}</td>
+  <td><span class="pill ${p.status==='draft'?'dr':p.status==='scheduled'?'sch':'pub'}">${p.status==='draft'?'مسودة':p.status==='scheduled'?'مجدول':'منشور'}</span></td>
+  <td style="white-space:nowrap">
+    <button class="act-btn" data-act="editpost" data-id="${p.id}" aria-label="تعديل" title="تعديل">${I.edit}</button>
+    <button class="act-btn" data-act="togglepub" data-id="${p.id}" aria-label="نشر/مسودة" title="نشر/مسودة">${I.eye}</button>
+    <button class="act-btn" data-act="featpost" data-id="${p.id}" aria-label="تمييز" title="مقال مميز">⭐</button>
+    <button class="act-btn del" data-act="delpost" data-id="${p.id}" aria-label="حذف" title="حذف">${I.trash}</button>
+  </td></tr>`;
+}
+function openEditor(id){
+  const isNew=!id;
+  const p=isNew?{cat:'news',status:'published',author:AUTHORS[0].name,publishedAt:new Date().toISOString().slice(0,10),tags:[],content:[]}:getPosts().find(x=>x.id===id);
+  if(!p)return;
+  $('#modal').innerHTML=`<div class="modal-box">
+    <h3>${isNew?'إضافة مقال جديد':'تعديل المقال'}</h3>
+    <form data-form="posteditor" class="form-grid" style="max-width:none">
+      <input type="hidden" name="id" value="${isNew?'':p.id}">
+      <div class="field full"><label>العنوان *</label><input name="title" required value="${esc(p.title||'')}"></div>
+      <div class="field full"><label>الرابط (Slug) *</label><input name="slug" required value="${esc(p.slug||'')}" dir="ltr"></div>
+      <div class="field full"><label>الوصف المختصر *</label><textarea name="excerpt" rows="2" required>${esc(p.excerpt||'')}</textarea></div>
+      <div class="field"><label>القسم</label><select name="cat">${getCats().map(c=>`<option value="${c.slug}" ${p.cat===c.slug?'selected':''}>${esc(c.ar)}</option>`).join('')}</select></div>
+      <div class="field"><label>الكاتب</label><select name="author">${AUTHORS.map(a=>`<option ${p.author===a.name?'selected':''}>${a.name}</option>`).join('')}</select></div>
+      <div class="field"><label>الحالة</label><select name="status"><option value="published" ${p.status==='published'?'selected':''}>منشور</option><option value="draft" ${p.status==='draft'?'selected':''}>مسودة</option><option value="scheduled" ${p.status==='scheduled'?'selected':''}>مجدول</option></select></div>
+      <div class="field"><label>تاريخ النشر</label><input type="date" name="publishedAt" value="${p.publishedAt}"></div>
+      <div class="field"><label>صورة الغلاف (seed)</label><input name="image" dir="ltr" value="${esc(p.image||'article-'+Date.now())}"></div>
+      <div class="field"><label>دقائق القراءة</label><input type="number" min="1" name="readingTime" value="${p.readingTime||5}"></div>
+      <div class="field full" style="display:flex;gap:20px;align-items:center">
+        <label style="display:flex;gap:8px;align-items:center;margin:0"><input type="checkbox" name="featured" ${p.featured?'checked':''} style="width:auto"> مقال مميز</label>
+      </div>
+      <div class="field full"><label>الوسوم (مفصولة بفواصل)</label><input name="tags" value="${esc((p.tags||[]).join('، '))}"></div>
+      <div class="field full"><label>المحتوى <small style="color:var(--muted)">(## لعنوان فرعي، - لعنصر قائمة، والفقرة بسطر فارغ بينها)</small></label>
+      <textarea name="contentText" rows="9" dir="auto">${esc(serializeContent(p.content||[]))}</textarea></div>
+      <div class="full" style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" type="submit">💾 حفظ المقال</button>
+        <button class="btn ghost" type="button" data-act="closemodal">إلغاء</button>
+      </div>
+    </form>
+  </div>`;
+  $('#modal').classList.add('open');document.body.style.overflow='hidden';
+}
+
+/* ---------- الراوتر ---------- */
+let state={q:'',stype:'all'};
+function parseHash(){
+  let h=location.hash.replace(/^#/,'')||'/';let q='';
+  const i=h.indexOf('?');if(i>-1){q=h.slice(i+1);h=h.slice(0,i)}
+  return {path:(h.replace(/\/+$/,'')||'/'),query:new URLSearchParams(q)};
+}
+const NAV_ITEMS=[['/','home'],['/news','news'],['/ai','ai'],['/devices','devices'],['/apps','apps'],['/cybersecurity','cyber'],['/tutorials','tutorials'],['/reviews','reviews']];
+function buildNav(){
+  $('#mainnav').innerHTML=NAV_ITEMS.map(([h,k])=>`<a href="#${h}" data-nav="${h}">${t(k)}</a>`).join('')
+   +`<span class="dd" id="moreDD"><button class="icon-btn" style="width:auto;padding-inline:10px;font-weight:600;font-size:.92rem;color:inherit" data-act="more">${t('more')} ▾</button>
+      <span class="dd-panel"><a href="#/comparisons" data-nav="/comparisons">${t('comparisons')}</a><a href="#/tools" data-nav="/tools">${t('tools')}</a><a href="#/about" data-nav="/about">${t('about')}</a><a href="#/contact" data-nav="/contact">${t('contact')}</a></span></span>`;
+  $('#drawerNav').innerHTML=[...NAV_ITEMS,['/comparisons','comparisons'],['/tools','tools'],['/about','about'],['/contact','contact']].map(([h,k],i)=>`<a href="#${h}" style="--d:${.05+i*.045}s"><span>${t(k)}</span><span class="en">${h.slice(2).toUpperCase()||'HOME'}</span></a>`).join('');
+  $$('[data-i]').forEach(el=>{const k=el.dataset.i;if(I18N[lang][k])el.textContent=t(k)});
+}
+function updateActiveNav(path){
+  $$('#mainnav a, .dd-panel a').forEach(a=>a.classList.toggle('on',a.dataset.nav===path||(path.length>1&&a.dataset.nav==='/'&&false)));
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+const observeRv=()=>$$('.rv:not(.in)').forEach(el=>reduced?el.classList.add('in'):io.observe(el));
+
+function render(){
+  const {path,query}=parseHash();
+  document.body.classList.remove('menu-open');
+  $('#drawer').setAttribute('aria-hidden','true');
+  let html;
+  if(path==='/')html=pageHome();
+  else if(path==='/search'){state.q=query.get('q')||'';html=pageSearch(state.q)}
+  else if(path==='/about')html=pageAbout();
+  else if(path==='/contact')html=pageContact();
+  else if(path==='/privacy')html=pageLegal('privacy');
+  else if(path==='/terms')html=pageLegal('terms');
+  else if(path.startsWith('/admin'))html=pageAdmin(path.split('/')[2]);
+  else if(getCats().find(c=>'/'+c.slug===path))html=pageCategory(path.slice(1));
+  else{
+    const slug=path.split('/').pop();const p=postBySlug(slug);
+    html=p?pageArticle(p):page404();
+  }
+  $('#app').innerHTML=html;
+  updateActiveNav(path);
+  window.scrollTo({top:0,behavior:'instant' in window?'instant':'auto'});
+  observeRv();
+  if(path.startsWith('/search')){const si=$('#searchInput');si&&si.focus({preventScroll:true})}
+}
+window.addEventListener('hashchange',render);
+
+/* ---------- الوضع الليلي واللغة ---------- */
+function applyTheme(){
+  const th=document.documentElement.dataset.theme;
+  const icon=th==='dark'?I.sun:I.moon;
+  $('#themeBtn').innerHTML=icon;
+  document.querySelector('meta[name="theme-color"]').content=th==='dark'?'#0a0e13':'#f4f6f8';
+}
+function toggleTheme(){
+  const th=document.documentElement.dataset.theme==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=th;Store.set('tx_theme',th);applyTheme();
+}
+function applyLang(){
+  document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  $('#langBtn').textContent=lang==='ar'?'EN':'ع';
+  $('#drawerLang').textContent=lang==='ar'?'English':'عربي';
+  $('#hdrSub').textContent=t('subscribeBtn');
+  buildNav();
+}
+function toggleLang(){lang=lang==='ar'?'en':'ar';Store.set('tx_lang',lang);applyLang();render();}
+
+/* ---------- تأثير الشعار ---------- */
+function scrambleWordmark(){
+  if(reduced)return;
+  const el=$('#wordmark'),txt='TECHORA',pool='01<>[]{}#$%&*+=';let f=0;
+  const iv=setInterval(()=>{
+    f++;
+    el.textContent=txt.split('').map((ch,i)=>f/2>i?ch:pool[Math.floor(Math.random()*pool.length)]).join('');
+    if(f/2>txt.length){el.textContent=txt;clearInterval(iv)}
+  },55);
+}
+
+/* ---------- الأحداث ---------- */
+document.addEventListener('click',e=>{
+  const dd=$('#moreDD');if(dd&&!e.target.closest('#moreDD'))dd.classList.remove('open');
+  const el=e.target.closest('[data-act]');if(!el)return;
+  const act=el.dataset.act;
+  switch(act){
+    case 'theme':toggleTheme();break;
+    case 'lang':toggleLang();break;
+    case 'menu':{
+      const open=document.body.classList.toggle('menu-open');
+      $('#drawer').setAttribute('aria-hidden',!open);
+      $('#burgerBtn').setAttribute('aria-expanded',open);break}
+    case 'more':{const d=$('#moreDD');d&&d.classList.toggle('open');break}
+    case 'closemodal':$('#modal').classList.remove('open');document.body.style.overflow='';break;
+    case 'goto-nl':{if(location.hash!=='#/'&&location.hash!==''){location.hash='#/';setTimeout(()=>$('#nl-sec')?.scrollIntoView({behavior:reduced?'auto':'smooth'}),120)}else{$('#nl-sec')?.scrollIntoView({behavior:'smooth'})}break}
+    case 'anchor':{e.preventDefault();document.getElementById(el.dataset.to)?.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});history.replaceState(null,'','#'+location.hash.split('#')[1]+'#'+el.dataset.to);break}
+    case 'copy':{
+      const u=el.dataset.url||location.href;
+      (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>toast(lang==='ar'?'تم نسخ رابط المقال ✓':'Link copied ✓')).catch(()=>{const i=document.createElement('input');i.value=u;document.body.appendChild(i);i.select();document.execCommand('copy');i.remove();toast('تم نسخ الرابط ✓')});
+      break}
+    case 'print':window.print();break;
+    case 'devtab':{
+      $$('#devTabs .tab').forEach(b=>{b.classList.toggle('on',b===el);b.setAttribute('aria-selected',b===el)});
+      const f=el.dataset.f;const list=livePosts().filter(p=>p.deviceType&&(f==='all'||p.deviceType===f)).slice(0,8);
+      $('#devGrid').innerHTML=list.length?list.map(cardNews).join(''):`<p style="color:var(--muted)">${lang==='ar'?'لا عناصر في هذه الفئة بعد.':'No items yet.'}</p>`;
+      observeRv();break}
+    case 'sttab':{
+      state.stype=el.dataset.f;
+      $$('#searchTabs .tab').forEach(b=>b.classList.toggle('on',b===el));
+      const box=$('#searchResults');box.innerHTML='<div class="grid g3">'+('<div class="skel" style="height:220px"></div>').repeat(3)+'</div>';
+      setTimeout(()=>{box.innerHTML=renderResults(state.q,state.stype);observeRv()},reduced?0:260);
+      break}
+    case 'newpost':openEditor(null);break;
+    case 'editpost':openEditor(el.dataset.id);break;
+    case 'closemodal':break;
+    case 'togglepub':{
+      const ed=Store.get('tx_edited',{}),id=el.dataset.id;
+      const cur=getPosts().find(p=>p.id===id);if(!cur)break;
+      ed[id]={...(ed[id]||{}),status:cur.status==='draft'?'published':'draft'};Store.set('tx_edited',ed);
+      toast(cur.status==='draft'?'تم نشر المقال ✓':'تم التحويل إلى مسودة');render();break}
+    case 'featpost':{
+      const ed=Store.get('tx_edited',{}),id=el.dataset.id;
+      const cur=getPosts().find(p=>p.id===id);if(!cur)break;
+      ed[id]={...(ed[id]||{}),featured:!cur.featured};Store.set('tx_edited',ed);
+      toast(cur.featured?'أُلغي التمييز':'أصبح المقال مميزًا ⭐');render();break}
+    case 'delpost':{
+      const id=el.dataset.id;
+      if(!confirm(lang==='ar'?'هل أنت متأكد من حذف هذا المقال؟':'Delete this post?'))break;
+      if(ARTICLES.find(p=>p.id===id)){const d=Store.get('tx_deleted',[]);d.push(id);Store.set('tx_deleted',d)}
+      else{Store.set('tx_added',Store.get('tx_added',[]).filter(p=>p.id!==id))}
+      toast(lang==='ar'?'تم حذف المقال':'Post deleted');render();break}
+    case 'delcat':{
+      const s=el.dataset.slug;Store.set('tx_cats',Store.get('tx_cats',[]).filter(c=>c.slug!==s));
+      toast(lang==='ar'?'تم حذف التصنيف':'Category deleted');render();break}
+    case 'deluser':{
+      Store.set('tx_users',Store.get('tx_users',AUTHORS.map((a,i)=>({id:'u'+(i+1),name:a.name,email:'',role:'محرر'}))).filter(u=>u.id!==el.dataset.id));
+      toast(lang==='ar'?'تم حذف المستخدم':'User removed');render();break}
+    case 'resetdemo':{
+      if(!confirm(lang==='ar'?'سيتم مسح كل تعديلاتك المحلية. متابعة؟':'Reset all local data?'))break;
+      ['tx_deleted','tx_edited','tx_added','tx_cats','tx_users','tx_subs','tx_media','tx_settings'].forEach(k=>Store.del(k));
+      toast(lang==='ar'?'تمت إعادة التعيين ✓':'Reset done');render();break}
+  }
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){$('#modal').classList.remove('open');document.body.classList.remove('menu-open');document.body.style.overflow='';const d=$('#moreDD');d&&d.classList.remove('open')}
+  if(e.key==='/'&&!/input|textarea|select/i.test(document.activeElement.tagName)){e.preventDefault();location.hash='#/search';setTimeout(()=>$('#searchInput')?.focus(),80)}
+});
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')$('#modal').classList.remove('open')});
+
+/* ---------- النماذج ---------- */
+document.addEventListener('submit',e=>{
+  const f=e.target;if(!f.dataset.form)return;e.preventDefault();
+  const kind=f.dataset.form,D=new FormData(f);
+  if(kind==='newsletter'){
+    const em=(D.get('email')||'').toString().trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){toast(lang==='ar'?'أدخل بريدًا إلكترونيًا صحيحًا':'Enter a valid email','err');return}
+    const subs=Store.get('tx_subs',[]);
+    if(subs.includes(em)){toast(lang==='ar'?'أنت مشترك بالفعل ✓':'Already subscribed');return}
+    subs.push(em);Store.set('tx_subs',subs);
+    f.innerHTML=`<div style="padding:.9rem 1.2rem;background:rgba(47,230,195,.15);border:1px solid rgba(47,230,195,.4);border-radius:12px;color:#bdf5e7;font-weight:700">✅ ${lang==='ar'?'تم اشتراكك بنجاح! أهلًا بك في نشرة تيكورا.':'Subscribed successfully!'}</div>`;
+    toast(lang==='ar'?'تم الاشتراك في النشرة ✓':'Subscribed ✓');
+  }
+  if(kind==='search'){
+    const q=(D.get('q')||'').toString().trim();state.q=q;
+    history.replaceState(null,'','#/search'+(q?'?q='+encodeURIComponent(q):''));
+    const box=$('#searchResults');if(box){box.innerHTML='<div class="grid g3">'+('<div class="skel" style="height:220px"></div>').repeat(3)+'</div>';
+      setTimeout(()=>{box.innerHTML=renderResults(q,state.stype);observeRv()},reduced?0:300)}
+  }
+  if(kind==='contact'){
+    let ok=true;
+    const check=(name,cond)=>{const inp=f.querySelector(`[name="${name}"]`),fld=inp.closest('.field');fld.classList.toggle('err',!cond);if(!cond)ok=false};
+    check('name',(D.get('name')||'').toString().trim().length>=2);
+    check('email',/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((D.get('email')||'').toString().trim()));
+    check('subject',(D.get('subject')||'').toString().trim().length>=2);
+    check('message',(D.get('message')||'').toString().trim().length>=10);
+    if(!ok){toast(lang==='ar'?'يرجى تصحيح الحقول المحددة':'Please fix the highlighted fields','err');return}
+    const msgs=Store.get('tx_msgs',[]);msgs.push({name:D.get('name'),email:D.get('email'),subject:D.get('subject'),message:D.get('message'),at:new Date().toISOString()});Store.set('tx_msgs',msgs);
+    f.reset();
+    toast(lang==='ar'?'تم إرسال رسالتك بنجاح! سنرد عليك قريبًا ✓':'Message sent successfully ✓');
+  }
+  if(kind==='addcat'){
+    const slug=slugify((D.get('slug')||'').toString()),ar=(D.get('ar')||'').toString().trim();
+    if(!slug||!ar){toast('أكمل الحقول','err');return}
+    if(getCats().find(c=>c.slug===slug)){toast(lang==='ar'?'هذا التصنيف موجود مسبقًا':'Slug already exists','err');return}
+    Store.set('tx_cats',[...Store.get('tx_cats',[]),{slug,ar,en:slug}]);toast(lang==='ar'?'تمت إضافة التصنيف ✓':'Category added');render();
+  }
+  if(kind==='adduser'){
+    const users=Store.get('tx_users',AUTHORS.map((a,i)=>({id:'u'+(i+1),name:a.name,email:'',role:'محرر'})));
+    users.push({id:'u'+Date.now(),name:D.get('name'),email:D.get('email'),role:D.get('role')});
+    Store.set('tx_users',users);toast(lang==='ar'?'تمت إضافة المستخدم ✓':'User added');render();
+  }
+  if(kind==='settings'){
+    Store.set('tx_settings',{siteName:D.get('siteName'),desc:D.get('desc'),x:D.get('x'),yt:D.get('yt'),kw:D.get('kw')});
+    applySettings();toast(lang==='ar'?'تم حفظ الإعدادات ✓':'Settings saved');
+  }
+  if(kind==='posteditor'){
+    const id=D.get('id'),isNew=!id;
+    const data={
+      title:(D.get('title')||'').toString().trim(),slug:slugify((D.get('slug')||'').toString()),
+      excerpt:(D.get('excerpt')||'').toString().trim(),cat:D.get('cat'),author:D.get('author'),
+      status:D.get('status'),publishedAt:D.get('publishedAt')||new Date().toISOString().slice(0,10),
+      image:(D.get('image')||'article-'+Date.now()).toString().trim(),readingTime:+D.get('readingTime')||5,
+      featured:!!D.get('featured'),tags:(D.get('tags')||'').toString().split(/[،,]/).map(s=>s.trim()).filter(Boolean),
+      content:parseContent(D.get('contentText'))
+    };
+    if(!data.title||!data.slug){toast(lang==='ar'?'العنوان والرابط مطلوبان':'Title & slug required','err');return}
+    if(isNew){
+      const all=getPosts();if(all.find(p=>p.slug===data.slug)){toast(lang==='ar'?'الرابط مستخدم في مقال آخر':'Slug already used','err');return}
+      Store.set('tx_added',[{...data,id:'x'+Date.now(),views:0,updatedAt:data.publishedAt},...Store.get('tx_added',[])]);
+    }else{
+      const ed=Store.get('tx_edited',{});ed[id]={...(ed[id]||{}),...data,updatedAt:new Date().toISOString().slice(0,10)};Store.set('tx_edited',ed);
+    }
+    $('#modal').classList.remove('open');document.body.style.overflow='';
+    toast(lang==='ar'?'تم حفظ المقال ✓':'Post saved ✓');render();
+  }
+});
+/* بحث لوحة التحكم الحي */
+document.addEventListener('input',e=>{
+  if(e.target.id==='admSearch'){
+    const q=e.target.value.trim();
+    $$('#admTable tbody tr').forEach(tr=>{tr.style.display=tr.textContent.includes(q)?'':'none'});
+  }
+});
+/* رفع الوسائط */
+document.addEventListener('change',e=>{
+  if(e.target.id==='mediaUp'){
+    const extra=Store.get('tx_media',[]);
+    [...e.target.files].forEach(file=>{
+      if(file.size>1.5*1024*1024){toast(lang==='ar'?'(تجريبي) الحد الأقصى 1.5MB لكل صورة':'Max 1.5MB','err');return}
+      const r=new FileReader();r.onload=()=>{extra.unshift(r.result);Store.set('tx_media',extra);
+        const g=$('#mediaGrid');if(g)g.insertAdjacentHTML('afterbegin',`<figure><img src="${r.result}" alt="صورة مرفوعة"><figcaption>upload · local</figcaption></figure>`)};
+      r.readAsDataURL(file);
+    });
+    toast(lang==='ar'?'تم رفع الصور ✓':'Uploaded ✓');
+  }
+});
+/* شريط تقدم القراءة */
+window.addEventListener('scroll',()=>{
+  const bar=$('#pbar');if(!bar)return;
+  if(!location.hash.includes('/')||getPosts().length===0)return;
+  const h=document.documentElement.scrollHeight-innerHeight;
+  bar.style.width=h>0?(scrollY/h*100)+'%':'0';
+},{passive:true});
+
+/* ---------- إعدادات + فوتر ---------- */
+function applySettings(){
+  const s=Store.get('tx_settings',{});
+  if(s.desc)$('#footAbout').textContent=s.desc;
+  const soc=socialIcon;
+  $('#socials').innerHTML=[['x',s.x||'https://x.com/techora'],['youtube',s.yt||'https://youtube.com/@techora'],['linkedin','https://linkedin.com/company/techora'],['instagram','https://instagram.com/techora'],['telegram','https://t.me/techora']]
+    .map(([k,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener" aria-label="${k}">${soc[k]}</a>`).join('');
+  $('#footCats').innerHTML=BASE_CATS.slice(0,6).map(c=>`<a href="#/${c.slug}">${esc(catName(c))}</a>`).join('');
+}
+
+/* ---------- الإقلاع ---------- */
+applyTheme();applyLang();applySettings();
+$('#year').textContent=new Date().getFullYear();
+scrambleWordmark();
+render();
+</script>
+</body>
+</html>
