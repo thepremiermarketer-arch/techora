@@ -7,19 +7,19 @@
 <meta name="description" content="تيكورا TECHORA — منصة تقنية عربية حديثة: أخبار التقنية، الذكاء الاصطناعي، الهواتف والأجهزة، التطبيقات، الأمن السيبراني، الشروحات، المراجعات والمقارنات.">
 <meta name="robots" content="index,follow">
 <meta name="monetag" content="86e5ddfb6450798babea83d2e5c22d8f">
-<script src="https://quge5.com/88/tag.min.js" data-zone="277258" async data-cfasync="false"></script>
 <link rel="canonical" href="https://techora-tech.netlify.app/">
+<link rel="preload" as="image" href="assets/techora-ai-tools.jpg" fetchpriority="high">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TECHORA | تكورا">
 <meta property="og:title" content="تيكورا TECHORA — عالمك من التقنية">
 <meta property="og:description" content="أخبار التقنية والذكاء الاصطناعي والمراجعات والشروحات — بالعربية.">
 <meta property="og:url" content="https://techora-tech.netlify.app/">
-<meta property="og:image" content="https://picsum.photos/seed/techora-cover/1200/630">
+<meta property="og:image" content="https://techora-tech.netlify.app/assets/techora-ai-tools.jpg">
 <meta property="og:locale" content="ar_AR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="تيكورا TECHORA — عالمك من التقنية">
 <meta name="twitter:description" content="أخبار التقنية والذكاء الاصطناعي والمراجعات والشروحات — بالعربية.">
-<meta name="twitter:image" content="https://picsum.photos/seed/techora-cover/1200/630">
+<meta name="twitter:image" content="https://techora-tech.netlify.app/assets/techora-ai-tools.jpg">
 <meta name="theme-color" content="#0a0e13">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300b896'/%3E%3Cpath d='M16 22h32v9H37v22h-10V31H16z' fill='%23071018'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -929,7 +929,7 @@ function setSEO(o){
 const orgLD={"@context":"https://schema.org","@type":"Organization",name:"TECHORA",alternateName:"تكورا",url:"https://techora-tech.netlify.app",logo:"https://picsum.photos/seed/techora-cover/1200/630",sameAs:["https://x.com/techora","https://youtube.com/@techora"],slogan:"Your World of Technology"};
 
 /* ---------- مكوّنات مشتركة ---------- */
-const img=(p,w,h,cls='',eager)=>`<img ${eager?'fetchpriority="high"':'loading="lazy"'} class="${cls}" src="${pic(p.image,w,h)}" srcset="${srcset(p.image)}" sizes="(max-width:640px) 100vw, (max-width:1000px) 50vw, 33vw" alt="${esc(p.title)}" onload="this.classList.add('ld')">`;
+const img=(p,w,h,cls='',eager)=>`<img ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async" width="${w}" height="${h}" class="${cls}" src="${pic(p.image,w,h)}" srcset="${srcset(p.image)}" sizes="(max-width:640px) 100vw, (max-width:1000px) 50vw, 33vw" alt="${esc(p.title)}" onload="this.classList.add('ld')">`;
 const meta=(p,dots)=>`<span>${p.author}</span><span class="${dots?'dot-sep':''} num">${fmtDate(p.publishedAt,true)}</span><span class="dot-sep">${I.clock} ${p.readingTime} ${t('minRead')}</span>`;
 const adSlot=(size='728×90',h='')=>`<div class="ad-slot" style="${h?`min-height:${h}`:''}" role="complementary" aria-label="مساحة إعلانية"><b>${t('adSpace')}</b><small>Ad Slot · ${size}</small></div>`;
 const secHead=(kicker,title,link)=>`
@@ -1045,7 +1045,7 @@ function pageHome(){
   <section class="hero">
     <div class="container hero-grid">
       <article class="hero-main kb rv">
-        <div class="img-wrap"><img src="${pic(hero.image,1280,760)}" srcset="${srcset(hero.image)}" sizes="(max-width:900px) 100vw, 62vw" alt="${esc(hero.title)}" fetchpriority="high" class="ld"></div>
+        <div class="img-wrap"><img src="${pic(hero.image,1280,760)}" srcset="${srcset(hero.image)}" sizes="(max-width:900px) 100vw, 62vw" alt="${esc(hero.title)}" fetchpriority="high" decoding="async" width="1280" height="760" class="ld"></div>
         <div class="hero-body">
           <span class="chip">${esc(catName(catOf(hero.cat)))}</span>
           <h1><a href="#/${hero.cat}/${hero.slug}">${esc(hero.title)}</a></h1>
@@ -1097,7 +1097,7 @@ function pageHome(){
           <a class="mr-item" href="#/${p.cat}/${p.slug}">
             <span class="mr-num num">0${i+1}</span>
             <span style="flex:1"><h4>${esc(p.title)}</h4><span class="m"><span>${esc(catName(catOf(p.cat)))}</span><span>${I.eye} <span class="num">${fmtViews(viewCount(p))}</span> ${t('views')}</span><span class="num">${fmtDate(p.publishedAt,true)}</span></span></span>
-            <img loading="lazy" src="${pic(p.image,220,150)}" alt="${esc(p.title)}">
+            <img loading="lazy" decoding="async" width="220" height="150" src="${pic(p.image,220,150)}" alt="${esc(p.title)}">
           </a>`).join('')}</div>
       </div>
       <aside style="display:flex;flex-direction:column;gap:22px">
@@ -1664,6 +1664,24 @@ applyTheme();applyLang();applySettings();
 $('#year').textContent=new Date().getFullYear();
 scrambleWordmark();
 render();
+</script>
+<div id="tx-consent" class="tx-consent" role="dialog" aria-label="إعدادات الخصوصية والإعلانات" hidden><div><strong>اختيارات الخصوصية</strong><p>نستخدم أدوات Monetag لعرض إعلانات تساعد على دعم المحتوى. اختر السماح أو الرفض؛ يمكنك تغيير القرار بحذف بيانات الموقع من المتصفح.</p></div><div class="tx-consent-actions"><button type="button" data-consent="deny">رفض</button><button type="button" data-consent="allow">السماح بالإعلانات</button><a href="/privacy/">سياسة الخصوصية</a></div></div>
+<style>.tx-consent{position:fixed;z-index:1000;inset:auto 16px 16px;display:flex;gap:18px;align-items:center;justify-content:space-between;max-width:920px;margin:auto;padding:16px 18px;border:1px solid #dbe4ee;border-radius:16px;background:#fff;box-shadow:0 18px 48px rgba(16,24,40,.18);font-family:inherit;color:#101827}.tx-consent p{margin-top:5px;color:#667085;font-size:12px;line-height:1.7}.tx-consent-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.tx-consent button{border:1px solid #d4dbe5;border-radius:9px;padding:9px 12px;background:#fff;color:#344054;cursor:pointer}.tx-consent button[data-consent=allow]{border-color:#1959d1;background:#1959d1;color:#fff}.tx-consent a{font-size:12px;color:#1959d1;white-space:nowrap}@media(max-width:640px){.tx-consent{inset:12px;bottom:12px;display:block}.tx-consent-actions{margin-top:10px}.tx-consent button{flex:1}.tx-consent a{display:block;text-align:center;margin-top:8px}}</style>
+<script>
+(function(){
+  var key='tx_ads_consent', banner=document.getElementById('tx-consent');
+  function loadMonetag(){
+    if(window.__txMonetagLoaded)return;
+    window.__txMonetagLoaded=true;
+    var s=document.createElement('script');s.src='https://quge5.com/88/tag.min.js';s.dataset.zone='277258';s.async=true;s.dataset.cfasync='false';document.head.appendChild(s);
+  }
+  var choice=localStorage.getItem(key);
+  if(choice==='allow') loadMonetag(); else if(!choice) banner.hidden=false;
+  document.addEventListener('click',function(e){
+    var button=e.target.closest('[data-consent]');if(!button)return;
+    var value=button.dataset.consent;localStorage.setItem(key,value);banner.hidden=true;if(value==='allow')loadMonetag();
+  });
+})();
 </script>
 </body>
 </html>
