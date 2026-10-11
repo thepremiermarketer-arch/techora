@@ -33,16 +33,16 @@
 /* ===================== 1) الأساسيات والمتغيرات ===================== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#f4f6f8; --surface:#ffffff; --surface2:#edf1f5; --ink:#0c1218; --muted:#5c6773;
-  --line:#e2e7ee; --accent:#008a72; --accent2:#00b896; --accent-soft:#e3f5f0;
-  --amber:#e8930c; --danger:#d64545; --chip:#eef2f6;
-  --shadow:0 12px 34px rgba(15,26,38,.09);
+  --bg:#f7f9fc; --surface:#ffffff; --surface2:#eef3f9; --ink:#101827; --muted:#667085;
+  --line:#e6eaf0; --accent:#1959d1; --accent2:#2769df; --accent-soft:#edf4ff;
+  --amber:#f2aa20; --danger:#d64545; --chip:#f1f4f8;
+  --shadow:0 14px 34px rgba(16,24,40,.08);
   --r:16px; --r-s:10px;
   --f-display:'Cairo',sans-serif; --f-body:'IBM Plex Sans Arabic',sans-serif; --f-latin:'Space Grotesk',monospace;
 }
 [data-theme="dark"]{
-  --bg:#0a0e13; --surface:#101720; --surface2:#0d131b; --ink:#e9eef3; --muted:#8fa0af;
-  --line:#1d2834; --accent:#2fe6c3; --accent2:#2fe6c3; --accent-soft:#0d2b25;
+  --bg:#0a1020; --surface:#101a2d; --surface2:#0d1627; --ink:#edf3ff; --muted:#9aa9bf;
+  --line:#20304a; --accent:#7eabff; --accent2:#5d91f4; --accent-soft:#152a50;
   --amber:#f6b23f; --danger:#ff7b7b; --chip:#141e29;
   --shadow:0 12px 34px rgba(0,0,0,.4);
 }
@@ -409,6 +409,55 @@ footer{background:#070c11;color:#aebcb9;margin-top:60px}
   .ticker-track{animation:none;flex-wrap:wrap}
   .kb img{animation:none}
 }
+/* ===================== 16) هوية Techora الجديدة ===================== */
+.hdr{background:rgba(255,255,255,.94);box-shadow:0 1px 0 rgba(16,24,40,.04)}
+.hdr-in{height:72px;gap:20px}
+.brand-mark{background:linear-gradient(135deg,#1f5fd5,#5b8cf0);box-shadow:0 7px 16px rgba(39,105,223,.25)}
+.brand-mark::after{background:#fff}
+.wordmark{letter-spacing:-.02em;color:#14233d}
+.brand-ar{color:#718096}
+.mainnav a{font-size:.88rem;color:#4b5565}
+.mainnav a.on,.mainnav a:hover{color:var(--accent)}
+.mainnav a.on::after{background:var(--accent2)}
+.icon-btn:hover{background:#f2f6fc;border-color:#dfe7f2;color:var(--accent)}
+.btn{background:linear-gradient(135deg,#2769df,#1959d1);color:#fff;border-radius:9px;padding:.68rem 1.25rem;box-shadow:0 8px 18px rgba(39,105,223,.18)}
+.btn:hover{box-shadow:0 11px 24px rgba(39,105,223,.28)}
+.btn.ghost{color:var(--ink)}
+.hero{padding:24px 0 8px}
+.hero::before{opacity:.22;background-size:28px 28px}
+.hero-grid{grid-template-columns:1.7fr 1fr;gap:24px}
+.hero-main{min-height:430px;border-radius:12px;box-shadow:0 15px 34px rgba(13,27,55,.14)}
+.hero-main::after{background:linear-gradient(to top,rgba(5,13,29,.94) 7%,rgba(5,13,29,.48) 57%,rgba(5,13,29,.05))}
+.hero-body{padding:28px}
+.hero-body h1{font-size:clamp(1.55rem,3vw,2.35rem)}
+.hero-body p{color:#d5deed}
+.side-card{padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(16,24,40,.05)}
+.side-item{padding:12px 0}
+.side-num{color:transparent;-webkit-text-stroke:1.2px var(--accent2)}
+.sec{padding:42px 0}
+.sec-alt{background:#fbfcfe}
+.sec-head{margin-bottom:20px}
+.sec-head h2{font-size:clamp(1.3rem,2.6vw,1.8rem)}
+.card{border-radius:11px;box-shadow:0 2px 7px rgba(16,24,40,.03)}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(16,24,40,.1)}
+.chip{background:#e8f0ff;color:#1f5fd5}
+.newsletter{background:linear-gradient(115deg,#0b1425,#142b56);border-radius:12px;box-shadow:0 16px 30px rgba(8,19,42,.16)}
+@media(max-width:900px){.hdr-in{height:64px}.hero-grid{grid-template-columns:1fr}.hero-main{min-height:390px}}
+@media(max-width:640px){.container{width:min(100% - 28px,1240px)}.hero{padding-top:16px}.hero-body{padding:22px}.sec{padding:32px 0}.side-card{order:2}}
+@media(max-width:640px){
+  .container{width:calc(100% - 28px);max-width:1240px}
+  .hdr-in{direction:ltr;min-width:0;justify-content:space-between;gap:8px}
+  .hdr-in .burger{order:1;display:grid;flex:0 0 38px}
+  .hdr-in .hdr-actions{order:2;margin-inline-start:0;flex:0 0 auto}
+  .hdr-in .brand{order:3;min-width:0;direction:rtl;margin-inline-start:auto}
+  .hdr-in .brand-mark{width:32px;height:32px;border-radius:9px}
+  .hdr-in .brand-ar{font-size:.58rem;white-space:nowrap}
+  .hdr-in .wordmark{font-size:1.08rem}
+  .hdr-actions .btn,.hdr-actions .lang-btn{display:none}
+  .hero-main{min-width:0;width:100%}
+  .hero-body h1{font-size:1.6rem}
+  .hero-body p{font-size:.88rem}
+}
 </style>
 </head>
 <body>
@@ -494,7 +543,15 @@ footer{background:#070c11;color:#aebcb9;margin-top:60px}
 /* ---------- أدوات عامة ---------- */
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const pic=(seed,w=960,h=540)=>`https://picsum.photos/seed/${seed}/${w}/${h}`;
+const localImage=(seed)=>{
+  const s=String(seed).toLowerCase();
+  if(/ai-tools|ai-at-work|generative-ai|ai-design|future-ai|developer-tools/.test(s)) return 'assets/techora-ai-tools.jpg';
+  if(/cyber|malware|protect-accounts|vpn|security/.test(s)) return 'assets/techora-cybersecurity.jpg';
+  if(/app|browser|file-manager|productivity|transfer-data/.test(s)) return 'assets/techora-apps.jpg';
+  if(/phone|smartphone|galaxy|iphone|pixel|foldable|watch|laptop|macbook|ssd|smart-home|windows|chips/.test(s)) return 'assets/techora-smartphone.jpg';
+  return 'assets/techora-ai-hero.jpg';
+};
+const pic=(seed,w=960,h=540)=>localImage(seed);
 const srcset=seed=>`${pic(seed,640,360)} 640w, ${pic(seed,960,540)} 960w, ${pic(seed,1280,720)} 1280w`;
 const Store={
   get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
