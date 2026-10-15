@@ -35,7 +35,7 @@
 :root{
   --bg:#f7f9fc; --surface:#ffffff; --surface2:#eef3f9; --ink:#101827; --muted:#667085;
   --line:#e6eaf0; --accent:#1959d1; --accent2:#2769df; --accent-soft:#edf4ff;
-  --amber:#f2aa20; --danger:#d64545; --chip:#f1f4f8;
+  --amber:#f2aa20; --on-accent:#ffffff; --danger:#d64545; --chip:#f1f4f8;
   --shadow:0 14px 34px rgba(16,24,40,.08);
   --r:16px; --r-s:10px;
   --f-display:'Cairo',sans-serif; --f-body:'IBM Plex Sans Arabic',sans-serif; --f-latin:'Space Grotesk',monospace;
@@ -43,7 +43,7 @@
 [data-theme="dark"]{
   --bg:#0a1020; --surface:#101a2d; --surface2:#0d1627; --ink:#edf3ff; --muted:#9aa9bf;
   --line:#20304a; --accent:#7eabff; --accent2:#5d91f4; --accent-soft:#152a50;
-  --amber:#f6b23f; --danger:#ff7b7b; --chip:#141e29;
+  --amber:#f6b23f; --on-accent:#061226; --danger:#ff7b7b; --chip:#141e29;
   --shadow:0 12px 34px rgba(0,0,0,.4);
 }
 html{scroll-behavior:smooth}
@@ -54,9 +54,9 @@ img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;background:none;border:none;color:inherit}
 input,select,textarea{font-family:inherit;font-size:1rem;color:var(--ink)}
-::selection{background:var(--accent2);color:#04221b}
+::selection{background:var(--accent2);color:var(--on-accent)}
 :focus-visible{outline:2px solid var(--accent2);outline-offset:3px;border-radius:4px}
-.skip{position:fixed;inset-inline-start:12px;top:-60px;z-index:200;background:var(--accent2);color:#04221b;padding:.6rem 1rem;border-radius:8px;font-weight:700;transition:top .2s}
+.skip{position:fixed;inset-inline-start:12px;top:-60px;z-index:200;background:var(--accent2);color:var(--on-accent);padding:.6rem 1rem;border-radius:8px;font-weight:700;transition:top .2s}
 .skip:focus{top:12px}
 .container{width:min(1240px,100% - 40px);margin-inline:auto}
 .num{font-family:var(--f-latin);font-feature-settings:"tnum"}
@@ -70,9 +70,9 @@ h1,h2,h3,h4{font-family:var(--f-display);line-height:1.35}
 .hdr{position:sticky;top:0;z-index:90;background:color-mix(in srgb,var(--surface) 86%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-block-end:1px solid var(--line)}
 .hdr-in{display:flex;align-items:center;gap:18px;height:66px}
 .brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.brand-mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--accent2),#0aa5c0);display:grid;place-items:center;position:relative;box-shadow:0 6px 16px rgba(0,184,150,.35)}
+.brand-mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--accent2),#0aa5c0);display:grid;place-items:center;position:relative;box-shadow:0 6px 16px rgba(39,105,223,.35)}
 .brand-mark svg{width:20px;height:20px}
-.brand-mark::after{content:"";position:absolute;width:6px;height:6px;border-radius:50%;background:#04221b;inset-inline-end:6px;top:6px;animation:blink 2.4s infinite}
+.brand-mark::after{content:"";position:absolute;width:6px;height:6px;border-radius:50%;background:#fff;inset-inline-end:6px;top:6px;animation:blink 2.4s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
 .wordmark{font-family:var(--f-latin);font-weight:700;font-size:1.28rem;letter-spacing:.09em}
 .brand-ar{font-size:.72rem;color:var(--muted);font-weight:600;letter-spacing:0;display:block;line-height:1;margin-top:2px}
@@ -92,8 +92,8 @@ h1,h2,h3,h4{font-family:var(--f-display);line-height:1.35}
 .icon-btn:hover{background:var(--chip);color:var(--ink);border-color:var(--line)}
 .icon-btn svg{width:20px;height:20px}
 .lang-btn{font-family:var(--f-latin);font-weight:700;font-size:.8rem;width:auto;padding-inline:10px;letter-spacing:.04em}
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent2);color:#04221b;font-weight:700;padding:.72rem 1.4rem;border-radius:12px;font-size:.95rem;transition:.22s;border:1px solid transparent}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,184,150,.35)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent2);color:var(--on-accent);font-weight:700;padding:.72rem 1.4rem;border-radius:12px;font-size:.95rem;transition:.22s;border:1px solid transparent}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(39,105,223,.35)}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
 .btn.ghost:hover{border-color:var(--accent2);color:var(--accent);box-shadow:none}
 .btn.sm{padding:.5rem 1rem;font-size:.85rem;border-radius:10px}
@@ -111,18 +111,18 @@ body.menu-open .drawer nav a{opacity:1;transform:none}
 .drawer nav a .en{font-family:var(--f-latin);font-size:.7rem;color:var(--muted);letter-spacing:.14em}
 .drawer-foot{display:flex;gap:10px;margin-top:26px}
 /* ===================== 3) الشريط العاجل ===================== */
-.ticker{background:#070c11;color:#dfe9e6;display:flex;align-items:center;gap:0;overflow:hidden;height:42px;position:relative}
-.ticker-label{flex-shrink:0;background:var(--accent2);color:#04221b;font-weight:800;font-size:.8rem;padding:0 16px;height:100%;display:flex;align-items:center;gap:7px;z-index:2;font-family:var(--f-display)}
-.ticker-label .dot{width:7px;height:7px;border-radius:50%;background:#04221b;animation:blink 1.4s infinite}
+.ticker{background:#0b1222;color:#e3eaf5;display:flex;align-items:center;gap:0;overflow:hidden;height:42px;position:relative}
+.ticker-label{flex-shrink:0;background:var(--accent2);color:var(--on-accent);font-weight:800;font-size:.8rem;padding:0 16px;height:100%;display:flex;align-items:center;gap:7px;z-index:2;font-family:var(--f-display)}
+.ticker-label .dot{width:7px;height:7px;border-radius:50%;background:var(--on-accent);animation:blink 1.4s infinite}
 .ticker-view{overflow:hidden;flex:1;position:relative}
 .ticker-view::before,.ticker-view::after{content:"";position:absolute;top:0;bottom:0;width:44px;z-index:1;pointer-events:none}
-.ticker-view::before{inset-inline-start:0;background:linear-gradient(to left,#070c11,transparent)}
-[dir="ltr"] .ticker-view::before{background:linear-gradient(to right,#070c11,transparent)}
-.ticker-view::after{inset-inline-end:0;background:linear-gradient(to right,#070c11,transparent)}
-[dir="ltr"] .ticker-view::after{background:linear-gradient(to left,#070c11,transparent)}
+.ticker-view::before{inset-inline-start:0;background:linear-gradient(to left,#0b1222,transparent)}
+[dir="ltr"] .ticker-view::before{background:linear-gradient(to right,#0b1222,transparent)}
+.ticker-view::after{inset-inline-end:0;background:linear-gradient(to right,#0b1222,transparent)}
+[dir="ltr"] .ticker-view::after{background:linear-gradient(to left,#0b1222,transparent)}
 .ticker-track{display:flex;gap:48px;width:max-content;padding-inline:20px;animation:tick 46s linear infinite;font-size:.88rem}
 .ticker:hover .ticker-track{animation-play-state:paused}
-.ticker-track a{white-space:nowrap;color:#aebcb9;transition:color .2s;display:flex;gap:10px;align-items:center}
+.ticker-track a{white-space:nowrap;color:#b3bfd3;transition:color .2s;display:flex;gap:10px;align-items:center}
 .ticker-track a:hover{color:var(--accent2)}
 .ticker-track a b{color:var(--accent2);font-weight:700}
 @keyframes tick{from{transform:translateX(-50%)}to{transform:translateX(0)}}
@@ -137,19 +137,19 @@ body.menu-open .drawer nav a{opacity:1;transform:none}
 .kb img{animation:kb 16s ease-in-out infinite alternate}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
 .hero-main::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,9,14,.94) 8%,rgba(4,9,14,.45) 48%,rgba(4,9,14,.08));z-index:-1}
-.hero-body{margin-top:auto;padding:30px;color:#f2f6f5;max-width:720px}
+.hero-body{margin-top:auto;padding:30px;color:#f3f6fb;max-width:720px}
 .hero-body h1{font-size:clamp(1.5rem,3.2vw,2.5rem);font-weight:900;margin:14px 0 10px;text-wrap:balance}
 .hero-body h1 a:hover{color:var(--accent2)}
-.hero-body p{color:#c3d0cd;font-size:.98rem;max-width:56ch}
-.hero-meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:.83rem;color:#9db0ab;align-items:center}
-.chip{display:inline-flex;align-items:center;gap:6px;background:var(--accent2);color:#04221b;font-weight:800;font-size:.74rem;padding:.28rem .8rem;border-radius:99px;font-family:var(--f-display)}
+.hero-body p{color:#c9d3e3;font-size:.98rem;max-width:56ch}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:.83rem;color:#a3b1c8;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--accent2);color:var(--on-accent);font-weight:800;font-size:.74rem;padding:.28rem .8rem;border-radius:99px;font-family:var(--f-display)}
 .chip.soft{background:var(--accent-soft);color:var(--accent)}
 .hero-side{display:flex;flex-direction:column;gap:12px}
 .side-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;flex:1;display:flex;flex-direction:column}
 .side-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
 .side-head h3{font-size:1rem;font-weight:800}
-.pulse{width:9px;height:9px;border-radius:50%;background:var(--accent2);box-shadow:0 0 0 0 rgba(0,184,150,.5);animation:pulse 2s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(0,184,150,0)}100%{box-shadow:0 0 0 0 rgba(0,184,150,0)}}
+.pulse{width:9px;height:9px;border-radius:50%;background:var(--accent2);box-shadow:0 0 0 0 rgba(39,105,223,.5);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(39,105,223,0)}100%{box-shadow:0 0 0 0 rgba(39,105,223,0)}}
 .side-item{display:flex;gap:14px;padding:13px 0;border-block-end:1px solid var(--line);align-items:flex-start}
 .side-item:last-child{border:0;padding-bottom:0}
 .side-num{font-family:var(--f-latin);font-weight:700;font-size:1.5rem;color:transparent;-webkit-text-stroke:1.2px var(--accent2);line-height:1;flex-shrink:0;min-width:32px}
@@ -184,7 +184,7 @@ body.menu-open .drawer nav a{opacity:1;transform:none}
 .c-body p{font-size:.88rem;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .c-meta{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.76rem;color:var(--muted);padding-top:10px;border-top:1px dashed var(--line)}
 .c-meta .dot-sep::before{content:"•";margin-inline-end:14px;color:var(--accent2)}
-.rate-badge{position:absolute;bottom:12px;inset-inline-end:12px;background:#071018;color:var(--accent2);font-family:var(--f-latin);font-weight:700;font-size:.86rem;padding:.3rem .7rem;border-radius:9px;display:flex;gap:4px;align-items:center;border:1px solid rgba(47,230,195,.3)}
+.rate-badge{position:absolute;bottom:12px;inset-inline-end:12px;background:#0b1222;color:var(--accent2);font-family:var(--f-latin);font-weight:700;font-size:.86rem;padding:.3rem .7rem;border-radius:9px;display:flex;gap:4px;align-items:center;border:1px solid rgba(126,171,255,.3)}
 .rate-badge svg{width:13px;height:13px}
 /* الأكثر قراءة */
 .mostread{display:grid;grid-template-columns:1.6fr 1fr;gap:26px;align-items:start}
@@ -212,7 +212,7 @@ body.menu-open .drawer nav a{opacity:1;transform:none}
 .tool-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:12px;transition:.3s}
 .tool-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent2) 45%,var(--line))}
 .tool-top{display:flex;align-items:center;gap:14px}
-.tool-ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-family:var(--f-latin);font-weight:700;font-size:1.2rem;color:#04221b;flex-shrink:0}
+.tool-ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-family:var(--f-latin);font-weight:700;font-size:1.2rem;color:#fff;flex-shrink:0}
 .tool-card h4{font-weight:800;font-size:1.02rem}
 .tool-card .tag{font-size:.7rem;font-weight:700;padding:.15rem .6rem;border-radius:99px;background:var(--chip);color:var(--muted)}
 .tool-card p{font-size:.85rem;color:var(--muted)}
@@ -221,39 +221,39 @@ body.menu-open .drawer nav a{opacity:1;transform:none}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
 .tab{padding:.55rem 1.15rem;border-radius:99px;border:1px solid var(--line);font-weight:700;font-size:.86rem;color:var(--muted);transition:.2s;background:var(--surface)}
 .tab:hover{border-color:var(--accent2);color:var(--accent)}
-.tab.on{background:var(--accent2);color:#04221b;border-color:var(--accent2)}
+.tab.on{background:var(--accent2);color:var(--on-accent);border-color:var(--accent2)}
 /* ===================== 6) الإعلانات ===================== */
 .ad-slot{border:1.5px dashed var(--line);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--muted);background:color-mix(in srgb,var(--surface2) 55%,transparent);padding:20px;text-align:center;min-height:110px;position:relative}
 .ad-slot::before{content:"إعلان";position:absolute;top:8px;inset-inline-start:10px;font-size:.62rem;letter-spacing:.08em;color:var(--muted);opacity:.7}
 .ad-slot b{font-size:.85rem;font-weight:700}
 .ad-slot small{font-size:.7rem;font-family:var(--f-latin);opacity:.7}
 /* ===================== 7) النشرة ===================== */
-.newsletter{background:linear-gradient(135deg,#071310,#0a1f1a 55%,#062b33);border:1px solid rgba(47,230,195,.25);border-radius:22px;padding:clamp(28px,5vw,54px);color:#e8f4f0;position:relative;overflow:hidden}
-.newsletter::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(47,230,195,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(47,230,195,.08) 1px,transparent 1px);background-size:30px 30px;mask-image:radial-gradient(70% 100% at 20% 0,#000,transparent);-webkit-mask-image:radial-gradient(70% 100% at 20% 0,#000,transparent)}
+.newsletter{background:linear-gradient(135deg,#0a1530,#0f2350 55%,#0b2f63);border:1px solid rgba(126,171,255,.25);border-radius:22px;padding:clamp(28px,5vw,54px);color:#eaf1ff;position:relative;overflow:hidden}
+.newsletter::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(126,171,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(126,171,255,.08) 1px,transparent 1px);background-size:30px 30px;mask-image:radial-gradient(70% 100% at 20% 0,#000,transparent);-webkit-mask-image:radial-gradient(70% 100% at 20% 0,#000,transparent)}
 .newsletter h3{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;position:relative}
-.newsletter p{color:#9fc4ba;max-width:52ch;margin-top:8px;position:relative}
+.newsletter p{color:#a9bde6;max-width:52ch;margin-top:8px;position:relative}
 .nl-form{display:flex;gap:10px;margin-top:22px;position:relative;flex-wrap:wrap}
 .nl-form input{flex:1;min-width:220px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:.8rem 1.1rem;color:#fff}
-.nl-form input::placeholder{color:#7fa39a}
+.nl-form input::placeholder{color:#8fa3c9}
 .nl-form .btn{background:var(--accent2)}
-.nl-note{font-size:.75rem;color:#7fa39a;margin-top:12px;position:relative}
+.nl-note{font-size:.75rem;color:#8fa3c9;margin-top:12px;position:relative}
 /* ===================== 8) الفوتر ===================== */
-footer{background:#070c11;color:#aebcb9;margin-top:60px}
+footer{background:#0b1222;color:#b3bfd3;margin-top:60px}
 .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:34px;padding:56px 0 40px}
 @media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:540px){.foot-grid{grid-template-columns:1fr}}
 .foot-grid h5{color:#fff;font-family:var(--f-display);font-weight:800;font-size:.98rem;margin-bottom:16px}
 .foot-grid a{display:block;padding:5px 0;font-size:.88rem;transition:.2s}
 .foot-grid a:hover{color:var(--accent2);padding-inline-start:6px}
-.foot-about p{font-size:.88rem;line-height:1.9;margin-top:14px;color:#8ba19c}
+.foot-about p{font-size:.88rem;line-height:1.9;margin-top:14px;color:#8f9bb2}
 .socials{display:flex;gap:10px;margin-top:18px;min-height:38px}
 .foot-about p{min-height:84px}
 #footCats{min-height:186px}
-.socials a{width:38px;height:38px;border-radius:10px;border:1px solid #1c2a2a;display:grid;place-items:center;transition:.25s;padding:0}
+.socials a{width:38px;height:38px;border-radius:10px;border:1px solid #1f2b44;display:grid;place-items:center;transition:.25s;padding:0}
 .socials a:hover{background:var(--accent2);border-color:var(--accent2);transform:translateY(-3px)}
-.socials a:hover svg{fill:#04221b}
-.socials svg{width:17px;height:17px;fill:#aebcb9;transition:.25s}
-.foot-bottom{border-top:1px solid #14201f;padding:20px 0;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;font-size:.8rem;color:#71877f}
+.socials a:hover svg{fill:var(--on-accent)}
+.socials svg{width:17px;height:17px;fill:#b3bfd3;transition:.25s}
+.foot-bottom{border-top:1px solid #18233a;padding:20px 0;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;font-size:.8rem;color:#7a879d}
 .foot-bottom nav{display:flex;gap:18px;flex-wrap:wrap}
 .foot-bottom a:hover{color:var(--accent2)}
 /* ===================== 9) صفحة المقال ===================== */
@@ -291,7 +291,7 @@ footer{background:#070c11;color:#aebcb9;margin-top:60px}
 .share-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:34px 0;padding:20px 0;border-block:1px solid var(--line)}
 .share-bar .lbl{font-weight:800;font-size:.9rem;margin-inline-end:6px}
 .sh-btn{width:42px;height:42px;border-radius:11px;border:1px solid var(--line);display:grid;place-items:center;transition:.2s;color:var(--muted)}
-.sh-btn:hover{background:var(--accent2);color:#04221b;border-color:var(--accent2);transform:translateY(-3px)}
+.sh-btn:hover{background:var(--accent2);color:var(--on-accent);border-color:var(--accent2);transform:translateY(-3px)}
 .sh-btn svg{width:18px;height:18px}
 .sh-btn.txt{width:auto;padding-inline:14px;font-weight:700;font-size:.82rem;gap:8px;display:inline-flex;align-items:center}
 .sidebar{position:sticky;top:90px;display:flex;flex-direction:column;gap:24px}
@@ -317,7 +317,7 @@ footer{background:#070c11;color:#aebcb9;margin-top:60px}
 .search-box:focus-within{border-color:var(--accent2)}
 .search-box input{flex:1;border:0;background:none;padding:.6rem .9rem;font-size:1.05rem}
 .search-box input:focus{outline:none}
-.search-box button{background:var(--accent2);color:#04221b;border-radius:11px;padding:.65rem 1.5rem;font-weight:800}
+.search-box button{background:var(--accent2);color:var(--on-accent);border-radius:11px;padding:.65rem 1.5rem;font-weight:800}
 .empty{padding:70px 20px;text-align:center;border:1.5px dashed var(--line);border-radius:var(--r);margin-top:20px}
 .empty svg{width:88px;height:88px;margin:0 auto 18px;opacity:.85}
 .empty h3{font-weight:800;font-size:1.25rem;margin-bottom:8px}
@@ -350,7 +350,7 @@ footer{background:#070c11;color:#aebcb9;margin-top:60px}
 @media(max-width:860px){.adm-nav{flex-direction:row;overflow-x:auto;border-inline-end:0;border-block-end:1px solid var(--line)}}
 .adm-nav a{display:flex;gap:10px;align-items:center;padding:.7rem .95rem;border-radius:10px;font-weight:700;font-size:.9rem;color:var(--muted);white-space:nowrap}
 .adm-nav a:hover{color:var(--ink)}
-.adm-nav a.on{background:var(--accent2);color:#04221b}
+.adm-nav a.on{background:var(--accent2);color:var(--on-accent)}
 .adm-body{padding:26px;overflow-x:auto}
 .adm-body h2{font-weight:900;font-size:1.4rem;margin-bottom:20px}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px}
@@ -392,7 +392,7 @@ footer{background:#070c11;color:#aebcb9;margin-top:60px}
 .nf .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 /* ===================== 14) التوست ===================== */
 .toasts{position:fixed;bottom:22px;inset-inline-start:22px;z-index:300;display:flex;flex-direction:column;gap:10px}
-.toast{background:#0c1512;color:#e8f4f0;border:1px solid rgba(47,230,195,.35);border-inline-start:4px solid var(--accent2);padding:14px 20px;border-radius:12px;font-size:.9rem;font-weight:600;box-shadow:0 14px 34px rgba(0,0,0,.35);display:flex;gap:10px;align-items:center;animation:t-in .35s cubic-bezier(.2,.8,.2,1);max-width:min(360px,90vw)}
+.toast{background:#0d1528;color:#eaf1ff;border:1px solid rgba(126,171,255,.35);border-inline-start:4px solid var(--accent2);padding:14px 20px;border-radius:12px;font-size:.9rem;font-weight:600;box-shadow:0 14px 34px rgba(0,0,0,.35);display:flex;gap:10px;align-items:center;animation:t-in .35s cubic-bezier(.2,.8,.2,1);max-width:min(360px,90vw)}
 .toast.err{border-color:rgba(214,69,69,.4);border-inline-start-color:var(--danger)}
 @keyframes t-in{from{opacity:0;transform:translateY(16px)}}
 .toast.out{opacity:0;transform:translateY(10px);transition:.3s}
@@ -472,18 +472,18 @@ footer{background:#070c11;color:#aebcb9;margin-top:60px}
     <button class="icon-btn burger" data-act="menu" aria-label="فتح القائمة" aria-expanded="false" id="burgerBtn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h16"/></svg>
     </button>
-    <a class="brand" href="#/" aria-label="تيكورا — الرئيسية">
-      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#04221b"><path d="M4 5h16v4.4h-5.6V19h-4.8V9.4H4z"/></svg></span>
+    <a class="brand" href="/" aria-label="تيكورا — الرئيسية">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M4 5h16v4.4h-5.6V19h-4.8V9.4H4z"/></svg></span>
       <span><span class="wordmark" id="wordmark">TECHORA</span><span class="brand-ar">تكورا — Your World of Technology</span></span>
     </a>
     <nav class="mainnav" id="mainnav" aria-label="التنقل الرئيسي"></nav>
     <div class="hdr-actions">
-      <a class="icon-btn" href="#/search" aria-label="بحث" title="بحث">
+      <a class="icon-btn" href="/#/search" aria-label="بحث" title="بحث">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
       </a>
       <button class="icon-btn lang-btn" data-act="lang" id="langBtn" aria-label="تبديل اللغة">EN</button>
       <button class="icon-btn" data-act="theme" id="themeBtn" aria-label="تبديل الوضع الليلي" title="الوضع الليلي"></button>
-      <a class="btn sm" href="#/" data-act="goto-nl" id="hdrSub" style="margin-inline-start:4px">اشترك</a>
+      <a class="btn sm" href="/" data-act="goto-nl" id="hdrSub" style="margin-inline-start:4px">اشترك</a>
     </div>
   </div>
 </header>
@@ -491,7 +491,7 @@ footer{background:#070c11;color:#aebcb9;margin-top:60px}
 <!-- ======= قائمة الجوال ======= -->
 <div class="drawer" id="drawer" aria-hidden="true">
   <div class="drawer-top">
-    <a class="brand" href="#/"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="#04221b"><path d="M4 5h16v4.4h-5.6V19h-4.8V9.4H4z"/></svg></span><span class="wordmark">TECHORA</span></a>
+    <a class="brand" href="/"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="#fff"><path d="M4 5h16v4.4h-5.6V19h-4.8V9.4H4z"/></svg></span><span class="wordmark">TECHORA</span></a>
     <button class="icon-btn" data-act="menu" aria-label="إغلاق القائمة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   </div>
   <nav id="drawerNav" aria-label="قائمة الجوال"></nav>
@@ -508,7 +508,7 @@ footer{background:#070c11;color:#aebcb9;margin-top:60px}
   <div class="container">
     <div class="foot-grid">
       <div class="foot-about">
-        <a class="brand" href="#/"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="#04221b"><path d="M4 5h16v4.4h-5.6V19h-4.8V9.4H4z"/></svg></span><span><span class="wordmark">TECHORA</span><span class="brand-ar" style="color:#71877f">تكورا</span></span></a>
+        <a class="brand" href="/"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="#fff"><path d="M4 5h16v4.4h-5.6V19h-4.8V9.4H4z"/></svg></span><span><span class="wordmark">TECHORA</span><span class="brand-ar" style="color:#7a879d">تكورا</span></span></a>
         <p id="footAbout">تيكورا منصة تقنية عربية حديثة تقدّم أخبار التقنية والذكاء الاصطناعي، ومراجعات الأجهزة، والشروحات والمقارنات — بمحتوى دقيق وأصيل يواكب عالمك الرقمي.</p>
         <div class="socials" id="socials" aria-label="وسائل التواصل"></div>
       </div>
@@ -516,14 +516,14 @@ footer{background:#070c11;color:#aebcb9;margin-top:60px}
       <div><h5 data-i="quickLinks">روابط مهمة</h5>
         <a href="/about/" data-i="about">من نحن</a>
         <a href="/contact/" data-i="contact">اتصل بنا</a>
-        <a href="#/tools" data-i="tools">أدوات تقنية</a>
-        <a href="#/comparisons" data-i="comparisons">مقارنات</a>
-        <a href="#/admin">لوحة التحكم</a>
+        <a href="/#/tools" data-i="tools">أدوات تقنية</a>
+        <a href="/#/comparisons" data-i="comparisons">مقارنات</a>
+        <a href="/#/admin">لوحة التحكم</a>
       </div>
       <div><h5 data-i="legal">قانوني</h5>
         <a href="/privacy/" data-i="privacy">سياسة الخصوصية</a>
         <a href="/terms/" data-i="terms">شروط الاستخدام</a>
-        <a href="#/search" data-i="search">البحث</a>
+        <a href="/#/search" data-i="search">البحث</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -545,16 +545,25 @@ footer{background:#070c11;color:#aebcb9;margin-top:60px}
 /* ---------- أدوات عامة ---------- */
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const localImage=(seed)=>{
+const postUrl=p=>`/#/${p.cat}/${p.slug}`;
+const catUrl=slug=>`/#/${slug}`;
+const imageName=(seed)=>{
   const s=String(seed).toLowerCase();
-  if(/ai-tools|ai-at-work|generative-ai|ai-design|future-ai|developer-tools/.test(s)) return 'assets/techora-ai-tools.webp';
-  if(/cyber|malware|protect-accounts|vpn|security/.test(s)) return 'assets/techora-cybersecurity.webp';
-  if(/app|browser|file-manager|productivity|transfer-data/.test(s)) return 'assets/techora-apps.webp';
-  if(/phone|smartphone|galaxy|iphone|pixel|foldable|watch|laptop|macbook|ssd|smart-home|windows|chips/.test(s)) return 'assets/techora-smartphone.webp';
-  return 'assets/techora-ai-hero.webp';
+  if(/ai-tools|ai-at-work|generative-ai|ai-design|future-ai|developer-tools/.test(s)) return 'techora-ai-tools';
+  if(/cyber|malware|protect-accounts|vpn|security/.test(s)) return 'techora-cybersecurity';
+  if(/app|browser|file-manager|productivity|transfer-data/.test(s)) return 'techora-apps';
+  if(/phone|smartphone|galaxy|iphone|pixel|foldable|watch|laptop|macbook|ssd|smart-home|windows|chips/.test(s)) return 'techora-smartphone';
+  return 'techora-ai-hero';
 };
-const pic=(seed,w=960,h=540)=>localImage(seed);
-const srcset=seed=>`${pic(seed,640,360)} 640w, ${pic(seed,960,540)} 960w, ${pic(seed,1280,720)} 1280w`;
+/* الصور: نسخ WebP بثلاثة مقاسات (480/800/1200) + صورة مشاركة JPG بمقاس 1200×630 */
+const IMG_W=[480,800,1200];
+const pic=(seed,w=800)=>{
+  if(/^(data:|blob:|https?:)/.test(String(seed)))return seed;
+  const fit=IMG_W.find(x=>x>=w)||1200;
+  return `/assets/${imageName(seed)}-${fit}.webp`;
+};
+const srcset=seed=>/^(data:|blob:|https?:)/.test(String(seed))?'':IMG_W.map(w=>`${pic(seed,w)} ${w}w`).join(', ');
+const ogPic=seed=>`${SITE_URL}/assets/og/${imageName(seed)}.jpg`;
 const Store={
   get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
   set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},
@@ -941,20 +950,20 @@ const secHead=(kicker,title,link)=>`
  </div>`;
 const cardNews=p=>`
  <article class="card rv">
-   <a class="thumb" href="#/${p.cat}/${p.slug}" tabindex="-1" aria-hidden="true">${img(p,640,400)}<span class="chip soft">${esc(catName(catOf(p.cat)))}</span></a>
+   <a class="thumb" href="${postUrl(p)}" tabindex="-1" aria-hidden="true">${img(p,640,400)}<span class="chip soft">${esc(catName(catOf(p.cat)))}</span></a>
    <div class="c-body">
-     <h3><a href="#/${p.cat}/${p.slug}">${esc(p.title)}</a></h3>
+     <h3><a href="${postUrl(p)}">${esc(p.title)}</a></h3>
      <p>${esc(p.excerpt)}</p>
      <div class="c-meta">${meta(p,true)}</div>
    </div>
  </article>`;
 const cardReview=p=>`
  <article class="card rv">
-   <a class="thumb" href="#/${p.cat}/${p.slug}" tabindex="-1" aria-hidden="true">${img(p,640,400)}
+   <a class="thumb" href="${postUrl(p)}" tabindex="-1" aria-hidden="true">${img(p,640,400)}
      ${p.rating?`<span class="rate-badge">${I.star} <span class="num">${p.rating}</span>/10</span>`:''}
      <span class="chip soft">${esc(catName(catOf(p.cat)))}</span></a>
    <div class="c-body">
-     <h3><a href="#/${p.cat}/${p.slug}">${esc(p.title)}</a></h3>
+     <h3><a href="${postUrl(p)}">${esc(p.title)}</a></h3>
      ${p.verdict?`<p><b style="color:var(--accent)">${t('verdict')}:</b> ${esc(p.verdict)}</p>`:`<p>${esc(p.excerpt)}</p>`}
      <div class="c-meta">${meta(p,true)}<span class="dot-sep">${I.eye} <span class="num">${fmtViews(viewCount(p))}</span></span></div>
    </div>
@@ -962,7 +971,7 @@ const cardReview=p=>`
 const cardVS=p=>`
  <article class="vs-card rv">
    ${p.vs?`<div class="vs-row"><span class="vs-name">${esc(p.vs[0])}</span><span class="vs-x"><span>VS</span></span><span class="vs-name">${esc(p.vs[1])}</span></div>`:''}
-   <a href="#/${p.cat}/${p.slug}"><h4>${esc(p.title)}</h4></a>
+   <a href="${postUrl(p)}"><h4>${esc(p.title)}</h4></a>
    <p style="font-size:.85rem;color:var(--muted)">${esc(clamp(p.excerpt,110))}</p>
    <div class="m">${meta(p,false)}<span>${I.eye} <span class="num">${fmtViews(viewCount(p))}</span></span></div>
  </article>`;
@@ -978,7 +987,7 @@ const cardTool=tl=>`
      <span class="num" style="font-size:.8rem;color:var(--muted)">${tl.rating}/5</span>
    </div>
  </article>`;
-const miniPost=p=>`<a class="mini-post" href="#/${p.cat}/${p.slug}"><img loading="lazy" src="${pic(p.image,160,100)}" alt="${esc(p.title)}"><h5>${esc(clamp(p.title,60))}</h5></a>`;
+const miniPost=p=>`<a class="mini-post" href="${postUrl(p)}"><img loading="lazy" src="${pic(p.image,160,100)}" alt="${esc(p.title)}"><h5>${esc(clamp(p.title,60))}</h5></a>`;
 const newsletter=(id='nl')=>`
  <section class="newsletter rv" id="${id}-sec" aria-label="النشرة البريدية">
    <h3>${t('nlTitle')}</h3><p>${t('nlDesc')}</p>
@@ -1041,7 +1050,7 @@ function pageHome(){
   <div class="ticker" aria-label="شريط الأخبار العاجلة">
     <div class="ticker-label"><span class="dot"></span>${t('breaking')}</div>
     <div class="ticker-view"><div class="ticker-track">
-      ${[...posts.slice(0,8),...posts.slice(0,8)].map(p=>`<a href="#/${p.cat}/${p.slug}"><b>${esc(catName(catOf(p.cat)))}</b> ${esc(p.title)}</a>`).join('')}
+      ${[...posts.slice(0,8),...posts.slice(0,8)].map(p=>`<a href="${postUrl(p)}"><b>${esc(catName(catOf(p.cat)))}</b> ${esc(p.title)}</a>`).join('')}
     </div></div>
   </div>
   <section class="hero">
@@ -1050,16 +1059,16 @@ function pageHome(){
         <div class="img-wrap"><img src="${pic(hero.image,1280,760)}" srcset="${srcset(hero.image)}" sizes="(max-width:900px) 100vw, 62vw" alt="${esc(hero.title)}" fetchpriority="high" decoding="async" width="1280" height="760" class="ld"></div>
         <div class="hero-body">
           <span class="chip">${esc(catName(catOf(hero.cat)))}</span>
-          <h1><a href="#/${hero.cat}/${hero.slug}">${esc(hero.title)}</a></h1>
+          <h1><a href="${postUrl(hero)}">${esc(hero.title)}</a></h1>
           <p>${esc(hero.excerpt)}</p>
           <div class="hero-meta"><span>${t('by')} ${hero.author}</span><span class="num">${fmtDate(hero.publishedAt)}</span><span>${I.clock} ${hero.readingTime} ${t('minRead')}</span><span>${I.eye} <span class="num">${fmtViews(viewCount(hero))}</span></span></div>
-          <div style="margin-top:20px"><a class="btn" href="#/${hero.cat}/${hero.slug}">${t('readMore')} ${I.arrow}</a></div>
+          <div style="margin-top:20px"><a class="btn" href="${postUrl(hero)}">${t('readMore')} ${I.arrow}</a></div>
         </div>
       </article>
       <aside class="hero-side" aria-label="الأحدث الآن">
         <div class="side-card rv" style="--d:.1s">
           <div class="side-head"><h3>${t('live')}</h3><span class="pulse" aria-hidden="true"></span></div>
-          ${side.map((p,i)=>`<a class="side-item" href="#/${p.cat}/${p.slug}"><span class="side-num num">0${i+1}</span><span><h4>${esc(p.title)}</h4><span class="m"><span>${esc(catName(catOf(p.cat)))}</span><span class="num">${fmtDate(p.publishedAt,true)}</span></span></span></a>`).join('')}
+          ${side.map((p,i)=>`<a class="side-item" href="${postUrl(p)}"><span class="side-num num">0${i+1}</span><span><h4>${esc(p.title)}</h4><span class="m"><span>${esc(catName(catOf(p.cat)))}</span><span class="num">${fmtDate(p.publishedAt,true)}</span></span></span></a>`).join('')}
         </div>
       </aside>
     </div>
@@ -1067,7 +1076,7 @@ function pageHome(){
 
   <section class="sec">
     <div class="container">
-      ${secHead('/NEWS',t('latestNews'),'#/news')}
+      ${secHead('/NEWS',t('latestNews'),'/#/news')}
       <div class="grid g3">${latest.slice(0,3).map(cardNews).join('')}</div>
       <div style="margin:26px 0" class="rv">${adSlot('970×250')}</div>
       <div class="grid g3">${latest.slice(3,6).map(cardNews).join('')}</div>
@@ -1076,14 +1085,14 @@ function pageHome(){
 
   <section class="sec sec-alt">
     <div class="container">
-      ${secHead('/AI',t('aiSec'),'#/ai')}
+      ${secHead('/AI',t('aiSec'),'/#/ai')}
       <div class="grid g3">${ai.map(cardNews).join('')}</div>
     </div>
   </section>
 
   <section class="sec">
     <div class="container">
-      ${secHead('/DEVICES',t('devicesSec'),'#/devices')}
+      ${secHead('/DEVICES',t('devicesSec'),'/#/devices')}
       <div class="tabs rv" role="tablist" aria-label="تصفية الأجهزة" id="devTabs">
         ${['all','phone','laptop','watch','smart'].map((k,i)=>`<button class="tab ${i===0?'on':''}" role="tab" data-act="devtab" data-f="${k}" aria-selected="${i===0}">${t('devicesTabs')[k]}</button>`).join('')}
       </div>
@@ -1096,7 +1105,7 @@ function pageHome(){
       <div>
         ${secHead('/TRENDING',t('mostRead'))}
         <div class="rv">${most.map((p,i)=>`
-          <a class="mr-item" href="#/${p.cat}/${p.slug}">
+          <a class="mr-item" href="${postUrl(p)}">
             <span class="mr-num num">0${i+1}</span>
             <span style="flex:1"><h4>${esc(p.title)}</h4><span class="m"><span>${esc(catName(catOf(p.cat)))}</span><span>${I.eye} <span class="num">${fmtViews(viewCount(p))}</span> ${t('views')}</span><span class="num">${fmtDate(p.publishedAt,true)}</span></span></span>
             <img loading="lazy" decoding="async" width="220" height="150" src="${pic(p.image,220,150)}" alt="${esc(p.title)}">
@@ -1111,21 +1120,21 @@ function pageHome(){
 
   <section class="sec">
     <div class="container">
-      ${secHead('/REVIEWS',t('reviewsSec'),'#/reviews')}
+      ${secHead('/REVIEWS',t('reviewsSec'),'/#/reviews')}
       <div class="grid g3">${revs.map(cardReview).join('')}</div>
     </div>
   </section>
 
   <section class="sec sec-alt">
     <div class="container">
-      ${secHead('/VS',t('comparisonsSec'),'#/comparisons')}
+      ${secHead('/VS',t('comparisonsSec'),'/#/comparisons')}
       <div class="grid g2">${comps.map(cardVS).join('')}</div>
     </div>
   </section>
 
   <section class="sec">
     <div class="container">
-      ${secHead('/TOOLKIT',t('toolsSec'),'#/tools')}
+      ${secHead('/TOOLKIT',t('toolsSec'),'/#/tools')}
       <div class="grid g4" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr))">${TOOLS.slice(0,8).map(cardTool).join('')}</div>
     </div>
   </section>
@@ -1164,7 +1173,7 @@ function pageTools(){
   <section class="sec" style="padding-top:14px"><div class="container">
     <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr))">${TOOLS.map(cardTool).join('')}</div>
     <div style="margin:30px 0" class="rv">${adSlot('970×250')}</div>
-    ${secHead('/GUIDES',lang==='ar'?'أدلة الأدوات':'Tool Guides','#/tools')}
+    ${secHead('/GUIDES',lang==='ar'?'أدلة الأدوات':'Tool Guides','/#/tools')}
     <div class="grid g2">${posts.map(cardNews).join('')}</div>
     <div style="margin-top:34px">${newsletter('nl')}</div>
   </div></section>`;
@@ -1180,11 +1189,11 @@ function pageArticle(p){
   setSEO({title:`${p.title} | تيكورا TECHORA`,desc:p.excerpt,path:'/',image:pic(p.image,1200,630),ld:[orgLD]});
   return `
   <section class="container">
-    ${breadcrumbs([[lang==='ar'?'الرئيسية':'Home','#/'],[catName(c),'#/'+p.cat],[p.title,null]])}
+    ${breadcrumbs([[lang==='ar'?'الرئيسية':'Home','/'],[catName(c),catUrl(p.cat)],[p.title,null]])}
     <div class="art-layout">
       <article class="art-main">
         <header class="art-head rv">
-          <a class="chip" href="#/${p.cat}" style="margin-bottom:14px">${esc(catName(c))}</a>
+          <a class="chip" href="${catUrl(p.cat)}" style="margin-bottom:14px">${esc(catName(c))}</a>
           <h1>${esc(p.title)}</h1>
           <p class="art-lead">${esc(p.excerpt)}</p>
           <div class="art-meta">
@@ -1212,7 +1221,7 @@ function pageArticle(p){
         <div style="margin-top:34px">${newsletter('nl')}</div>
       </article>
       <aside class="sidebar">
-        ${h2s.length?`<div class="widget toc rv"><h4>${t('toc')}</h4>${h2s.map(h=>`<a href="#/${p.cat}/${p.slug}#${slugify(h.v)}" data-act="anchor" data-to="${slugify(h.v)}">${esc(h.v)}</a>`).join('')}</div>`:''}
+        ${h2s.length?`<div class="widget toc rv"><h4>${t('toc')}</h4>${h2s.map(h=>`<a href="${postUrl(p)}#${slugify(h.v)}" data-act="anchor" data-to="${slugify(h.v)}">${esc(h.v)}</a>`).join('')}</div>`:''}
         <div class="rv" style="--d:.08s">${adSlot('300×600','420px')}</div>
         <div class="widget rv" style="--d:.14s"><h4>${t('mostRead')}</h4>${most.map(miniPost).join('')}</div>
       </aside>
@@ -1246,7 +1255,7 @@ function renderResults(q,type){
   const ql=(q||'').trim();
   if(!ql)return `<div class="empty rv"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2" stroke-linecap="round"/><path d="M8 11h6" stroke-linecap="round"/></svg><h3>${lang==='ar'?'ابدأ البحث في تيكورا':'Start searching'}</h3><p>${lang==='ar'?'اكتب كلمة مفتاحية مثل «ذكاء اصطناعي» أو «هاتف» أو «حماية».':'Type a keyword like AI, phone or security.'}</p></div>`;
   const res=livePosts().filter(p=>searchType(p,type)&&(p.title.includes(ql)||p.excerpt.includes(ql)||p.tags.join(' ').includes(ql)||p.content.some(b=>(b.v||'').toString().includes(ql))));
-  if(!res.length)return `<div class="empty rv"><svg viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2M8 8l6 6M14 8l-6 6" stroke-linecap="round"/></svg><h3>${t('noResults')} «${esc(ql)}»</h3><p>${lang==='ar'?'جرّب كلمات أبسط أو تحقق من الإملاء — أو تصفح الأقسام من القائمة العلوية.':'Try simpler keywords or check the spelling.'}</p><div style="margin-top:18px"><a class="btn ghost sm" href="#/">${t('backHome')}</a></div></div>`;
+  if(!res.length)return `<div class="empty rv"><svg viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2M8 8l6 6M14 8l-6 6" stroke-linecap="round"/></svg><h3>${t('noResults')} «${esc(ql)}»</h3><p>${lang==='ar'?'جرّب كلمات أبسط أو تحقق من الإملاء — أو تصفح الأقسام من القائمة العلوية.':'Try simpler keywords or check the spelling.'}</p><div style="margin-top:18px"><a class="btn ghost sm" href="/">${t('backHome')}</a></div></div>`;
   return `<p class="count-badge rv" style="margin-bottom:20px"><span class="num">${res.length}</span> ${t('results')} ${lang==='ar'?'عن':'for'} «${esc(ql)}»</p>
     <div class="grid g3">${res.map(cardNews).join('')}</div>`;
 }
@@ -1265,7 +1274,7 @@ function page404(){
     <div class="code num">404</div>
     <h1>${t('nfTitle')}</h1>
     <p>${lang==='ar'?'ربما تغير الرابط أو حُذفت الصفحة — لنعد بك إلى عالم التقنية.':'The link may have changed.'}</p>
-    <div class="btns"><a class="btn" href="#/">${t('backHome')}</a><a class="btn ghost" href="#/news">${t('browseNews')} ${I.arrow}</a></div>
+    <div class="btns"><a class="btn" href="/">${t('backHome')}</a><a class="btn ghost" href="/#/news">${t('browseNews')} ${I.arrow}</a></div>
   </div></section>`;
 }
 
@@ -1277,11 +1286,11 @@ function pageAdmin(tab){
   const tabs=[['overview',lang==='ar'?'نظرة عامة':'Overview'],['posts',lang==='ar'?'المقالات':'Posts'],['cats',lang==='ar'?'التصنيفات':'Categories'],['media',lang==='ar'?'الوسائط':'Media'],['users',lang==='ar'?'المستخدمون':'Users'],['settings',lang==='ar'?'الإعدادات':'Settings']];
   return `
   <section class="container" style="padding-top:10px">
-    ${breadcrumbs([[lang==='ar'?'الرئيسية':'Home','#/'],['لوحة التحكم',null]])}
+    ${breadcrumbs([[lang==='ar'?'الرئيسية':'Home','/'],['لوحة التحكم',null]])}
     <div class="admin rv in">
       <nav class="adm-nav" aria-label="قائمة لوحة التحكم">
-        ${tabs.map(([k,l])=>`<a href="#/admin/${k}" class="${admTab===k?'on':''}">${l}</a>`).join('')}
-        <a href="#/" style="margin-top:auto;color:var(--accent)">← ${lang==='ar'?'عرض الموقع':'View site'}</a>
+        ${tabs.map(([k,l])=>`<a href="/#/admin/${k}" class="${admTab===k?'on':''}">${l}</a>`).join('')}
+        <a href="/" style="margin-top:auto;color:var(--accent)">← ${lang==='ar'?'عرض الموقع':'View site'}</a>
       </nav>
       <div class="adm-body">${adminBody()}</div>
     </div>
@@ -1307,7 +1316,7 @@ function adminBody(){
       </div>
       <div><h4 style="margin-bottom:14px;font-weight:800">${lang==='ar'?'أحدث المقالات':'Latest posts'}</h4>
         <table class="tbl"><thead><tr><th>${lang==='ar'?'العنوان':'Title'}</th><th>${lang==='ar'?'الحالة':'Status'}</th></tr></thead>
-        <tbody>${posts.slice(0,5).map(p=>`<tr><td><a href="#/${p.cat}/${p.slug}" style="font-weight:600">${esc(clamp(p.title,44))}</a></td><td><span class="pill ${p.status==='draft'?'dr':p.status==='scheduled'?'sch':'pub'}">${p.status==='draft'?(lang==='ar'?'مسودة':'Draft'):p.status==='scheduled'?(lang==='ar'?'مجدول':'Scheduled'):(lang==='ar'?'منشور':'Published')}</span></td></tr>`).join('')}</tbody></table>
+        <tbody>${posts.slice(0,5).map(p=>`<tr><td><a href="${postUrl(p)}" style="font-weight:600">${esc(clamp(p.title,44))}</a></td><td><span class="pill ${p.status==='draft'?'dr':p.status==='scheduled'?'sch':'pub'}">${p.status==='draft'?(lang==='ar'?'مسودة':'Draft'):p.status==='scheduled'?(lang==='ar'?'مجدول':'Scheduled'):(lang==='ar'?'منشور':'Published')}</span></td></tr>`).join('')}</tbody></table>
       </div>
     </div>`;
   }
@@ -1421,7 +1430,7 @@ const NAV_ITEMS=[['/','home'],['/news','news'],['/ai','ai'],['/devices','devices
 function buildNav(){
   $('#mainnav').innerHTML=NAV_ITEMS.map(([h,k])=>`<a href="#${h}" data-nav="${h}">${t(k)}</a>`).join('')
    +`<span class="dd" id="moreDD"><button class="icon-btn" style="width:auto;padding-inline:10px;font-weight:600;font-size:.92rem;color:inherit" data-act="more">${t('more')} ▾</button>
-      <span class="dd-panel"><a href="#/comparisons" data-nav="/comparisons">${t('comparisons')}</a><a href="#/tools" data-nav="/tools">${t('tools')}</a><a href="/about/" data-nav="/about">${t('about')}</a><a href="/contact/" data-nav="/contact">${t('contact')}</a></span></span>`;
+      <span class="dd-panel"><a href="/#/comparisons" data-nav="/comparisons">${t('comparisons')}</a><a href="/#/tools" data-nav="/tools">${t('tools')}</a><a href="/about/" data-nav="/about">${t('about')}</a><a href="/contact/" data-nav="/contact">${t('contact')}</a></span></span>`;
   $('#drawerNav').innerHTML=[...NAV_ITEMS,['/comparisons','comparisons'],['/tools','tools'],['/about','about'],['/contact','contact']].map(([h,k],i)=>`<a href="#${h}" style="--d:${.05+i*.045}s"><span>${t(k)}</span><span class="en">${h.slice(2).toUpperCase()||'HOME'}</span></a>`).join('');
   $$('[data-i]').forEach(el=>{const k=el.dataset.i;if(I18N[lang][k])el.textContent=t(k)});
 }
@@ -1501,7 +1510,7 @@ document.addEventListener('click',e=>{
       $('#burgerBtn').setAttribute('aria-expanded',open);break}
     case 'more':{const d=$('#moreDD');d&&d.classList.toggle('open');break}
     case 'closemodal':$('#modal').classList.remove('open');document.body.style.overflow='';break;
-    case 'goto-nl':{if(location.hash!=='#/'&&location.hash!==''){location.hash='#/';setTimeout(()=>$('#nl-sec')?.scrollIntoView({behavior:reduced?'auto':'smooth'}),120)}else{$('#nl-sec')?.scrollIntoView({behavior:'smooth'})}break}
+    case 'goto-nl':{if(location.hash!=='/'&&location.hash!==''){location.hash='/';setTimeout(()=>$('#nl-sec')?.scrollIntoView({behavior:reduced?'auto':'smooth'}),120)}else{$('#nl-sec')?.scrollIntoView({behavior:'smooth'})}break}
     case 'anchor':{e.preventDefault();document.getElementById(el.dataset.to)?.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});history.replaceState(null,'','#'+location.hash.split('#')[1]+'#'+el.dataset.to);break}
     case 'copy':{
       const u=el.dataset.url||location.href;
@@ -1566,7 +1575,7 @@ document.addEventListener('submit',e=>{
     const subs=Store.get('tx_subs',[]);
     if(subs.includes(em)){toast(lang==='ar'?'أنت مشترك بالفعل ✓':'Already subscribed');return}
     subs.push(em);Store.set('tx_subs',subs);
-    f.innerHTML=`<div style="padding:.9rem 1.2rem;background:rgba(47,230,195,.15);border:1px solid rgba(47,230,195,.4);border-radius:12px;color:#bdf5e7;font-weight:700">✅ ${lang==='ar'?'تم اشتراكك بنجاح! أهلًا بك في نشرة تيكورا.':'Subscribed successfully!'}</div>`;
+    f.innerHTML=`<div style="padding:.9rem 1.2rem;background:rgba(126,171,255,.15);border:1px solid rgba(126,171,255,.4);border-radius:12px;color:#bdf5e7;font-weight:700">✅ ${lang==='ar'?'تم اشتراكك بنجاح! أهلًا بك في نشرة تيكورا.':'Subscribed successfully!'}</div>`;
     toast(lang==='ar'?'تم الاشتراك في النشرة ✓':'Subscribed ✓');
   }
   if(kind==='search'){
@@ -1658,7 +1667,7 @@ function applySettings(){
   const soc=socialIcon;
   $('#socials').innerHTML=[['x',s.x||'https://x.com/techora'],['youtube',s.yt||'https://youtube.com/@techora'],['linkedin','https://linkedin.com/company/techora'],['instagram','https://instagram.com/techora'],['telegram','https://t.me/techora']]
     .map(([k,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener" aria-label="${k}">${soc[k]}</a>`).join('');
-  $('#footCats').innerHTML=BASE_CATS.slice(0,6).map(c=>`<a href="#/${c.slug}">${esc(catName(c))}</a>`).join('');
+  $('#footCats').innerHTML=BASE_CATS.slice(0,6).map(c=>`<a href="${catUrl(c.slug)}">${esc(catName(c))}</a>`).join('');
 }
 
 /* ---------- الإقلاع ---------- */
