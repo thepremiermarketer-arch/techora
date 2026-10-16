@@ -1,0 +1,11 @@
+# صفحات تُولَّد أثناء النشر عبر scripts/prerender.mjs
+/news/
+/ai/
+/devices/
+/apps/
+/cybersecurity/
+/tutorials/
+/reviews/
+/comparisons/
+/tools/
+/404.html

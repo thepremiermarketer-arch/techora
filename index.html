@@ -8,20 +8,25 @@
 <meta name="robots" content="index,follow">
 <meta name="monetag" content="86e5ddfb6450798babea83d2e5c22d8f">
 <link rel="canonical" href="https://techora-tech.netlify.app/">
-<link rel="preload" as="image" href="assets/techora-ai-tools.webp" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/techora-ai-tools-1200.webp" fetchpriority="high">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TECHORA | تكورا">
 <meta property="og:title" content="تيكورا TECHORA — عالمك من التقنية">
 <meta property="og:description" content="أخبار التقنية والذكاء الاصطناعي والمراجعات والشروحات — بالعربية.">
 <meta property="og:url" content="https://techora-tech.netlify.app/">
-<meta property="og:image" content="https://techora-tech.netlify.app/assets/techora-ai-tools.webp">
+<meta property="og:image" content="https://techora-tech.netlify.app/assets/og/techora-ai-tools.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="ar_AR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="تيكورا TECHORA — عالمك من التقنية">
 <meta name="twitter:description" content="أخبار التقنية والذكاء الاصطناعي والمراجعات والشروحات — بالعربية.">
-<meta name="twitter:image" content="https://techora-tech.netlify.app/assets/techora-ai-tools.webp">
+<meta name="twitter:image" content="https://techora-tech.netlify.app/assets/og/techora-ai-tools.jpg">
 <meta name="theme-color" content="#0a0e13">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300b896'/%3E%3Cpath d='M16 22h32v9H37v22h-10V31H16z' fill='%23071018'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/logo-512.png">
+<link rel="apple-touch-icon" href="/assets/logo-512.png">
+<link rel="alternate" hreflang="ar" href="https://techora-tech.netlify.app/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -516,8 +521,8 @@ footer{background:#0b1222;color:#b3bfd3;margin-top:60px}
       <div><h5 data-i="quickLinks">روابط مهمة</h5>
         <a href="/about/" data-i="about">من نحن</a>
         <a href="/contact/" data-i="contact">اتصل بنا</a>
-        <a href="/#/tools" data-i="tools">أدوات تقنية</a>
-        <a href="/#/comparisons" data-i="comparisons">مقارنات</a>
+        <a href="/tools/" data-i="tools">أدوات تقنية</a>
+        <a href="/comparisons/" data-i="comparisons">مقارنات</a>
         <a href="/#/admin">لوحة التحكم</a>
       </div>
       <div><h5 data-i="legal">قانوني</h5>
@@ -545,8 +550,8 @@ footer{background:#0b1222;color:#b3bfd3;margin-top:60px}
 /* ---------- أدوات عامة ---------- */
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const postUrl=p=>`/#/${p.cat}/${p.slug}`;
-const catUrl=slug=>`/#/${slug}`;
+const postUrl=p=>`/${p.cat}/${p.slug}/`;
+const catUrl=slug=>`/${slug}/`;
 const imageName=(seed)=>{
   const s=String(seed).toLowerCase();
   if(/ai-tools|ai-at-work|generative-ai|ai-design|future-ai|developer-tools/.test(s)) return 'techora-ai-tools';
@@ -931,13 +936,20 @@ function setSEO(o){
   set('meta[property="og:title"]','prop',o.title||'TECHORA');
   set('meta[property="og:description"]','prop',o.desc||'');
   if(o.image)set('meta[property="og:image"]','prop',o.image);
+  const tw=(n,v)=>{let e=$(`meta[name="${n}"]`);if(e&&v)e.content=v};
+  tw('twitter:title',o.title);tw('twitter:description',o.desc);tw('twitter:image',o.image);
   let c=$('link[rel="canonical"]');if(!c){c=document.createElement('link');c.rel='canonical';document.head.appendChild(c)}
-  // صفحات التطبيق الحالية تستخدم hash routes؛ لا تضع مسارات hash أو مسارات غير مولدة في canonical.
-  c.href=SITE_URL+'/';
+  // المقالات والأقسام لها صفحات ثابتة مولدة؛ البحث ولوحة التحكم تبقى على الرئيسية.
+  c.href=SITE_URL+(o.canon||'/');
+  set('meta[property="og:url"]','prop',c.href);
+  let rb=$('meta[name="robots"]');if(rb)rb.content=o.noindex?'noindex,follow':'index,follow,max-image-preview:large';
   let j=$('#jsonld');if(j)j.remove();
   if(o.ld){j=document.createElement('script');j.type='application/ld+json';j.id='jsonld';j.textContent=JSON.stringify(o.ld);document.head.appendChild(j)}
 }
-const orgLD={"@context":"https://schema.org","@type":"Organization",name:"TECHORA",alternateName:"تكورا",url:"https://techora-tech.netlify.app",logo:"https://picsum.photos/seed/techora-cover/1200/630",sameAs:["https://x.com/techora","https://youtube.com/@techora"],slogan:"Your World of Technology"};
+const orgLD={"@context":"https://schema.org","@type":"Organization",name:"TECHORA",alternateName:"تكورا",url:"https://techora-tech.netlify.app",logo:"https://techora-tech.netlify.app/assets/logo-512.png",sameAs:["https://x.com/techora","https://youtube.com/@techora"],slogan:"Your World of Technology"};
+
+const articleLD=p=>({"@context":"https://schema.org","@type":p.rating?"Review":"NewsArticle",headline:p.title,description:p.excerpt,image:[ogPic(p.image)],datePublished:p.publishedAt,dateModified:p.updatedAt||p.publishedAt,inLanguage:"ar",mainEntityOfPage:SITE_URL+postUrl(p),author:{"@type":"Person",name:p.author},publisher:{"@type":"Organization",name:"TECHORA",logo:{"@type":"ImageObject",url:SITE_URL+"/assets/logo-512.png"}},keywords:(p.tags||[]).join(', ')});
+const breadLD=items=>({"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:items.map(([n,u],i)=>({"@type":"ListItem",position:i+1,name:n,item:SITE_URL+u}))});
 
 /* ---------- مكوّنات مشتركة ---------- */
 const img=(p,w,h,cls='',eager)=>`<img ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async" width="${w}" height="${h}" class="${cls}" src="${pic(p.image,w,h)}" srcset="${srcset(p.image)}" sizes="(max-width:640px) 100vw, (max-width:1000px) 50vw, 33vw" alt="${esc(p.title)}" onload="this.classList.add('ld')">`;
@@ -1045,7 +1057,7 @@ function pageHome(){
   const most=[...posts].sort((a,b)=>viewCount(b)-viewCount(a)).slice(0,5);
   const revs=posts.filter(p=>p.cat==='reviews').slice(0,3);
   const comps=posts.filter(p=>p.cat==='comparisons').slice(0,4);
-  setSEO({title:'تيكورا TECHORA — عالمك من التقنية | أخبار وذكاء اصطناعي ومراجعات',desc:'منصة تقنية عربية حديثة: أخبار التقنية، الذكاء الاصطناعي، مراجعات الأجهزة، الشروحات والمقارنات وأفضل الأدوات.',path:'/',image:pic('techora-cover',1200,630),ld:[orgLD,{"@context":"https://schema.org","@type":"WebSite",name:"TECHORA",url:"https://techora-tech.netlify.app/"}]});
+  setSEO({title:'تيكورا TECHORA — عالمك من التقنية | أخبار وذكاء اصطناعي ومراجعات',desc:'منصة تقنية عربية حديثة: أخبار التقنية، الذكاء الاصطناعي، مراجعات الأجهزة، الشروحات والمقارنات وأفضل الأدوات.',path:'/',image:ogPic('techora-cover'),ld:[orgLD,{"@context":"https://schema.org","@type":"WebSite",name:"TECHORA",url:"https://techora-tech.netlify.app/"}]});
   return `
   <div class="ticker" aria-label="شريط الأخبار العاجلة">
     <div class="ticker-label"><span class="dot"></span>${t('breaking')}</div>
@@ -1076,7 +1088,7 @@ function pageHome(){
 
   <section class="sec">
     <div class="container">
-      ${secHead('/NEWS',t('latestNews'),'/#/news')}
+      ${secHead('/NEWS',t('latestNews'),'/news/')}
       <div class="grid g3">${latest.slice(0,3).map(cardNews).join('')}</div>
       <div style="margin:26px 0" class="rv">${adSlot('970×250')}</div>
       <div class="grid g3">${latest.slice(3,6).map(cardNews).join('')}</div>
@@ -1085,14 +1097,14 @@ function pageHome(){
 
   <section class="sec sec-alt">
     <div class="container">
-      ${secHead('/AI',t('aiSec'),'/#/ai')}
+      ${secHead('/AI',t('aiSec'),'/ai/')}
       <div class="grid g3">${ai.map(cardNews).join('')}</div>
     </div>
   </section>
 
   <section class="sec">
     <div class="container">
-      ${secHead('/DEVICES',t('devicesSec'),'/#/devices')}
+      ${secHead('/DEVICES',t('devicesSec'),'/devices/')}
       <div class="tabs rv" role="tablist" aria-label="تصفية الأجهزة" id="devTabs">
         ${['all','phone','laptop','watch','smart'].map((k,i)=>`<button class="tab ${i===0?'on':''}" role="tab" data-act="devtab" data-f="${k}" aria-selected="${i===0}">${t('devicesTabs')[k]}</button>`).join('')}
       </div>
@@ -1120,21 +1132,21 @@ function pageHome(){
 
   <section class="sec">
     <div class="container">
-      ${secHead('/REVIEWS',t('reviewsSec'),'/#/reviews')}
+      ${secHead('/REVIEWS',t('reviewsSec'),'/reviews/')}
       <div class="grid g3">${revs.map(cardReview).join('')}</div>
     </div>
   </section>
 
   <section class="sec sec-alt">
     <div class="container">
-      ${secHead('/VS',t('comparisonsSec'),'/#/comparisons')}
+      ${secHead('/VS',t('comparisonsSec'),'/comparisons/')}
       <div class="grid g2">${comps.map(cardVS).join('')}</div>
     </div>
   </section>
 
   <section class="sec">
     <div class="container">
-      ${secHead('/TOOLKIT',t('toolsSec'),'/#/tools')}
+      ${secHead('/TOOLKIT',t('toolsSec'),'/tools/')}
       <div class="grid g4" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr))">${TOOLS.slice(0,8).map(cardTool).join('')}</div>
     </div>
   </section>
@@ -1146,7 +1158,7 @@ function pageCategory(slug){
   const c=catOf(slug);
   if(!getCats().find(x=>x.slug===slug))return page404();
   const posts=livePosts().filter(p=>p.cat===slug);
-  setSEO({title:`${catName(c)} | تيكورا TECHORA`,desc:`أحدث مقالات ومقالات ${catName(c)} على تيكورا: تحليلات ومراجعات وشروحات محدثة.`,path:'/'+slug,image:pic(slug+'-cover',1200,630)});
+  setSEO({title:`${catName(c)} | تيكورا TECHORA`,desc:`أحدث مقالات ومقالات ${catName(c)} على تيكورا: تحليلات ومراجعات وشروحات محدثة.`,path:'/'+slug,canon:catUrl(slug),image:ogPic(slug+'-cover'),ld:[orgLD,breadLD([[t('home'),'/'],[catName(c),catUrl(slug)]])]});
   const isComp=slug==='comparisons';
   return `
   <div class="page-head"><div class="container">
@@ -1173,7 +1185,7 @@ function pageTools(){
   <section class="sec" style="padding-top:14px"><div class="container">
     <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr))">${TOOLS.map(cardTool).join('')}</div>
     <div style="margin:30px 0" class="rv">${adSlot('970×250')}</div>
-    ${secHead('/GUIDES',lang==='ar'?'أدلة الأدوات':'Tool Guides','/#/tools')}
+    ${secHead('/GUIDES',lang==='ar'?'أدلة الأدوات':'Tool Guides','/tools/')}
     <div class="grid g2">${posts.map(cardNews).join('')}</div>
     <div style="margin-top:34px">${newsletter('nl')}</div>
   </div></section>`;
@@ -1186,7 +1198,7 @@ function pageArticle(p){
   const most=[...livePosts()].sort((a,b)=>viewCount(b)-viewCount(a)).filter(x=>x.id!==p.id).slice(0,4);
   const h2s=p.content.filter(b=>b.t==='h2');
   const u=typeof location!=='undefined'?location.href:'';
-  setSEO({title:`${p.title} | تيكورا TECHORA`,desc:p.excerpt,path:'/',image:pic(p.image,1200,630),ld:[orgLD]});
+  setSEO({title:`${p.title} | تيكورا TECHORA`,desc:p.excerpt,path:'/',canon:postUrl(p),image:ogPic(p.image),ld:[orgLD,articleLD(p),breadLD([[t('home'),'/'],[catName(c),catUrl(p.cat)],[p.title,postUrl(p)]])]});
   return `
   <section class="container">
     ${breadcrumbs([[lang==='ar'?'الرئيسية':'Home','/'],[catName(c),catUrl(p.cat)],[p.title,null]])}
@@ -1230,7 +1242,7 @@ function pageArticle(p){
 }
 
 function pageSearch(q){
-  setSEO({title:`${t('search')} ${q?'— '+q:''} | تيكورا`,desc:'ابحث في جميع مقالات وأخبار ومراجعات وشروحات تيكورا.',path:'/search'});
+  setSEO({title:`${t('search')} ${q?'— '+q:''} | تيكورا`,desc:'ابحث في جميع مقالات وأخبار ومراجعات وشروحات تيكورا.',path:'/search',noindex:true});
   return `
   <div class="page-head"><div class="container">
     <span class="en-sub">TECHORA / SEARCH</span><h1>${t('search')}</h1>
@@ -1269,12 +1281,12 @@ function pageContact(){return staticPageNotice(t('contact'),'/contact/');}
 function pageLegal(which){return staticPageNotice(which==='privacy'?t('privacy'):t('terms'),which==='privacy'?'/privacy/':'/terms/');}
 
 function page404(){
-  setSEO({title:'404 — الصفحة غير موجودة | تيكورا',desc:'الصفحة التي تبحث عنها غير موجودة في تيكورا.',path:'/404'});
+  setSEO({title:'404 — الصفحة غير موجودة | تيكورا',desc:'الصفحة التي تبحث عنها غير موجودة في تيكورا.',path:'/404',noindex:true});
   return `<section class="nf"><div class="rv">
     <div class="code num">404</div>
     <h1>${t('nfTitle')}</h1>
     <p>${lang==='ar'?'ربما تغير الرابط أو حُذفت الصفحة — لنعد بك إلى عالم التقنية.':'The link may have changed.'}</p>
-    <div class="btns"><a class="btn" href="/">${t('backHome')}</a><a class="btn ghost" href="/#/news">${t('browseNews')} ${I.arrow}</a></div>
+    <div class="btns"><a class="btn" href="/">${t('backHome')}</a><a class="btn ghost" href="/news/">${t('browseNews')} ${I.arrow}</a></div>
   </div></section>`;
 }
 
@@ -1422,16 +1434,16 @@ function openEditor(id){
 /* ---------- الراوتر ---------- */
 let state={q:'',stype:'all'};
 function parseHash(){
-  let h=location.hash.replace(/^#/,'')||'/';let q='';
+  let h=location.hash.startsWith('#/')?location.hash.slice(1):(location.pathname||'/');let q='';
   const i=h.indexOf('?');if(i>-1){q=h.slice(i+1);h=h.slice(0,i)}
   return {path:(h.replace(/\/+$/,'')||'/'),query:new URLSearchParams(q)};
 }
 const NAV_ITEMS=[['/','home'],['/news','news'],['/ai','ai'],['/devices','devices'],['/apps','apps'],['/cybersecurity','cyber'],['/tutorials','tutorials'],['/reviews','reviews']];
 function buildNav(){
-  $('#mainnav').innerHTML=NAV_ITEMS.map(([h,k])=>`<a href="#${h}" data-nav="${h}">${t(k)}</a>`).join('')
+  $('#mainnav').innerHTML=NAV_ITEMS.map(([h,k])=>`<a href="${h==='/'?'/':h+'/'}" data-nav="${h}">${t(k)}</a>`).join('')
    +`<span class="dd" id="moreDD"><button class="icon-btn" style="width:auto;padding-inline:10px;font-weight:600;font-size:.92rem;color:inherit" data-act="more">${t('more')} ▾</button>
-      <span class="dd-panel"><a href="/#/comparisons" data-nav="/comparisons">${t('comparisons')}</a><a href="/#/tools" data-nav="/tools">${t('tools')}</a><a href="/about/" data-nav="/about">${t('about')}</a><a href="/contact/" data-nav="/contact">${t('contact')}</a></span></span>`;
-  $('#drawerNav').innerHTML=[...NAV_ITEMS,['/comparisons','comparisons'],['/tools','tools'],['/about','about'],['/contact','contact']].map(([h,k],i)=>`<a href="#${h}" style="--d:${.05+i*.045}s"><span>${t(k)}</span><span class="en">${h.slice(2).toUpperCase()||'HOME'}</span></a>`).join('');
+      <span class="dd-panel"><a href="/comparisons/" data-nav="/comparisons">${t('comparisons')}</a><a href="/tools/" data-nav="/tools">${t('tools')}</a><a href="/about/" data-nav="/about">${t('about')}</a><a href="/contact/" data-nav="/contact">${t('contact')}</a></span></span>`;
+  $('#drawerNav').innerHTML=[...NAV_ITEMS,['/comparisons','comparisons'],['/tools','tools'],['/about','about'],['/contact','contact']].map(([h,k],i)=>`<a href="${h==='/'?'/':h+'/'}" style="--d:${.05+i*.045}s"><span>${t(k)}</span><span class="en">${h.slice(2).toUpperCase()||'HOME'}</span></a>`).join('');
   $$('[data-i]').forEach(el=>{const k=el.dataset.i;if(I18N[lang][k])el.textContent=t(k)});
 }
 function updateActiveNav(path){
@@ -1442,6 +1454,11 @@ const observeRv=()=>$$('.rv:not(.in)').forEach(el=>reduced?el.classList.add('in'
 
 function render(){
   const {path,query}=parseHash();
+  // روابط hash القديمة (#/ai/...) تُحوَّل إلى العناوين الثابتة القابلة للفهرسة
+  if(location.hash.startsWith('#/')&&path!=='/'&&!/^\/(search|admin)/.test(path)){
+    const cp=getCats().find(c=>'/'+c.slug===path),pp=postBySlug(path.split('/').pop());
+    if(cp||pp){location.replace(cp?catUrl(cp.slug):postUrl(pp));return}
+  }
   document.body.classList.remove('menu-open');
   $('#drawer').setAttribute('aria-hidden','true');
   let html;
@@ -1461,6 +1478,7 @@ function render(){
   updateActiveNav(path);
   window.scrollTo({top:0,behavior:'instant' in window?'instant':'auto'});
   observeRv();
+  if(location.hash==='#nl')setTimeout(()=>$('#nl-sec')?.scrollIntoView({behavior:reduced?'auto':'smooth'}),150);
   if(path.startsWith('/search')){const si=$('#searchInput');si&&si.focus({preventScroll:true})}
 }
 window.addEventListener('hashchange',render);
@@ -1510,8 +1528,8 @@ document.addEventListener('click',e=>{
       $('#burgerBtn').setAttribute('aria-expanded',open);break}
     case 'more':{const d=$('#moreDD');d&&d.classList.toggle('open');break}
     case 'closemodal':$('#modal').classList.remove('open');document.body.style.overflow='';break;
-    case 'goto-nl':{if(location.hash!=='/'&&location.hash!==''){location.hash='/';setTimeout(()=>$('#nl-sec')?.scrollIntoView({behavior:reduced?'auto':'smooth'}),120)}else{$('#nl-sec')?.scrollIntoView({behavior:'smooth'})}break}
-    case 'anchor':{e.preventDefault();document.getElementById(el.dataset.to)?.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});history.replaceState(null,'','#'+location.hash.split('#')[1]+'#'+el.dataset.to);break}
+    case 'goto-nl':{e.preventDefault();const n=$('#nl-sec');if(n)n.scrollIntoView({behavior:reduced?'auto':'smooth'});else location.href='/#nl';break}
+    case 'anchor':{e.preventDefault();document.getElementById(el.dataset.to)?.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});history.replaceState(null,'','#'+el.dataset.to);break}
     case 'copy':{
       const u=el.dataset.url||location.href;
       (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>toast(lang==='ar'?'تم نسخ رابط المقال ✓':'Link copied ✓')).catch(()=>{const i=document.createElement('input');i.value=u;document.body.appendChild(i);i.select();document.execCommand('copy');i.remove();toast('تم نسخ الرابط ✓')});
@@ -1561,7 +1579,7 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){$('#modal').classList.remove('open');document.body.classList.remove('menu-open');document.body.style.overflow='';const d=$('#moreDD');d&&d.classList.remove('open')}
-  if(e.key==='/'&&!/input|textarea|select/i.test(document.activeElement.tagName)){e.preventDefault();location.hash='#/search';setTimeout(()=>$('#searchInput')?.focus(),80)}
+  if(e.key==='/'&&!/input|textarea|select/i.test(document.activeElement.tagName)){e.preventDefault();if(parseHash().path!=='/'&&!location.hash.startsWith('#/')){location.href='/#/search';return}location.hash='#/search';setTimeout(()=>$('#searchInput')?.focus(),80)}
 });
 $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')$('#modal').classList.remove('open')});
 
@@ -1655,7 +1673,7 @@ document.addEventListener('change',e=>{
 /* شريط تقدم القراءة */
 window.addEventListener('scroll',()=>{
   const bar=$('#pbar');if(!bar)return;
-  if(!location.hash.includes('/')||getPosts().length===0)return;
+  if(!$('.art-main'))return;
   const h=document.documentElement.scrollHeight-innerHeight;
   bar.style.width=h>0?(scrollY/h*100)+'%':'0';
 },{passive:true});
