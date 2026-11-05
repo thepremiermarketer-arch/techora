@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>تيكورا TECHORA — عالمك من التقنية | أخبار، ذكاء اصطناعي، مراجعات وشروحات</title>
 <meta name="description" content="تيكورا TECHORA — منصة تقنية عربية حديثة: أخبار التقنية، الذكاء الاصطناعي، الهواتف والأجهزة، التطبيقات، الأمن السيبراني، الشروحات، المراجعات والمقارنات.">
-<meta name="robots" content="index,follow">
+<meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="monetag" content="86e5ddfb6450798babea83d2e5c22d8f">
 <link rel="canonical" href="https://techora-tech.netlify.app/">
-<link rel="preload" as="image" href="assets/techora-ai-tools.webp" fetchpriority="high">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TECHORA | تكورا">
 <meta property="og:title" content="تيكورا TECHORA — عالمك من التقنية">
@@ -553,8 +552,12 @@ const localImage=(seed)=>{
   if(/phone|smartphone|galaxy|iphone|pixel|foldable|watch|laptop|macbook|ssd|smart-home|windows|chips/.test(s)) return 'assets/techora-smartphone.webp';
   return 'assets/techora-ai-hero.webp';
 };
-const pic=(seed,w=960,h=540)=>localImage(seed);
-const srcset=seed=>`${pic(seed,640,360)} 640w, ${pic(seed,960,540)} 960w, ${pic(seed,1280,720)} 1280w`;
+const pic=(seed,w=960,h=540)=>{
+  const width=Math.min(1200,Math.max(1,Math.round(w)));
+  const height=Math.max(1,Math.round(width*h/w));
+  return `/.netlify/images?url=${encodeURIComponent('/'+localImage(seed))}&w=${width}&h=${height}&fit=cover&q=82`;
+};
+const srcset=(seed,w=16,h=9)=>[320,640,960,1200].map(width=>`${pic(seed,width,width*h/w)} ${width}w`).join(', ');
 const Store={
   get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
   set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},
@@ -592,8 +595,8 @@ const socialIcon={
 /* ---------- i18n ---------- */
 let lang=Store.get('tx_lang','ar');
 const I18N={
-ar:{home:'الرئيسية',news:'أخبار',ai:'ذكاء اصطناعي',devices:'أجهزة',apps:'تطبيقات',cyber:'أمن سيبراني',tutorials:'شروحات',reviews:'مراجعات',more:'المزيد',comparisons:'مقارنات',tools:'أدوات',about:'من نحن',contact:'اتصل بنا',search:'البحث',readMore:'اقرأ المزيد',viewAll:'عرض الكل',latestNews:'أحدث الأخبار',aiSec:'الذكاء الاصطناعي',devicesSec:'أحدث الأجهزة',mostRead:'الأكثر قراءة',reviewsSec:'مراجعاتنا',comparisonsSec:'مقارنات تقنية',toolsSec:'أفضل الأدوات التقنية',nlTitle:'اشترك في نشرة Techora',nlDesc:'احصل على أهم أخبار التقنية والذكاء الاصطناعي مباشرة إلى بريدك.',subscribe:'اشترك الآن',emailPh:'بريدك الإلكتروني',breaking:'عاجل',live:'الأحدث الآن',subscribeBtn:'اشترك',sections:'أقسام الموقع',quickLinks:'روابط مهمة',legal:'قانوني',privacy:'سياسة الخصوصية',terms:'شروط الاستخدام',rights:'جميع الحقوق محفوظة',results:'نتيجة',noResults:'لا توجد نتائج',searchPh:'ابحث عن مقال، مراجعة، شرح…',all:'الكل',by:'بواسطة',minRead:'دقائق قراءة',views:'مشاهدة',related:'مقالات ذات صلة',toc:'محتويات المقال',share:'مشاركة',copyLink:'نسخ الرابط',print:'طباعة',backHome:'العودة للرئيسية',browseNews:'تصفح الأخبار',nfTitle:'يبدو أنك وصلت إلى صفحة غير موجودة.',sendMsg:'إرسال الرسالة',name:'الاسم',email:'البريد الإلكتروني',subject:'الموضوع',message:'الرسالة',adSpace:'مساحة إعلانية',verdict:'الخلاصة',devicesTabs:{all:'الكل',phone:'هواتف',laptop:'لابتوبات',watch:'ساعات ذكية',smart:'أجهزة ذكية'}},
-en:{home:'Home',news:'News',ai:'AI',devices:'Devices',apps:'Apps',cyber:'Cybersecurity',tutorials:'Tutorials',reviews:'Reviews',more:'More',comparisons:'Comparisons',tools:'Tools',about:'About',contact:'Contact',search:'Search',readMore:'Read more',viewAll:'View all',latestNews:'Latest News',aiSec:'Artificial Intelligence',devicesSec:'Latest Devices',mostRead:'Most Read',reviewsSec:'Our Reviews',comparisonsSec:'Tech Comparisons',toolsSec:'Best Tech Tools',nlTitle:'Subscribe to Techora Newsletter',nlDesc:'Get the most important tech & AI news straight to your inbox.',subscribe:'Subscribe',emailPh:'Your email address',breaking:'BREAKING',live:'Live now',subscribeBtn:'Subscribe',sections:'Sections',quickLinks:'Quick Links',legal:'Legal',privacy:'Privacy Policy',terms:'Terms of Use',rights:'All rights reserved',results:'results',noResults:'No results found',searchPh:'Search articles, reviews, tutorials…',all:'All',by:'By',minRead:'min read',views:'views',related:'Related Articles',toc:'Contents',share:'Share',copyLink:'Copy link',print:'Print',backHome:'Back to Home',browseNews:'Browse News',nfTitle:'Looks like this page does not exist.',sendMsg:'Send Message',name:'Name',email:'Email',subject:'Subject',message:'Message',adSpace:'Ad Space',verdict:'Verdict',devicesTabs:{all:'All',phone:'Phones',laptop:'Laptops',watch:'Smartwatches',smart:'Smart Devices'}}
+ar:{home:'الرئيسية',news:'أخبار',ai:'ذكاء اصطناعي',devices:'أجهزة',apps:'تطبيقات',cyber:'أمن سيبراني',tutorials:'شروحات',reviews:'مراجعات',more:'المزيد',comparisons:'مقارنات',tools:'أدوات',about:'من نحن',contact:'اتصل بنا',search:'البحث',readMore:'اقرأ المزيد',viewAll:'عرض الكل',latestNews:'أحدث الأخبار',aiSec:'الذكاء الاصطناعي',devicesSec:'أحدث الأجهزة',mostRead:'الأكثر قراءة',reviewsSec:'مراجعاتنا',comparisonsSec:'مقارنات تقنية',toolsSec:'أفضل الأدوات التقنية',nlTitle:'اشترك في نشرة Techora',nlDesc:'احصل على أهم أخبار التقنية والذكاء الاصطناعي مباشرة إلى بريدك.',subscribe:'اشترك الآن',emailPh:'بريدك الإلكتروني',breaking:'عاجل',live:'الأحدث الآن',subscribeBtn:'اشترك',sections:'أقسام الموقع',quickLinks:'روابط مهمة',legal:'قانوني',privacy:'سياسة الخصوصية',terms:'شروط الاستخدام',rights:'جميع الحقوق محفوظة',results:'نتيجة',noResults:'لا توجد نتائج',searchPh:'ابحث عن مقال، مراجعة، شرح…',all:'الكل',minRead:'دقائق قراءة',views:'مشاهدة',related:'مقالات ذات صلة',toc:'محتويات المقال',share:'مشاركة',copyLink:'نسخ الرابط',print:'طباعة',backHome:'العودة للرئيسية',browseNews:'تصفح الأخبار',nfTitle:'يبدو أنك وصلت إلى صفحة غير موجودة.',sendMsg:'إرسال الرسالة',name:'الاسم',email:'البريد الإلكتروني',subject:'الموضوع',message:'الرسالة',adSpace:'مساحة إعلانية',verdict:'الخلاصة',devicesTabs:{all:'الكل',phone:'هواتف',laptop:'لابتوبات',watch:'ساعات ذكية',smart:'أجهزة ذكية'}},
+en:{home:'Home',news:'News',ai:'AI',devices:'Devices',apps:'Apps',cyber:'Cybersecurity',tutorials:'Tutorials',reviews:'Reviews',more:'More',comparisons:'Comparisons',tools:'Tools',about:'About',contact:'Contact',search:'Search',readMore:'Read more',viewAll:'View all',latestNews:'Latest News',aiSec:'Artificial Intelligence',devicesSec:'Latest Devices',mostRead:'Most Read',reviewsSec:'Our Reviews',comparisonsSec:'Tech Comparisons',toolsSec:'Best Tech Tools',nlTitle:'Subscribe to Techora Newsletter',nlDesc:'Get the most important tech & AI news straight to your inbox.',subscribe:'Subscribe',emailPh:'Your email address',breaking:'BREAKING',live:'Live now',subscribeBtn:'Subscribe',sections:'Sections',quickLinks:'Quick Links',legal:'Legal',privacy:'Privacy Policy',terms:'Terms of Use',rights:'All rights reserved',results:'results',noResults:'No results found',searchPh:'Search articles, reviews, tutorials…',all:'All',minRead:'min read',views:'views',related:'Related Articles',toc:'Contents',share:'Share',copyLink:'Copy link',print:'Print',backHome:'Back to Home',browseNews:'Browse News',nfTitle:'Looks like this page does not exist.',sendMsg:'Send Message',name:'Name',email:'Email',subject:'Subject',message:'Message',adSpace:'Ad Space',verdict:'Verdict',devicesTabs:{all:'All',phone:'Phones',laptop:'Laptops',watch:'Smartwatches',smart:'Smart Devices'}}
 };
 const t=k=>I18N[lang][k]??I18N.ar[k]??k;
 
@@ -921,7 +924,16 @@ function setSEO(o){
   const set=(sel,attr,val)=>{let e=$(sel);if(!e){const [t,a]=sel.split('[');e=document.createElement(t);e.setAttribute('property',a?a.replace(/[\[\]"]/g,''):'');document.head.appendChild(e)}e.setAttribute(attr==='prop'?'property':attr,val)};
   set('meta[property="og:title"]','prop',o.title||'TECHORA');
   set('meta[property="og:description"]','prop',o.desc||'');
-  if(o.image)set('meta[property="og:image"]','prop',o.image);
+  const imageURL=new URL(o.image||'/assets/techora-ai-hero.webp',SITE_URL).href;
+  const updateImageMeta=(attribute,key,value)=>{
+    let element=document.head.querySelector(`meta[${attribute}="${key}"]`);
+    if(!element){element=document.createElement('meta');element.setAttribute(attribute,key);document.head.appendChild(element)}
+    element.content=value;
+  };
+  updateImageMeta('property','og:image',imageURL);
+  updateImageMeta('property','og:image:width','1200');
+  updateImageMeta('property','og:image:height','630');
+  updateImageMeta('name','twitter:image',imageURL);
   let c=$('link[rel="canonical"]');if(!c){c=document.createElement('link');c.rel='canonical';document.head.appendChild(c)}
   // صفحات التطبيق الحالية تستخدم hash routes؛ لا تضع مسارات hash أو مسارات غير مولدة في canonical.
   c.href=SITE_URL+'/';
@@ -931,8 +943,8 @@ function setSEO(o){
 const orgLD={"@context":"https://schema.org","@type":"Organization",name:"TECHORA",alternateName:"تكورا",url:"https://techora-tech.netlify.app",logo:"https://picsum.photos/seed/techora-cover/1200/630",sameAs:["https://x.com/techora","https://youtube.com/@techora"],slogan:"Your World of Technology"};
 
 /* ---------- مكوّنات مشتركة ---------- */
-const img=(p,w,h,cls='',eager)=>`<img ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async" width="${w}" height="${h}" class="${cls}" src="${pic(p.image,w,h)}" srcset="${srcset(p.image)}" sizes="(max-width:640px) 100vw, (max-width:1000px) 50vw, 33vw" alt="${esc(p.title)}" onload="this.classList.add('ld')">`;
-const meta=(p,dots)=>`<span>${p.author}</span><span class="${dots?'dot-sep':''} num">${fmtDate(p.publishedAt,true)}</span><span class="dot-sep">${I.clock} ${p.readingTime} ${t('minRead')}</span>`;
+const img=(p,w,h,cls='',eager)=>`<img ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async" width="${w}" height="${h}" class="${cls}" src="${pic(p.image,w,h)}" srcset="${srcset(p.image,w,h)}" sizes="(max-width:640px) 100vw, (max-width:1000px) 50vw, 33vw" alt="${esc(p.title)}" onload="this.classList.add('ld')">`;
+const meta=p=>`<span class="num">${fmtDate(p.publishedAt,true)}</span><span class="dot-sep">${I.clock} ${p.readingTime} ${t('minRead')}</span>`;
 const adSlot=(size='728×90',h='')=>`<div class="ad-slot" style="${h?`min-height:${h}`:''}" role="complementary" aria-label="مساحة إعلانية"><b>${t('adSpace')}</b><small>Ad Slot · ${size}</small></div>`;
 const secHead=(kicker,title,link)=>`
  <div class="sec-head rv">
@@ -978,7 +990,7 @@ const cardTool=tl=>`
      <span class="num" style="font-size:.8rem;color:var(--muted)">${tl.rating}/5</span>
    </div>
  </article>`;
-const miniPost=p=>`<a class="mini-post" href="#/${p.cat}/${p.slug}"><img loading="lazy" src="${pic(p.image,160,100)}" alt="${esc(p.title)}"><h5>${esc(clamp(p.title,60))}</h5></a>`;
+const miniPost=p=>`<a class="mini-post" href="#/${p.cat}/${p.slug}"><img loading="lazy" decoding="async" width="160" height="100" src="${pic(p.image,160,100)}" alt="${esc(p.title)}"><h5>${esc(clamp(p.title,60))}</h5></a>`;
 const newsletter=(id='nl')=>`
  <section class="newsletter rv" id="${id}-sec" aria-label="النشرة البريدية">
    <h3>${t('nlTitle')}</h3><p>${t('nlDesc')}</p>
@@ -997,7 +1009,7 @@ const blockHTML=b=>{switch(b.t){
   case 'h2':return `<h2 id="${slugify(b.v)}">${b.v}</h2>`;
   case 'ul':return `<ul>${b.v.map(li=>`<li>${li}</li>`).join('')}</ul>`;
   case 'quote':return `<blockquote><p>${b.v}</p>${b.by?`<cite>— ${esc(b.by)}</cite>`:''}</blockquote>`;
-  case 'img':return `<figure><img loading="lazy" src="${pic(b.seed,1100,620)}" alt="${esc(b.cap||'صورة توضيحية')}"><figcaption>${esc(b.cap||'')}</figcaption></figure>`;
+  case 'img':return `<figure><img loading="lazy" decoding="async" width="1100" height="620" srcset="${srcset(b.seed,1100,620)}" sizes="(max-width:900px) 100vw, 760px" src="${pic(b.seed,1100,620)}" alt="${esc(b.cap||'صورة توضيحية')}"><figcaption>${esc(b.cap||'')}</figcaption></figure>`;
   case 'table':return `<div class="tbl-wrap"><table><thead><tr>${b.head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${b.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
   default:return ''}};
 function renderBlocks(blocks,inArticle){
@@ -1047,12 +1059,12 @@ function pageHome(){
   <section class="hero">
     <div class="container hero-grid">
       <article class="hero-main kb rv">
-        <div class="img-wrap"><img src="${pic(hero.image,1280,760)}" srcset="${srcset(hero.image)}" sizes="(max-width:900px) 100vw, 62vw" alt="${esc(hero.title)}" fetchpriority="high" decoding="async" width="1280" height="760" class="ld"></div>
+        <div class="img-wrap"><img src="${pic(hero.image,1280,760)}" srcset="${srcset(hero.image,1280,760)}" sizes="(max-width:900px) 100vw, 62vw" alt="${esc(hero.title)}" fetchpriority="high" decoding="async" width="1280" height="760" class="ld"></div>
         <div class="hero-body">
           <span class="chip">${esc(catName(catOf(hero.cat)))}</span>
           <h1><a href="#/${hero.cat}/${hero.slug}">${esc(hero.title)}</a></h1>
           <p>${esc(hero.excerpt)}</p>
-          <div class="hero-meta"><span>${t('by')} ${hero.author}</span><span class="num">${fmtDate(hero.publishedAt)}</span><span>${I.clock} ${hero.readingTime} ${t('minRead')}</span><span>${I.eye} <span class="num">${fmtViews(viewCount(hero))}</span></span></div>
+          <div class="hero-meta"><span class="num">${fmtDate(hero.publishedAt)}</span><span>${I.clock} ${hero.readingTime} ${t('minRead')}</span><span>${I.eye} <span class="num">${fmtViews(viewCount(hero))}</span></span></div>
           <div style="margin-top:20px"><a class="btn" href="#/${hero.cat}/${hero.slug}">${t('readMore')} ${I.arrow}</a></div>
         </div>
       </article>
@@ -1188,15 +1200,13 @@ function pageArticle(p){
           <h1>${esc(p.title)}</h1>
           <p class="art-lead">${esc(p.excerpt)}</p>
           <div class="art-meta">
-            <span style="display:flex;align-items:center;gap:12px"><span class="avatar" aria-hidden="true">${esc(p.author[0])}</span>
-              <span><b style="color:var(--ink)">${esc(p.author)}</b><br><small>${esc(AUTHORS.find(a=>a.name===p.author)?.role||'')}</small></span></span>
             <span class="num">${fmtDate(p.publishedAt)}</span>
             <span>${I.clock} ${p.readingTime} ${t('minRead')}</span>
             <span>${I.eye} <span class="num" id="vcount">${fmtViews(viewCount(p))}</span> ${t('views')}</span>
             ${p.rating?`<span class="rate-badge" style="position:static">${I.star} <span class="num">${p.rating}</span>/10</span>`:''}
           </div>
         </header>
-        <figure class="art-hero kb rv"><img src="${pic(p.image,1280,680)}" srcset="${srcset(p.image)}" alt="${esc(p.title)}" class="ld"></figure>
+        <figure class="art-hero kb rv"><img width="1280" height="680" fetchpriority="high" decoding="async" sizes="(max-width:900px) 100vw, 760px" src="${pic(p.image,1280,680)}" srcset="${srcset(p.image,1280,680)}" alt="${esc(p.title)}" class="ld"></figure>
         <div class="art-cap">صورة توضيحية — ${esc(p.title)}</div>
         <div class="prose rv">${renderBlocks(p.content,true)}</div>
         <div class="share-bar rv">
